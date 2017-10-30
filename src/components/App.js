@@ -18,19 +18,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
         <div>
-
           <Link to="/">Home</Link>
-          <Link to="/subcategory">SubCategory</Link>
           <Link to="/postings">Postings</Link>
           <Link to="/post">Post</Link>
           { router }
         </div>
-
       </div>
     );
   }
