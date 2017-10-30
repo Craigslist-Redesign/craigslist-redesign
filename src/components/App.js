@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import logo from './logo.svg';
-import './App.css';
+import '../App.css';
+import { Link } from 'react-router-dom';
+import router from '../router.js'
 
 
 
@@ -10,6 +11,7 @@ class App extends Component {
   componentWillMount() {
     axios.get('/api/getItems').then(response => {
       console.log(response);
+      
     })
   }
 
@@ -17,12 +19,18 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div>
+
+          <Link to="/">Home</Link>
+          <Link to="/subcategory">SubCategory</Link>
+          <Link to="/postings">Postings</Link>
+          <Link to="/post">Post</Link>
+          { router }
+        </div>
+
       </div>
     );
   }
