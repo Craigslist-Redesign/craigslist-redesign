@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import './Form.css';
 
 
 class Form extends Component {
@@ -34,10 +35,16 @@ class Form extends Component {
 
         <div>
         <form >
+
+
+          <div className="title-form-box">
           <label>
-            Title:
-            <input type="text" onChange={ (event) => this.setState({ title: event.target.value })}/>
+            Title: 
+            <input className="" type="text" onChange={ (event) => this.setState({ title: event.target.value })}/>
           </label>
+          </div>
+
+
           <br/>
           <label>
             Tag:
