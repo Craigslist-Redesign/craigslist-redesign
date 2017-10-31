@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-input{
+      margin: 5%;
+  }
+
+  .title-form-box{
+      display: flex;
+      justify-content: left;
+      margin-top: 10%;
+  }
+  
