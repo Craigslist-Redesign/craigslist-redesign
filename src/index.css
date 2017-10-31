@@ -1,7 +1,14 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html, body {
+  width: 100%;
+}
+
+body {
   font-family: sans-serif;
   text-align: center;
-  padding: 2em;
 }
