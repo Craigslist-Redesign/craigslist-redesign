@@ -4,6 +4,7 @@ import Login from './components/0-Login/Login';
 import Home from './components/1-Home/Home';
 import Listings from './components/2-Listings/Listings';
 import Post from './components/3-Post/Post';
+import Form from './components/4-Form/Form';
 
 
 
@@ -14,6 +15,8 @@ export default (
       <Route path='/login' component={Login}/>
       <Route path='/listings' component={Listings}/>
       <Route path='/post' component={Post}/>
+      <Route path='/form' component={Form}/>
+
     </Switch>
 
   )
