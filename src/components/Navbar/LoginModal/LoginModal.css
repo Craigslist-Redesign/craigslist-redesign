@@ -1,0 +1,24 @@
+.login-modal-background {
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background: rgba(11,11,11,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.close-login-modal {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  color: whitesmoke;
+}
+
+.login-modal-container {
+  width: 300px;
+  height: 450px;
+  background: whitesmoke;
+}
