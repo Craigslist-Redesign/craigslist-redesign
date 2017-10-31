@@ -20,6 +20,7 @@ class App extends Component {
           <Link to="/" className="padding">Home</Link>
           <Link to="/listings" className="padding">Listings</Link>
           <Link to="/post" className="padding">Post</Link>
+          <Link to="/form" className="padding">Form</Link>
           { router }
         </div>
       </div>
