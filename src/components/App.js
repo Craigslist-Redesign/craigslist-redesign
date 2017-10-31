@@ -4,14 +4,11 @@ import '../App.css';
 import { Link } from 'react-router-dom';
 import router from '../router.js'
 
-
-
 class App extends Component {
 
   componentWillMount() {
     axios.get('/api/getItems').then(response => {
       console.log(response);
-      
     })
   }
 
@@ -19,9 +16,10 @@ class App extends Component {
     return (
       <div className="App">
         <div>
-          <Link to="/">Home</Link>
-          <Link to="/postings">Postings</Link>
-          <Link to="/post">Post</Link>
+          <Link to="/login" className="padding">My Account</Link>
+          <Link to="/" className="padding">Home</Link>
+          <Link to="/listings" className="padding">Listings</Link>
+          <Link to="/post" className="padding">Post</Link>
           { router }
         </div>
       </div>

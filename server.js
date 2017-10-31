@@ -4,7 +4,7 @@ const cors = require('cors');
 const massive = require('massive');
 const masterRoutes = require('./server/masterRoutes');
 const port = 4000;
-const app = express();  
+const app = express();
 const { address } = require('./config');
 // Database connection information
 const connectionString = `${ address }`
