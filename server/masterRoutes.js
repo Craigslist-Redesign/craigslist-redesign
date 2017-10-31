@@ -1,5 +1,5 @@
-const itemsEndpoints = require ('./items/itemsEndpoints.js');
+const endpoints = require ('./routes/endpoints.js');
 
 module.exports = app => {
-  itemsEndpoints(app)
+  endpoints(app)
 }
