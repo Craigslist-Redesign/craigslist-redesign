@@ -18,14 +18,11 @@ class Form extends Component {
     handleSubmit(event) {
 
         console.log(event);
-        const title = this.state.title;
-        const tag = this.state.tag;
-        // const price = this.state.price;
-        // const description = this.state.description;
-        // const condition = this.state.condition;
+        const formObject = this.state;
+        console.log(formObject);
 
 
-      axios.post('/api/createForSaleForm', [title, tag])
+      axios.post('/api/createForSaleForm', formObject)
       .then(response => {
         console.log(response);
       })
@@ -41,22 +38,47 @@ class Form extends Component {
             Title:
             <input type="text" onChange={ (event) => this.setState({ title: event.target.value })}/>
           </label>
+          <br/>
           <label>
             Tag:
             <input type="text" onChange={ (event) => this.setState({ tag: event.target.value })}/>
           </label>
-          {/* <label>
+          <br/>
+          <label>
             Price:
             <input type="text" onChange={ (event) => this.setState({ price: event.target.value })}/>
           </label>
+          <br/>
           <label>
             Description:
-            <input type="text" onChange={ (event) => this.setState({ description: event.target.value })}/>
+            <textarea type="text" onChange={ (event) => this.setState({ description: event.target.value })}/>
           </label>
+          <br/>
           <label>
             Condition:
             <input type="text" onChange={ (event) => this.setState({ condition: event.target.value })}/>
-          </label>  */}
+          </label> 
+          <br/>
+          <label>
+            Location:
+            <input type="text" onChange={ (event) => this.setState({ location: event.target.value })}/>
+          </label>
+          <br/>
+          <label>
+            Make:
+            <input type="text" onChange={ (event) => this.setState({ make: event.target.value })}/>
+          </label>
+          <br/>
+          <label>
+            Model:
+            <input type="text" onChange={ (event) => this.setState({ model: event.target.value })}/>
+          </label>
+          <br/>
+          <label>
+            Size:
+            <input type="text" onChange={ (event) => this.setState({ size: event.target.value })}/>
+          </label>
+          <br/>
           
         </form>
         <button type="submit" onClick={ (event) => this.handleSubmit(event) }>Submit</button>
