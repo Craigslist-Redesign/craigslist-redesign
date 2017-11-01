@@ -1,1 +1,2 @@
-SELECT * FROM for_sale WHERE tag = ($1)
+SELECT * FROM for_sale
+-- WHERE tag = ($1);

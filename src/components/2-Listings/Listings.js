@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import axios from 'axios';
 
 class Listings extends Component {
 constructor(props){
@@ -13,7 +13,13 @@ this.state = {
 componentWillMount(){
   const tag = this.props.match.params.tag;
   console.log(tag);
- this.setState({})
+
+  axios.get('/api/getByTag').then(res => {
+    console.log('====================================');
+    console.log(res);
+    console.log('====================================');
+  })
+ 
 }
 
 

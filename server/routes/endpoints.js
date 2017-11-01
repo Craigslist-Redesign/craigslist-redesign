@@ -4,4 +4,5 @@ module.exports = app => {
   app.get('/api/getItems', ctrl.getItems);
   app.post('/user/createUser', ctrl.createUser);
   app.post('/api/createForSaleForm', ctrl.createForSale);
+  app.get('/api/getByTag', ctrl.getByTag)
 }
