@@ -22,6 +22,7 @@ class App extends Component {
           <Link to="/listings" className="padding">Listings</Link>
           <Link to="/post" className="padding">Post</Link>
           <Link to="/form" className="padding">Form</Link>
+          <Link to="/MyAccount" className="padding">MyAccount</Link>
           { router }
         </div>
       </div>
