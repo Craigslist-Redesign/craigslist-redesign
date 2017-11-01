@@ -22,18 +22,19 @@ class CardForSale extends Component {
       </Link>
          <ul>
 
-           <Link to="/listings/outdoors">Outdoors</Link>
-           <li>Books</li>
-           <li>Household</li>
-           <li>Atv/Motorcycles/Bikes</li>
-           <li>Cars & Trucks</li>
-           <li>Business</li>
-           <li>Music/Tickets</li>
-           <li>Tech</li>
+           <Link to="/listings/for_sale/outdoors">Outdoors</Link>
+           <Link to="/listings/for_sale/books">Books</Link>
+           <Link to="/listings/for_sale/household">Household</Link>
+           <Link to="/listings/for_sale/AMB">Atv/Motorcycles/Bikes</Link>
+           <Link to="/listings/for_sale/CT">Cars & Trucks</Link>
+           <Link to="/listings/for_sale/business">Business</Link>
+           <Link to="/listings/for_sale/music">Music/Tickets</Link>
+           <Link to="/listings/for_sale/tech">Tech</Link>
            <Link to="/listings/for_sale/toys_games">Toys & Games</Link>
-           <li>Garden & Tools</li>
-           <li>Free</li>
-           <li>Garage Sale</li>
+           <Link to="/listings/for_sale/GT">Garden & Tools</Link>
+           <Link to="/listings/for_sale/free">Free</Link>
+           <Link to="/listings/for_sale/garage_sale">Garage-Sale</Link>
+
 
          </ul>
       </div>
