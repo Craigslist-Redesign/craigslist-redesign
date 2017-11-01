@@ -42,6 +42,15 @@ module.exports = {
     .get_by_tag_forsale([req.body.table, req.body.tag])
     .then(data => res.json(data))
 
-  }
+  },
+
+  getUserPosts: (req,res) => {
+    console.log(req.params)
+    req.app.get('db')
+    .get_user_posts(req.params.uid)
+    .then(posts => res.json(posts))
+    .catch(err => res.json(err))
+  },
+  
 
 }
