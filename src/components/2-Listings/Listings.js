@@ -6,20 +6,23 @@ constructor(props){
   super(props);
 
 this.state = {
+  ptag: '',
   tag: '',
 }
 
 }
 componentWillMount(){
-  const tag = this.props.match.params.tag;
-  console.log(tag);
-
-  axios.get('/api/getByTag').then(res => {
-    console.log('====================================');
-    console.log(res);
-    console.log('====================================');
+  // const table = this.props.match.params.table;
+  // const tag = this.props.match.params.tag;
+  const paramObject = this.props.match.params;
+  console.log(this.props.match.params);
+console.log(paramObject)
+  axios.post('/api/getByTagForSale/', paramObject).then(res => {
+    
+    console.log("newwww", res);
+   
   })
- 
+
 }
 
 

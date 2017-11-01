@@ -17,7 +17,7 @@ class CardForSale extends Component {
   return(
 
       <div className="for-sale-card-container">
-      <Link to="/listings">
+      <Link to="/listings/for_sale">
         <h2 className="for-sale-card-header">FOR SALE</h2>
       </Link>
          <ul>
@@ -30,7 +30,7 @@ class CardForSale extends Component {
            <li>Business</li>
            <li>Music/Tickets</li>
            <li>Tech</li>
-           <Link to="/listings/toys_games">Toys & Games</Link>
+           <Link to="/listings/for_sale/toys_games">Toys & Games</Link>
            <li>Garden & Tools</li>
            <li>Free</li>
            <li>Garage Sale</li>

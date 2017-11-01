@@ -26,13 +26,23 @@ module.exports = {
     .catch(err => res.json(err))
   },
 
-  getByTag: (req,res) =>{
+  getAllForSale: (req,res) => {
+
+
+    req.app
+    .get('db')
+    .get_all_forsale(req.body)
+    .then(data => res.json(data))
+    .catch(err => res.json(err))
+  },
+
+  getByTagForSale: (req,res) =>{
     console.log(req.body)
     req.app
     .get('db')
-    .get_by_tag(req.body)
+    .get_by_tag_forsale([req.body.table, req.body.tag])
     .then(data => res.json(data))
-    .catch(err => res.json(err))
+    
   }
 
 }
