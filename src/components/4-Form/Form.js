@@ -32,41 +32,17 @@ class Form extends Component {
   }
 
   uploadImage(event) {
-
     event.preventDefault();
-    const files = this.state.file
+    const file = this.state.file
     const storageRef = firebase.storage().ref()
-    const filesArr = []
-    console.log(files);
-
-    for(let i = 0; i < files.length; i++) {
-      const uploadTask = storageRef.child('images/' + files[i].name).put(files[i]);
+    const uploadTask = storageRef.child('images/' + file.name).put(file);
 
       uploadTask.on('state_changed', (snapshot) => {
+        console.log(snapshot);
       }, function(error) {}, function() {
-        filesArr.push(uploadTask.snapshot.downloadURL)
+        let downloadURL = uploadTask.snapshot.downloadURL;
+        console.log(downloadURL);
       });
-    }
-
-    // JSON.stringify()
-
-    // files.map(file => {
-    //   const uploadTask = storageRef.child('images/' + file.name).put(file);
-    //
-    //   uploadTask.on('state_changed', (snapshot) => {
-    //     console.log(snapshot);
-    //   }, function(error) {}, function() {
-    //     console.log(uploadTask.snapshot.downloadURL);
-    //     filesArr.push(uploadTask.snapshot.downloadURL)
-    //   });
-    // })
-
-
-
-
-
-
-    console.log(filesArr);
 
   }
 
@@ -130,7 +106,7 @@ class Form extends Component {
 
               </div>
               <div className='top-right-image-box'>
-                <input type="file" onChange={(event) => this.setState({ file: event.target.files })} multiple/>
+                <input type="file" onChange={(event) => this.setState({ file: event.target.files[0] })}/>
                 <input type="submit" onClick={ (event) => this.uploadImage(event) }/>
               </div>
             </div>
