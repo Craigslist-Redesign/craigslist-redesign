@@ -35,6 +35,7 @@ class CardForSale extends Component {
            <Link to="/listings/for_sale/free">Free</Link>
            <Link to="/listings/for_sale/garage_sale">Garage-Sale</Link>
 
+
          </ul>
       </div>
 
