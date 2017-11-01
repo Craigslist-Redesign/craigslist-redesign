@@ -1,0 +1,13 @@
+.for-sale-card-container{
+  margin: 3em 70%;
+  border: solid black 2px;
+  margin-left: 4%;
+}
+
+ul{
+  list-style-type: none;
+}
+
+.for-sale-card-header{
+  margin: 1%;
+}
