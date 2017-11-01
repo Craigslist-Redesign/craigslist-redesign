@@ -1,13 +1,5 @@
 module.exports = {
 
-  getItems: (req, res) => {
-    req.app
-    .get('db')
-    .get_items()
-    .then(items => res.json(items))
-    .catch(err => res.json(err))
-  },
-
   createUser: (req, res) => {
     console.log(req.body);
     req.app
@@ -51,6 +43,6 @@ module.exports = {
     .then(posts => res.json(posts))
     .catch(err => res.json(err))
   },
-  
+
 
 }
