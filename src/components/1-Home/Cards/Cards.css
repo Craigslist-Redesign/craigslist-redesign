@@ -2,12 +2,16 @@
   margin: 3em 70%;
   border: solid black 2px;
   margin-left: 4%;
+  padding: 2%;
 }
 
 ul{
-  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .for-sale-card-header{
-  margin: 1%;
+  margin-bottom: 4%;
 }

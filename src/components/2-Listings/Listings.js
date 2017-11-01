@@ -12,6 +12,7 @@ this.state = {
 }
 componentWillMount(){
   const tag = this.props.match.params.tag;
+  console.log(this.props.match)
   console.log(tag);
  this.setState({})
 }
