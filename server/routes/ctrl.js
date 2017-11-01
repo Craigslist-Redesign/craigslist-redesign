@@ -21,14 +21,13 @@ module.exports = {
     console.log(req.body);
     req.app
     .get('db')
-    .create_forsale([req.body.title, req.body.tag, req.body.price, req.body.description, req.body.location, req.body.make, req.body.model, req.body.size, req.body.condition, req.body.zipcode, req.body.email, req.body.uid])
+    .create_forsale([req.body.title, req.body.tag, req.body.price, req.body.description, req.body.location, req.body.make, req.body.model, req.body.size, req.body.condition, req.body.zipcode, req.body.email, req.body.uid, req.body.cat_id, req.body.category ])
     .then(forSale => res.json(forSale))
     .catch(err => res.json(err))
   },
 
   getAllForSale: (req,res) => {
-
-
+    console.log(req.body);
     req.app
     .get('db')
     .get_all_forsale(req.body)
@@ -42,7 +41,7 @@ module.exports = {
     .get('db')
     .get_by_tag_forsale([req.body.table, req.body.tag])
     .then(data => res.json(data))
-    
+
   }
 
 }
