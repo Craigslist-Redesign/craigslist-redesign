@@ -12,15 +12,16 @@ this.state = {
 
 }
 componentWillMount(){
+  console.log('hello');
   // const table = this.props.match.params.table;
   // const tag = this.props.match.params.tag;
   const paramObject = this.props.match.params;
   console.log(this.props.match.params);
-console.log(paramObject)
+  console.log(paramObject)
   axios.post('/api/getByTagForSale/', paramObject).then(res => {
-    
+
     console.log("newwww", res);
-   
+
   })
 
 }

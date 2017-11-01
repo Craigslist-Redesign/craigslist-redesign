@@ -1,1 +1,2 @@
-SELECT * FROM for_sale
+SELECT * FROM posts
+WHERE category = $1;
