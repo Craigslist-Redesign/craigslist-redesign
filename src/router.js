@@ -11,7 +11,7 @@ export default (
 
     <Switch>
       <Route exact path='/' component={Home}/>
-      <Route path='/listings' component={Listings}/>
+      <Route path='/listings/:tag' component={Listings}/>
       <Route path='/post' component={Post}/>
       <Route path='/form' component={Form}/>
     </Switch>
