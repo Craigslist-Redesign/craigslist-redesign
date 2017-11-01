@@ -1,33 +1,58 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import firebase from '../../firebase.js';
 import './Form.css';
 
 
 class Form extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: '' };
+    this.state = {
+      value: '',
+      file: '',
+      imagePreviewUrl: ''
+    };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({ email: user.email })
+        this.setState({ uid: user.uid })
+        console.log(this.state);
+      }
+    })
   }
 
   handleChange(event) {
     this.setState({ value: event.target.value });
   }
 
-  handleSubmit(event) {
+  uploadImage(event) {
+    event.preventDefault();
+    const file = this.state.file
+    const storageRef = firebase.storage().ref()
+    const uploadTask = storageRef.child('images/' + file.name).put(file);
 
-    console.log(event);
+      uploadTask.on('state_changed', (snapshot) => {
+        console.log(snapshot);
+      }, function(error) {}, function() {
+        let downloadURL = uploadTask.snapshot.downloadURL;
+        console.log(downloadURL);
+      });
+
+  }
+
+  handleSubmit(event) {
     const formObject = this.state;
     console.log(formObject);
-
-
-    axios.post('/api/createForSaleForm', formObject)
-      .then(response => {
-        console.log(response);
-      })
-
+    // axios.post('/api/createForSaleForm', formObject)
+    // .then(response => {
+    //   console.log(response);
+    // })
   }
 
   render() {
@@ -51,20 +76,20 @@ class Form extends Component {
 
                 <div>
                   <div className='input-type'>
-                  
+
                     Price
                     </div>
             <input type="text" onChange={(event) => this.setState({ price: event.target.value })} />
-                  
+
                 </div>
 
 
                 <div>
                  <div className='input-type'>
                     Location
-                 </div>   
+                 </div>
             <input type="text" onChange={(event) => this.setState({ location: event.target.value })} />
-                  
+
                 </div>
 
 
@@ -73,14 +98,17 @@ class Form extends Component {
                     Zip Code
                     </div>
             <input type="text" onChange={(event) => this.setState({ zipcode: event.target.value })} />
-                  
+
 
                 </div>
 
 
 
               </div>
-              <div className='top-right-image-box'></div>
+              <div className='top-right-image-box'>
+                <input type="file" onChange={(event) => this.setState({ file: event.target.files[0] })}/>
+                <input type="submit" onClick={ (event) => this.uploadImage(event) }/>
+              </div>
             </div>
 
           <div>
@@ -102,7 +130,7 @@ class Form extends Component {
 
 
             <br />
-           
+
             <br />
             <label>
               Condition:

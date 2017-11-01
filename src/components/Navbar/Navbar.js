@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Navbar.css';
 import firebase from '../../firebase.js';
-import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import LoginModal from './LoginModal/LoginModal';
 // import RouterButton from './RouterButton/RouterButton';

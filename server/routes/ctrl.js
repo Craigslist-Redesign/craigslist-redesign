@@ -21,7 +21,7 @@ module.exports = {
     console.log(req.body);
     req.app
     .get('db')
-    .create_forsale([req.body.title, req.body.tag, req.body.price, req.body.description, req.body.location, req.body.make, req.body.model, req.body.size, req.body.condition, req.body.zipcode])
+    .create_forsale([req.body.title, req.body.tag, req.body.price, req.body.description, req.body.location, req.body.make, req.body.model, req.body.size, req.body.condition, req.body.zipcode, req.body.email, req.body.uid])
     .then(forSale => res.json(forSale))
     .catch(err => res.json(err))
   }
