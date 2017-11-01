@@ -7,12 +7,6 @@ import Navbar from './Navbar/Navbar'
 
 class App extends Component {
 
-  componentWillMount() {
-    axios.get('/api/getItems').then(response => {
-      console.log(response);
-    })
-  }
-
   render() {
     return (
       <div className="App">
