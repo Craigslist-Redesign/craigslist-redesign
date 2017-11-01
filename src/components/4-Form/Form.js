@@ -8,9 +8,7 @@ class Form extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: '',
-      file: '',
-      imagePreviewUrl: ''
+      value: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,7 +20,6 @@ class Form extends Component {
       if (user) {
         this.setState({ email: user.email })
         this.setState({ uid: user.uid })
-        console.log(this.state);
       }
     })
   }
@@ -31,28 +28,39 @@ class Form extends Component {
     this.setState({ value: event.target.value });
   }
 
-  uploadImage(event) {
-    event.preventDefault();
-    const file = this.state.file
-    const storageRef = firebase.storage().ref()
-    const uploadTask = storageRef.child('images/' + file.name).put(file);
 
-      uploadTask.on('state_changed', (snapshot) => {
-        console.log(snapshot);
-      }, function(error) {}, function() {
-        let downloadURL = uploadTask.snapshot.downloadURL;
-        console.log(downloadURL);
-      });
+  uploadImage(event) {
+      console.log(this.state);
+      event.preventDefault();
+      const file = this.state.file
+      const storageRef = firebase.storage().ref()
+      const uploadTask = storageRef.child('images/' + file.name).put(file);
+      return new Promise(function(resolve, reject) {
+
+        uploadTask.on('state_changed', (snapshot) => {
+        }, function(error) {}, function() {
+
+          let downloadURL = uploadTask.snapshot.downloadURL;
+          resolve({downloadURL});
+
+        });
+      })
+      .then(({ downloadURL }) => {
+        this.setState({ imageUrl: downloadURL })
+      })
+
+
 
   }
 
   handleSubmit(event) {
     const formObject = this.state;
-    console.log(formObject);
-    // axios.post('/api/createForSaleForm', formObject)
-    // .then(response => {
-    //   console.log(response);
-    // })
+    formObject.cat_id = 1;
+    formObject.category = 'for_sale'
+    axios.post('/api/createForSaleForm', formObject)
+    .then(response => {
+      console.log(response);
+    })
   }
 
   render() {
