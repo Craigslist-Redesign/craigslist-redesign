@@ -1,0 +1,1 @@
+SELECT * FROM $1 WHERE tag = $2;
