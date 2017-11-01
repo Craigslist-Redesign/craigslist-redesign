@@ -12,7 +12,8 @@ class LoginModal extends Component {
       loginPassword: '',
       createEmail: '',
       createPassword: '',
-      successEmail: ''
+      successEmail: '',
+      userUid: ''
     }
   }
 
@@ -58,12 +59,18 @@ class LoginModal extends Component {
     if(email && password.length >= 6){
       console.log(this.state);
       firebase.auth().createUserWithEmailAndPassword(email, password)
-      axios.post('/user/createUser', [email])
       .then(response => {
-        console.log(response);
-        // Go to path...
+        firebase.auth().onAuthStateChanged(user => {
+
+          this.setState({ userUid: user.uid })
+
+          const uid = this.state.userUid
+          axios.post('/user/createUser', [email, uid])
+        })
       })
-    } else if(email && password.length < 6) {
+    }
+
+    else if(email && password.length < 6) {
       alert('Password should be at least 6 characters')
     }
     else{
