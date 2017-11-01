@@ -70,9 +70,9 @@ class Form extends Component {
 
                 <div>
                 <div className='input-type'>
-                    ZipCode
+                    Zip Code
                     </div>
-            <input type="text" />
+            <input type="text" onChange={(event) => this.setState({ zipcode: event.target.value })} />
                   
 
                 </div>
