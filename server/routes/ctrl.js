@@ -1,7 +1,7 @@
 module.exports = {
 
   createUser: (req, res) => {
-    console.log(req.body);
+
     req.app
     .get('db')
     .create_user(req.body)
@@ -10,7 +10,7 @@ module.exports = {
   },
 
   createForSale: (req, res) => {
-    console.log(req.body);
+
     req.app
     .get('db')
     .create_forsale([req.body.title, req.body.tag, req.body.price, req.body.description, req.body.location, req.body.make, req.body.model, req.body.size,
@@ -23,22 +23,22 @@ module.exports = {
     console.log(req.body);
     req.app
     .get('db')
-    .get_all_forsale(req.body)
+    .get_all_forsale([req.body.category, req.body.tag])
     .then(data => res.json(data))
     .catch(err => res.json(err))
   },
 
   getByTagForSale: (req,res) =>{
-    console.log(req.body)
+
     req.app
     .get('db')
-    .get_by_tag_forsale([req.body.table, req.body.tag])
+    .get_by_tag_forsale(req.params.tag)
     .then(data => res.json(data))
 
   },
 
   getUserPosts: (req,res) => {
-    console.log(req.params)
+
     req.app.get('db')
     .get_user_posts(req.params.uid)
     .then(posts => res.json(posts))

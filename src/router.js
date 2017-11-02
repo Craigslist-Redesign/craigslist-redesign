@@ -12,7 +12,7 @@ export default (
 
     <Switch>
       <Route exact path='/' component={Home}/>
-      <Route path='/listings/:table/:tag' component={Listings}/>
+      <Route path='/listings/:category/:tag' component={Listings}/>
       <Route path='/post' component={Post}/>
       <Route path='/form' component={Form}/>
       <Route path='/myaccount' component={MyAccount}/>
