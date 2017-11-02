@@ -1,7 +1,6 @@
 module.exports = {
 
   createUser: (req, res) => {
-
     req.app
     .get('db')
     .create_user(req.body)
@@ -28,7 +27,6 @@ module.exports = {
   },
 
   getUserPosts: (req,res) => {
-
     req.app.get('db')
     .get_user_posts(req.params.uid)
     .then(posts => res.json(posts))
