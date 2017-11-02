@@ -3,35 +3,21 @@ import axios from 'axios';
 import'./Listings.css'
 
 class Listings extends Component {
-constructor(props){
-  super(props);
+  constructor(props){
+    super(props);
 
-this.state = {
-  ptag: '',
-  tag: '',
-  listArray: []
-}
+  this.state = {
+    listArray: []
+  }
 
 }
 componentWillMount(){
-
-
-  // const table = this.props.match.params.table;
-
   const catObject = this.props.match.params;
-  console.log(catObject);
 
-  axios.post('/api/getAllForSale/', catObject).then(res => {
+  axios.post('/api/getListings/', catObject).then(res => {
    console.log(res);
    this.setState({listArray: res.data})
-
   })
-
-  // axios.post('/api/getByTagForSale/'+ tag).then(res => {
-  //
-  //   console.log("newwww", res);
-  //
-  // })
 
 }
 
