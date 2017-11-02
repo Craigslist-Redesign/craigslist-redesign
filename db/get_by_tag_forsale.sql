@@ -1,1 +1,1 @@
-SELECT * FROM $1 WHERE tag = $2;
+SELECT * FROM posts WHERE tag = $1;
