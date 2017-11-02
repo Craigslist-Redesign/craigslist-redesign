@@ -23,7 +23,7 @@ class Form extends Component {
       condition: null,
       make: null,
       model: null,
-      size: null
+      size: null,
     };
   }
 
