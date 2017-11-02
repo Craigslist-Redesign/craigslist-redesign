@@ -9,7 +9,7 @@ class ForSaleTagList extends Component {
           <li onClick={ this.props.handleTagState }>Outdoors</li>
           <li onClick={ this.props.handleTagState }>Books</li>
           <li onClick={ this.props.handleTagState }>Household</li>
-          <li onClick={ this.props.handleTagState }>Atv/Motorcycles/Bikes</li>
+          <li onClick={ this.props.handleTagState }>Atv & Motorcycles</li>
           <li onClick={ this.props.handleTagState }>Cars & Trucks</li>
           <li onClick={ this.props.handleTagState }>Business</li>
           <li onClick={ this.props.handleTagState }>Music</li>

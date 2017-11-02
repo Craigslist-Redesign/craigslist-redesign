@@ -5,6 +5,14 @@ import './Form.css';
 import CategoryList from './CategoryList/CategoryList'
 import ForSaleTagList from './TagLists/ForSaleTagList'
 import ForSaleForm from './ChildForms/ForSaleForm'
+import JobsTagsList from './TagLists/JobsTagsList'
+import JobsForm from './ChildForms/JobsForm'
+import ServicesTagsList from './TagLists/ServicesTagsList'
+import ServicesForm from './ChildForms/ServicesForm'
+import HousingTagsList from './TagLists/HousingTagsList'
+import HousingForm from './ChildForms/HousingForm'
+import CommunityTagsList from './TagLists/CommunityTagsList'
+import CommunityForm from './ChildForms/CommunityForm'
 
 
 class Form extends Component {
@@ -16,7 +24,8 @@ class Form extends Component {
       category: '',
       catId: '',
       title: '',
-      price: '',
+      price: 0,
+      tag: null,
       description: null,
       location: null,
       zipcode: null,
@@ -24,6 +33,15 @@ class Form extends Component {
       make: null,
       model: null,
       size: null,
+      employmentType: null,
+      compensation: null,
+      companyName: null,
+      phoneNumber: null,
+      contactName: null,
+      rent: null,
+      bedrooms: null,
+      bathrooms: null,
+      availableDate: null
     };
   }
 
@@ -65,6 +83,7 @@ class Form extends Component {
 
     }
     this.setState({ category: category })
+    this.setState({ tag: null })
     console.log(this.state.category);
   }
 
@@ -104,23 +123,55 @@ class Form extends Component {
     })
   }
 
+
   render() {
+    let categoryHeader;
+    if(this.state.category){
+      categoryHeader = <div><h4>Select a category</h4></div>
+    }
+
     let form;
     if(this.state.category === 'For Sale'){
       form =
       <div id="for-sale-form">
         <ForSaleTagList handleTagState={ this.handleTagState } />
-        <ForSaleForm state={this.state} handleSubmit={ this.handleSubmit }/>
+        { this.state.tag && <ForSaleForm state={this.state} handleSubmit={ this.handleSubmit }/> }
+
       </div>
     }
-
     if(this.state.category === 'Jobs') {
-      form = <div><h3>Jobs</h3></div>
+      form =
+      <div>
+        <JobsTagsList handleTagState={ this.handleTagState } />
+        { this.state.tag && <JobsForm state={this.state} handleSubmit={ this.handleSubmit }/>}
+      </div>
+    }
+    if(this.state.category === 'Services') {
+      form =
+      <div>
+        <ServicesTagsList handleTagState={ this.handleTagState } />
+        { this.state.tag && <ServicesForm state={this.state} handleSubmit={ this.handleSubmit }/>}
+      </div>
+    }
+    if(this.state.category === 'Housing') {
+      form =
+      <div>
+        <HousingTagsList handleTagState={ this.handleTagState } />
+        { this.state.tag && <HousingForm state={this.state} handleSubmit={ this.handleSubmit }/>}
+      </div>
+    }
+    if(this.state.category === 'Community') {
+      form =
+      <div>
+        <CommunityTagsList handleTagState={ this.handleTagState } />
+        { this.state.tag && <CommunityForm state={this.state} handleSubmit={ this.handleSubmit }/>}
+      </div>
     }
 
     return (
       <div className="form-parent-component">
         <CategoryList handleCategoryState={ this.handleCategoryState} />
+        { categoryHeader }
         { form }
       </div>
     );
