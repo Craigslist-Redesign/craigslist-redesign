@@ -1,4 +1,4 @@
-INSERT INTO posts (title, tag, price, description, location, make, model, size, condition, zipcode, email, uid, cat_id, category, image_Url)
-VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15);
+INSERT INTO posts (title, tag, price, description, location, make, model, size, condition, zipcode, email, uid, cat_id, category, image_url)
+VALUES (${title}, ${tag}, ${price}, ${description}, ${location}, ${make}, ${model}, ${size}, ${condition}, ${zipcode}, ${email}, ${uid}, ${catId}, ${category}, ${imageUrl});
 SELECT * FROM posts
-WHERE title = ($1);
+WHERE title = (${title});
