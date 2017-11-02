@@ -39,7 +39,13 @@ module.exports = {
     .get_post(req.params.post_id)
     .then(data => res.json(data))
     .catch(err => res.json(err))
-  }
+  },
 
+  deletePost: (req,res) => {
+    req.app.get('db')
+    .delete_post(req.params.post_id)
+    .then(data => res.json(data))
+    .catch(err => res.json(err))
+  }
 
 }

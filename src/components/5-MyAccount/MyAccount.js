@@ -12,7 +12,7 @@ class MyAccount extends Component {
         super(props)
 
         this.state = { posts: [] }
-
+        
 
 
     }
@@ -45,12 +45,16 @@ class MyAccount extends Component {
 
     }
 
+    handleDeletePost(post_id){
+        console.log(post_id)
+        axios.delete('/api/deletePost/' + post_id)
+    }
 
     render() {
         return (
             <div>
                 <h1>My Account </h1>
-                <MyAccountListings posts={this.state.posts} />
+                <MyAccountListings posts={this.state.posts} onDelete={this.handleDeletePost.bind(this)}/>
             </div>
         )
     }
