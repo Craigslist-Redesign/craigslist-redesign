@@ -4,10 +4,11 @@
   left:0;
   right:0;
   bottom:0;
-  background: rgba(11,11,11,0.4);
+  background: rgba(11,11,11,0.7);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 3;
 }
 
 .close-login-modal {
@@ -15,10 +16,12 @@
   top: 2em;
   right: 2em;
   color: whitesmoke;
+  z-index: 4;
 }
 
 .login-modal-container {
   width: 300px;
   height: 450px;
   background: whitesmoke;
+  z-index: 30;
 }
