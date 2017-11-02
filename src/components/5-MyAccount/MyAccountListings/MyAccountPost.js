@@ -10,10 +10,10 @@ class MyAccountPost extends Component {
     }
 
 
-    deletePost(post_id){
+    deletePost(postInfo){
         console.log('test')
-        console.log(post_id)
-        this.props.onDelete(post_id)
+        console.log(postInfo)
+        this.props.onDelete(postInfo)
     }
 
     render(){
@@ -22,7 +22,7 @@ class MyAccountPost extends Component {
     return <li>
         
         <div className="centerCenter">
-            <div className="account-post"> {this.props.post.title}  <a href="#" onClick={this.deletePost.bind(this, this.props.post.post_id)}> x </a></div>
+            <div className="account-post"> {this.props.post.title}  <a href="#" onClick={this.deletePost.bind(this, this.props.post)}> x </a></div>
         </div>
 
     </li>
