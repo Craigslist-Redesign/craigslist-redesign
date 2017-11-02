@@ -7,7 +7,9 @@ import './Form.css';
 class Form extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      catId: ''
+    };
   }
 
   componentWillMount() {
@@ -43,6 +45,7 @@ class Form extends Component {
         default: this.setState({ catId: "" })
     }
     this.setState({ category: category })
+    console.log(this.state.catId);
   }
 
   handleTagState(event) {
