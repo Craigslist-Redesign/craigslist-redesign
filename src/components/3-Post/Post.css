@@ -1,0 +1,20 @@
+ .post-container{
+ margin-top: 2%;
+ display: flex;
+ align-items: center;
+ flex-direction: column;
+ }
+
+  .post-item-image{
+    width: 50%;
+    display: block;
+    height: 80%;
+    
+  }
+  
+  .post-item-title-container {
+    position: relative;
+    width: 100%;
+    padding: 20px 0;
+  }
+  

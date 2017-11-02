@@ -36,5 +36,13 @@ module.exports = {
     .catch(err => res.json(err))
   },
 
+  getPost: (req,res) => {
+    console.log(req.params)
+    req.app.get('db')
+    .get_post(req.params.post_id)
+    .then(data => res.json(data))
+    .catch(err => res.json(err))
+  }
+
 
 }

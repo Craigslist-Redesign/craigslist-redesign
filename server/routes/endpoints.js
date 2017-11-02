@@ -5,4 +5,7 @@ module.exports = app => {
   app.post('/api/createForSaleForm', ctrl.createForSale);
   app.post('/api/getListings', ctrl.getListings);
   app.get('/api/getUserPosts/:uid', ctrl.getUserPosts);
+  app.get('/api/getPost/:post_id', ctrl.getPost);
+  
+  
 }
