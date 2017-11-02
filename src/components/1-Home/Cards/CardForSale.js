@@ -17,7 +17,7 @@ class CardForSale extends Component {
   return(
 
       <div className="for-sale-card-container">
-      <Link to="/listings/for_sale">
+      <Link to="/listings/for_sale/all">
         <h2 className="for-sale-card-header">FOR SALE</h2>
       </Link>
          <ul>
