@@ -30,7 +30,7 @@ class MyAccount extends Component {
             }
 
             const uid = user.uid
-
+            this.setState({uid})
 
             axios.get('/api/getUserPosts/' + uid).then((response) => {
                 let posts = response.data
@@ -41,13 +41,23 @@ class MyAccount extends Component {
 
         })
 
-
-
     }
 
-    handleDeletePost(post_id){
-        console.log(post_id)
-        axios.delete('/api/deletePost/' + post_id)
+    handleDeletePost(postInfo){
+        let post_id = postInfo.post_id
+        let uid = postInfo.uid
+        console.log(postInfo)
+        axios.delete('/api/deletePost/' + post_id).then((response) => {
+            
+            console.log(uid)
+            // axios.get('/api/getUserPosts/' + uid).then((response) => {
+            //     let posts = response.data
+
+            //     this.setState({ posts })
+
+            // })
+        })
+        // this.setState({posts})
     }
 
     render() {
