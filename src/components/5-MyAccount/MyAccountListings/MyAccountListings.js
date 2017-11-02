@@ -1,18 +1,35 @@
-import React from 'react'
+import React, { Component } from 'react';
 import MyAccountPost from './MyAccountPost'
 
-const MyAccountListings = (props) => {
-    console.log(props)
-    const myPosts = props.posts.map((post) => {
+class MyAccountListings extends Component {
 
-        return <MyAccountPost key={post.post_id} post={post} />
-    })
-    return (
-        <ul>
-            {myPosts}
-        </ul>
+    constructor(props) {
+        super(props)
 
-    )
+
+    }
+    
+    deletePost(post_id){
+        this.props.onDelete(post_id)
+    }
+
+
+    render() {
+        const myPosts = this.props.posts.map((post) => {
+            
+            return <MyAccountPost 
+            onDelete={this.deletePost.bind(this)}
+            key={post.post_id} 
+            post={post} />
+            
+        })
+        return (
+            <ul>
+                {myPosts}
+            </ul>
+
+        )
+    }
 }
 
 export default MyAccountListings
