@@ -17,23 +17,23 @@ class CardForSale extends Component {
   return(
 
       <div className="for-sale-card-container">
-      <Link to="/listings/for_sale/all">
+      <Link to="/listings/For Sale/all">
         <h2 className="for-sale-card-header">FOR SALE</h2>
       </Link>
          <ul>
 
-           <Link to="/listings/for_sale/outdoors">Outdoors</Link>
-           <Link to="/listings/for_sale/books">Books</Link>
-           <Link to="/listings/for_sale/household">Household</Link>
-           <Link to="/listings/for_sale/AMB">Atv/Motorcycles/Bikes</Link>
-           <Link to="/listings/for_sale/CT">Cars & Trucks</Link>
-           <Link to="/listings/for_sale/business">Business</Link>
-           <Link to="/listings/for_sale/music">Music/Tickets</Link>
-           <Link to="/listings/for_sale/tech">Tech</Link>
-           <Link to="/listings/for_sale/toys_games">Toys & Games</Link>
-           <Link to="/listings/for_sale/GT">Garden & Tools</Link>
-           <Link to="/listings/for_sale/free">Free</Link>
-           <Link to="/listings/for_sale/garage_sale">Garage-Sale</Link>
+           <Link to="/listings/For Sale/Outdoors">Outdoors</Link>
+           <Link to="/listings/For Sale/Books">Books</Link>
+           <Link to="/listings/For Sale/Household">Household</Link>
+           <Link to="/listings/For Sale/Atv/Motorcycles/Bikes">Atv/Motorcycles/Bikes</Link>
+           <Link to="/listings/For Sale/Cars & Trucks">Cars & Trucks</Link>
+           <Link to="/listings/For Sale/Business">Business</Link>
+           <Link to="/listings/For Sale/Music">Music</Link>
+           <Link to="/listings/For Sale/Tech">Tech</Link>
+           <Link to="/listings/For Sale/Toys & Games">Toys & Games</Link>
+           <Link to="/listings/For Sale/Garden & Tools">Garden & Tools</Link>
+           <Link to="/listings/For Sale/Tickets">Tickets</Link>
+           <Link to="/listings/For Sale/Garage Sale">Garage Sale</Link>
 
 
          </ul>

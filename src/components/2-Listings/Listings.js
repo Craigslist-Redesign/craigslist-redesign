@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import'./Listings.css'
 
 class Listings extends Component {
 constructor(props){
@@ -8,6 +9,7 @@ constructor(props){
 this.state = {
   ptag: '',
   tag: '',
+  listArray: []
 }
 
 }
@@ -15,29 +17,43 @@ componentWillMount(){
 
 
   // const table = this.props.match.params.table;
-  // const tag = this.props.match.params.tag;
-  const paramObject = this.props.match.params;
-  console.log(this.props.match.params);
+  const cat_id = this.props.match.params.tag;
+  const tag = this.props.match.params.tag;
+  const catObject = this.props.match.params;
+  console.log(catObject);
 
-  console.log(paramObject)
-  
-  axios.get('/api/getAllForSale').then(res => {
-    console.log("get ALL", res);
-  })
-
-  axios.post('/api/getByTagForSale/', paramObject).then(res => {
-
-    console.log("newwww", res);
+  axios.post('/api/getAllForSale/', catObject).then(res => {
+   console.log(res);
+   this.setState({listArray: res.data})
 
   })
+
+  // axios.post('/api/getByTagForSale/'+ tag).then(res => {
+  //
+  //   console.log("newwww", res);
+  //
+  // })
 
 }
 
-
   render(){
+
   return(
-    <div>
+    <div className="listings-container">
       <h1>Listings</h1>
+      <div className="list-item-parent-container">
+      {this.state.listArray.map(function(item,index){
+
+          return (
+            <div key={index} className="list-item-container">
+            <img className="list-item-image" src={item.image_url} alt='NO IMAGE' />
+            <div className="list-item-title-container">
+            <h2>{item.title}</h2>
+            </div>
+          </div>
+        )
+        })}
+      </div>
     </div>
   )
  }
