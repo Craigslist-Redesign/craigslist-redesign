@@ -23,7 +23,6 @@ class Navbar extends Component {
       if (user) {
         console.log(user);
         this.setState({ user: user.email })
-        // this.setState({ modal: false })
         console.log(this.state);
       }
     })
