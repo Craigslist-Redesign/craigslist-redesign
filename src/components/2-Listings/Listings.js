@@ -17,8 +17,7 @@ componentWillMount(){
 
 
   // const table = this.props.match.params.table;
-  const cat_id = this.props.match.params.tag;
-  const tag = this.props.match.params.tag;
+
   const catObject = this.props.match.params;
   console.log(catObject);
 
@@ -46,7 +45,7 @@ componentWillMount(){
 
           return (
             <div key={index} className="list-item-container">
-            <img className="list-item-image" src={item.image_url} alt='NO IMAGE' />
+            <img className="list-item-image" src={item.image_url} alt='' />
             <div className="list-item-title-container">
             <h2>{item.title}</h2>
             </div>

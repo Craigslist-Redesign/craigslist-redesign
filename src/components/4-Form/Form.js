@@ -39,6 +39,8 @@ class Form extends Component {
       case category === 'Community':
         this.setState({ catId: 5})
         break;
+
+        default: this.setState({ catId: "" })
     }
     this.setState({ category: category })
   }
