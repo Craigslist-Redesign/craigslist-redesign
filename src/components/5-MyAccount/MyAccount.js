@@ -1,56 +1,57 @@
 import React, { Component } from 'react';
 import firebase from '../../firebase.js';
 import axios from 'axios';
+import MyAccountListings from './MyAccountListings/MyAccountListings.js'
+
+
+
+
 
 class MyAccount extends Component {
-    constructor(props){
+    constructor(props) {
         super(props)
 
+        this.state = { posts: [] }
+
+
 
     }
 
-    
+
 
     componentWillMount() {
-       
-    
+
+
         firebase.auth().onAuthStateChanged(user => {
-          if (user) {
+            if (user) {
 
-            console.log(user);
-            this.setState({ successEmail: user.email })
-           console.log(this.state);
+                console.log(user);
+                this.setState({ successEmail: user.email })
+            }
 
-          }
+            const uid = user.uid
 
-          const uid = user.uid
-          console.log(uid)
-         
-          axios.get('/api/getUserPosts/' + uid).then((response) => {
-            console.log(response)
+
+            axios.get('/api/getUserPosts/' + uid).then((response) => {
+                let posts = response.data
+
+                this.setState({ posts })
+
+            })
+
         })
-
-        })
-
-        
-        
-        // axios.get('/api/getItems/' + uid ).then((res) => {
-        //     console.log(res)
-        // })
-            
-        // axios.post('/api/getUserPost/' + ).then((response) => {
-        //     console.log(response)
-        // })
-    
 
 
 
     }
-            
+
 
     render() {
-        return(
-            <div> <h1>My Account </h1></div>
+        return (
+            <div>
+                <h1>My Account </h1>
+                <MyAccountListings posts={this.state.posts} />
+            </div>
         )
     }
 
@@ -60,14 +61,3 @@ class MyAccount extends Component {
 
 export default MyAccount;
 
-// firebase.auth().onAuthStateChanged(user => {
-    
-//               if (user) {
-//                 console.log(user);
-//                 this.setState({ successEmail: user.email })
-//                 console.log(this.state);
-//               }
-    
-//             })
-
-// this.setState({ userUid: user.uid })
