@@ -55,6 +55,22 @@ module.exports = {
     .post_fav([req.body[0], req.body[1]])
     .then(data => res.json(data))
     .catch(err => res.json(err))
+  },
+
+  updateCounter: (req, res) => {
+    console.log(req.params)
+    req.app.get('db')
+    .update_viewcounter(req.params.post_id)
+    .then(data => res.json(data))
+    .catch(err => res.json(err))
+  },
+
+  mostViewed: (req,res) => {
+    console.log()
+    req.app.get('db')
+    .get_mostviewed()
+    .then(data => res.json(data))
+    .catch(err => res.json(err))
   }
 
 }

@@ -8,5 +8,6 @@ module.exports = app => {
   app.get('/api/getPost/:post_id', ctrl.getPost);
   app.post('/api/deletePost', ctrl.deletePost);
   app.post('/api/postFav', ctrl.postFav);
-  
+  app.get('/api/updateCounter/:post_id', ctrl.updateCounter);
+  app.get('/api/mostViewed', ctrl.mostViewed);
 }

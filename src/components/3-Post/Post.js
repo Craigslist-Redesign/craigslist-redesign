@@ -21,6 +21,11 @@ class Post extends Component{
 
       console.log(res);
       this.setState({post: res.data})
+
+   axios.get('/api/updateCounter/'+post_id).then(res => {
+
+     console.log(res);
+   })
     })
 
 
@@ -72,7 +77,7 @@ class Post extends Component{
               </div>
             </div>
 
-    
+
 
 
 
