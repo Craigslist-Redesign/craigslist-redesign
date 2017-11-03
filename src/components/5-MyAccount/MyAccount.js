@@ -26,7 +26,6 @@ class MyAccount extends Component {
         firebase.auth().onAuthStateChanged(user => {
             if (user) {
 
-                console.log(user);
                 this.setState({ successEmail: user.email })
             }
 
@@ -48,9 +47,9 @@ class MyAccount extends Component {
         let post_id = postInfo.post_id
         let uid = postInfo.uid
         
-        console.log(postInfo)
+        
         axios.post('/api/deletePost', postInfo).then((response) => {
-            console.log(response)
+            
             let posts = response.data
             
             this.setState({ posts })
@@ -59,7 +58,7 @@ class MyAccount extends Component {
     }
 
     render() {
-        console.log(this.state);
+        
         return (
             <div>
                 <h1>My Account </h1>
