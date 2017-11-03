@@ -10,4 +10,5 @@ module.exports = app => {
   app.post('/api/postFav', ctrl.postFav);
   app.get('/api/updateCounter/:post_id', ctrl.updateCounter);
   app.get('/api/mostViewed', ctrl.mostViewed);
+  app.get('/api/getFavorites/:uid', ctrl.getFavorites);
 }

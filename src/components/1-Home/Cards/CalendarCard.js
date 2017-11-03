@@ -19,4 +19,4 @@ class CalendarCard extends Component {
   }
 }
 
-export default CalendarCard;
+export default CalendarCard
