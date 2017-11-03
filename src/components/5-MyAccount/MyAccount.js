@@ -46,16 +46,13 @@ class MyAccount extends Component {
     handleDeletePost(postInfo){
         let post_id = postInfo.post_id
         let uid = postInfo.uid
+        
         console.log(postInfo)
-        axios.delete('/api/deletePost/' + post_id).then((response) => {
+        axios.post('/api/deletePost', postInfo).then((response) => {
+            console.log(response)
+            let posts = response.data
             
-            console.log(uid)
-            // axios.get('/api/getUserPosts/' + uid).then((response) => {
-            //     let posts = response.data
-
-            //     this.setState({ posts })
-
-            // })
+            this.setState({ posts })
         })
         // this.setState({posts})
     }
