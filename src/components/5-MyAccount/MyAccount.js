@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import firebase from '../../firebase.js';
 import axios from 'axios';
 import MyAccountListings from './MyAccountListings/MyAccountListings.js'
+import Favorites from './Favorites/Favorites'
 
 
 
@@ -58,10 +59,13 @@ class MyAccount extends Component {
     }
 
     render() {
+        console.log(this.state);
         return (
             <div>
                 <h1>My Account </h1>
                 <MyAccountListings posts={this.state.posts} onDelete={this.handleDeletePost.bind(this)}/>
+
+                <Favorites uid={this.state.uid}/>
             </div>
         )
     }
