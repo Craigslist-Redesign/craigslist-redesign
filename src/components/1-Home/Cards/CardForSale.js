@@ -16,16 +16,16 @@ class CardForSale extends Component {
  render() {
   return(
 
-      <div className="for-sale-card-container">
+      <div className="card-container">
       <Link to="/listings/For Sale/all">
-        <h2 className="for-sale-card-header">FOR SALE</h2>
+        <h2 className="card-header">FOR SALE</h2>
       </Link>
          <ul>
 
            <Link to="/listings/For Sale/Outdoors">Outdoors</Link>
            <Link to="/listings/For Sale/Books">Books</Link>
            <Link to="/listings/For Sale/Household">Household</Link>
-           <Link to="/listings/For Sale/Atv/Motorcycles/Bikes">Atv/Motorcycles/Bikes</Link>
+           <Link to="/listings/For Sale/Atv & Motorcycles">Atv & Motorcycles</Link>
            <Link to="/listings/For Sale/Cars & Trucks">Cars & Trucks</Link>
            <Link to="/listings/For Sale/Business">Business</Link>
            <Link to="/listings/For Sale/Music">Music</Link>

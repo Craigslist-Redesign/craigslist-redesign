@@ -10,14 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-        <div>
-          <Link to="/" className="padding">Home</Link>
-          <Link to="/listings" className="padding">Listings</Link>
-          <Link to="/post" className="padding">Post</Link>
-          <Link to="/form" className="padding">Form</Link>
-          <Link to="/myaccount" className="padding">MyAccount</Link>
-          { router }
-        </div>
+        { router }
       </div>
     );
   }

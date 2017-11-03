@@ -7,10 +7,11 @@ class MyAccountListings extends Component {
         super(props)
 
 
+
     }
     
-    deletePost(post_id){
-        this.props.onDelete(post_id)
+    deletePost(postInfo){
+        this.props.onDelete(postInfo)
     }
 
 

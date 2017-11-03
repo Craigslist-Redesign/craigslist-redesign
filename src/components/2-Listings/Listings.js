@@ -14,7 +14,7 @@ class Listings extends Component {
   }
   componentWillMount(){
     const catObject = this.props.match.params;
-    
+    console.log(catObject);
     axios.post('/api/getListings/', catObject).then(res => {
     console.log(res);
     this.setState({listArray: res.data})
@@ -22,9 +22,9 @@ class Listings extends Component {
 
   }
   click(){
-  
+
   }
-  
+
 
   render(){
 
@@ -37,7 +37,7 @@ class Listings extends Component {
           return (
 
             <Link to={`/post/${item.post_id}`} key={index} className="list-item-container">
-            
+
               <img className="list-item-image" src={item.image_url} alt='' />
               <div className="list-item-title-container">
                 <h2>{item.title}</h2>
@@ -49,7 +49,7 @@ class Listings extends Component {
       </div>
     )
   }
-  
+
 }
 
 export default Listings;

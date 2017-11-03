@@ -1,8 +1,12 @@
-.for-sale-card-container{
-  margin: 3em 70%;
+/*///////////////////////////////////////Jobs///////////////////////////////////////////////////////////////////////*/
+
+.card-container{
+
   border: solid black 2px;
-  margin-left: 4%;
+  margin: 4% 2% 0% 2%;
   padding: 2%;
+  width: 320px;
+  display: inline-grid;
 }
 
 ul{
@@ -12,6 +16,6 @@ ul{
   flex-direction: column;
 }
 
-.for-sale-card-header{
+.card-header{
   margin-bottom: 4%;
 }
