@@ -19,3 +19,28 @@ ul{
 .card-header{
   margin-bottom: 4%;
 }
+
+.top-three-box{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.top-three-container{
+  width: 27.3333%;
+      min-width: 300px;
+
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-direction: column;
+    
+      margin: 20px 20px;
+      -webkit-box-shadow: 0 10px 20px 0 rgba(0,0,0,.2);
+      box-shadow: 0 10px 20px 0 rgba(0,0,0,.2);
+}
+
+.top-three-image{
+  width: 100%;
+  display: block;
+  height: 80%;
+}
