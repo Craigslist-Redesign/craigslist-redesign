@@ -21,7 +21,13 @@ class HousingForm extends Component {
         <input className="" type="text" required placeholder="Available Date" onChange={ (event) => { this.props.state.availableDate = event.target.value } } />
         <input type="file" required onChange={(event) => this.props.state.file = event.target.files[0] }/>
         <br />
-        <button type="submit" onClick={ (event) => this.props.handleSubmit(event, this.props.state) }>Submit</button>
+        <button type="submit" onClick={
+          (event) => {
+            if(this.props.state.title && this.props.state.location && this.props.state.zipcode && this.props.state.description && this.props.state.rent && this.props.state.bedrooms && this.props.state.bathrooms && this.props.state.availableDate && this.props.state.file ) {
+                this.props.handleSubmit(event, this.props.state)
+            }
+          }
+        }>Submit</button>
         </form>
       </div>
     )

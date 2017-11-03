@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 import firebase from '../../firebase.js';
 import './Form.css';
 import CategoryList from './CategoryList/CategoryList'
@@ -40,7 +41,8 @@ class Form extends Component {
       rent: null,
       bedrooms: null,
       bathrooms: null,
-      availableDate: null
+      availableDate: null,
+      recordDate: null
     };
   }
 
@@ -94,7 +96,13 @@ class Form extends Component {
   }
 
   handleSubmit(event, input) {
-    console.log(this.state);
+
+    let current = new Date();
+    console.log(current);
+    input.recordDate = current
+    console.log(input);
+
+
     event.preventDefault();
     const file = input.file
     const storageRef = firebase.storage().ref()
@@ -115,6 +123,10 @@ class Form extends Component {
       axios.post('/api/createForSaleForm', input)
       .then(response => {
         console.log(response);
+        let post = response.data[0].post_id
+        console.log(post);
+        // Send user to Post
+        this.props.history.push(`/post/${post}`);
       })
     })
   }
@@ -174,4 +186,4 @@ class Form extends Component {
   }
 }
 
-export default Form;
+export default withRouter(Form);

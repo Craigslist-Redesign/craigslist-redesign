@@ -9,22 +9,22 @@ class Post extends Component{
     console.log(props)
 
     this.state = {
-       post: [], 
+       post: [],
     }
   }
 
   componentWillMount(){
 
     const post_id = this.props.match.params.post_id;
-   
+
     axios.get('/api/getPost/'+ post_id).then(res=> {
-    
+
       console.log(res);
       this.setState({post: res.data})
     })
 
 
-    
+
 
   }
 
@@ -44,13 +44,13 @@ class Post extends Component{
             <div>
               <h2>{item.price}</h2>
             </div>
-              <h2>{item.email}</h2>    
+              <h2>{item.email}</h2>
             <div>
               <h2 >{item.tag}</h2>
-            </div> 
+            </div>
             <div>
               <p>{item.description}</p>
-            </div>  
+            </div>
 
           </div>
           )

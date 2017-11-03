@@ -19,7 +19,13 @@ class CommunityForm extends Component {
         <input className="" type="text" required placeholder="Contact Name" onChange={ (event) => { this.props.state.contactName = event.target.value } } />
         <input type="file" required onChange={(event) => this.props.state.file = event.target.files[0] }/>
         <br />
-        <button type="submit" onClick={ (event) => this.props.handleSubmit(event, this.props.state) }>Submit</button>
+        <button type="submit" onClick={
+          (event) => {
+            if(this.props.state.title && this.props.state.location && this.props.state.zipcode && this.props.state.description && this.props.state.phoneNumber && this.props.state.contactName && this.props.state.file ) {
+                this.props.handleSubmit(event, this.props.state)
+            }
+          }
+        }>Submit</button>
         </form>
       </div>
     )
