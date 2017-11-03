@@ -37,13 +37,41 @@ class Post extends Component{
           return (
 
           <div className="post-container" key={index}>
-            <div className="post-item-title-container">
-              <h2>{item.title}</h2>
+
+            <div className="post-item-top-container">
+              <div className="post-item-title-container">
+                <h2>{item.title}</h2>
+              </div>
+              <div className="post-item-price-container">
+                <h2  className="post-item-price" >$ {item.price}</h2>
+              </div>
             </div>
-              <img className="post-item-image" src={item.image_url} alt='' />
-            <div>
-              <h2>{item.price}</h2>
+
+            <div className="post-item-duo-container">
+
+              <div className="post-item-left-container">
+
+                <div className="post-img-container">
+                  <img className="post-item-image" src={item.image_url} alt='' />
+                </div>
+                <div>
+                  <h2 >#{item.tag}</h2>
+                </div>
+                <div className="post-item-description">
+                  <p>{item.description}</p>
+                </div>
+
+
+              </div>
+
+              <div className="post-item-right-contianer">
+
+                <div className="">
+                  <h2  className="post-item-email" >{item.email}</h2>
+                </div>
+              </div>
             </div>
+<<<<<<< HEAD
               <h2>{item.email}</h2>
             <div>
               <h2 >{item.tag}</h2>
@@ -51,8 +79,13 @@ class Post extends Component{
             <div>
               <p>{item.description}</p>
             </div>
+=======
+
+
+>>>>>>> d1ba5cf5cbdeabc16fe83d353be4cd03c25265bd
 
           </div>
+
           )
         })}
       </div>
