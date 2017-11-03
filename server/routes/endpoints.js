@@ -6,6 +6,7 @@ module.exports = app => {
   app.post('/api/getListings', ctrl.getListings);
   app.get('/api/getUserPosts/:uid', ctrl.getUserPosts);
   app.get('/api/getPost/:post_id', ctrl.getPost);
-  app.post('/api/deletePost', ctrl.deletePost)
+  app.post('/api/deletePost', ctrl.deletePost);
+  app.post('/api/postFav', ctrl.postFav);
   
 }
