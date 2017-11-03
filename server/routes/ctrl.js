@@ -47,6 +47,14 @@ module.exports = {
     .delete_post([req.body.post_id, req.body.uid])
     .then(data => res.json(data))
     .catch(err => res.json(err))
+  },
+
+  postFav: (req,res) => {
+    console.log(req.body)
+    req.app.get('db')
+    .post_fav([req.body[0], req.body[1]])
+    .then(data => res.json(data))
+    .catch(err => res.json(err))
   }
 
 }
