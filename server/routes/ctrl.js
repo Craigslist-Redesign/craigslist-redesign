@@ -66,9 +66,17 @@ module.exports = {
   },
 
   mostViewed: (req,res) => {
-    console.log()
+    console.log(req.body);
     req.app.get('db')
     .get_mostviewed()
+    .then(data => res.json(data))
+    .catch(err => res.json(err))
+  },
+  
+  getFavorites: (req, res) => {
+    console.log(req.params)
+    req.app.get('db')
+    .getFavorites(req.params.uid)
     .then(data => res.json(data))
     .catch(err => res.json(err))
   }
