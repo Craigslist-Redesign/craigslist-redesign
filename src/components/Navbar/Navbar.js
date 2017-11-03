@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Navbar.css';
 import firebase from '../../firebase.js';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import LoginModal from './LoginModal/LoginModal';
 // import RouterButton from './RouterButton/RouterButton';
 
@@ -33,7 +33,7 @@ class Navbar extends Component {
       this.setState({ modal: true })
     }
     else {
-      this.props.history.push('/');
+      this.props.history.push('/myaccount');
     }
   }
 
@@ -62,7 +62,7 @@ class Navbar extends Component {
   render() {
     return(
       <div className="navBar">
-        <h3>Craigslist</h3>
+        <Link to="/"><h3>Russlist</h3></Link>
         <div>
           <button onClick={ this.handleAccountCondition }>My Account</button>
           <button onClick={ this.handleFormCondition }>Post an Ad</button>
