@@ -37,45 +37,45 @@ class Post extends Component{
           return (
 
           <div className="post-container" key={index}>
-            <div className="post-item-title-container">
-              <h2>{item.title}</h2>
-            </div>
-              <img className="post-item-image" src={item.image_url} alt='' />
-            <div>
-              <h2>{item.price}</h2>
-            </div>
-              <h2>{item.email}</h2>
-            <div>
-              <h2 >{item.tag}</h2>
-            </div>
-            <div>
-              <p>{item.description}</p>
+
+            <div className="post-item-top-container">
+              <div className="post-item-title-container">
+                <h2>{item.title}</h2>
+              </div>
+              <div className="post-item-price-container">
+                <h2  className="post-item-price" >$ {item.price}</h2>
+              </div>
             </div>
 
-  <form method="post" enctype="text/plain" action="mailto:{item.email}">
-   <div>
-     <label>Name:</label>
-   </div>
-   <div>
-      <input className="form-control"  type="text" placeholder="Enter your name"/>
-   </div>
-   <div>
-      <label>Email:</label>
-   </div>
-   <div>
-      <input className="form-control" placeholder="Enter your email"/>
-   </div>
-   <div>
-      <label>Message:</label>
-   </div>
-   <div>
-      <textarea className="form-control"  placeholder="Enter your message"></textarea>
-   </div>
-   <div>
-      <input type="submit" value="Send Email" />
-  </div>
- </form>
-</div>
+            <div className="post-item-duo-container">
+
+              <div className="post-item-left-container">
+
+                <div className="post-img-container">
+                  <img className="post-item-image" src={item.image_url} alt='' />
+                </div>
+                <div>
+                  <h2 >#{item.tag}</h2>
+                </div>
+                <div className="post-item-description">
+                  <p>{item.description}</p>
+                </div>
+
+
+              </div>
+
+              <div className="post-item-right-contianer">
+
+                <div className="">
+                  <h2  className="post-item-email" >{item.email}</h2>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+
           )
         })}
       </div>
