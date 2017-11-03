@@ -71,18 +71,11 @@ class Post extends Component{
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
-              <h2>{item.email}</h2>
-            <div>
-              <h2 >{item.tag}</h2>
-            </div>
-            <div>
-              <p>{item.description}</p>
-            </div>
-=======
+
+    
 
 
->>>>>>> d1ba5cf5cbdeabc16fe83d353be4cd03c25265bd
+
 
           </div>
 
