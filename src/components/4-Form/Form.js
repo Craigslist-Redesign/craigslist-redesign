@@ -14,7 +14,6 @@ import HousingForm from './ChildForms/HousingForm'
 import CommunityTagsList from './TagLists/CommunityTagsList'
 import CommunityForm from './ChildForms/CommunityForm'
 
-
 class Form extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +61,6 @@ class Form extends Component {
     const category = event.target.innerHTML
 
     switch(true) {
-      // Change for_sale everywhere to For Sale
       case category === 'For Sale':
         this.setState({ catId: 1})
         break;
@@ -78,9 +76,7 @@ class Form extends Component {
       case category === 'Community':
         this.setState({ catId: 5})
         break;
-
-        default: this.setState({ catId: "" })
-
+      default: this.setState({ catId: "" })
     }
     this.setState({ category: category })
     this.setState({ tag: null })
