@@ -1,9 +1,10 @@
  .post-container{
- /* margin: 0 5%; */
- /* display: flex; */
- align-items: center;
- flex-wrap: wrap;
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 40px 0;
  }
+
  .post-item-top-container{
      display: flex;
      flex-direction: row;
@@ -12,7 +13,7 @@
      width: 100%;
  }
 .post-item-duo-container{
-     
+
      width: 100%;
      display: flex;
     flex-direction: row;
@@ -23,31 +24,31 @@
 }
 
   .post-img-container{
-    
+
   }
 
   .post-item-image{
- 
+    width: 100%;
     display: block;
-    
+
   }
-  
+
   .post-item-title-container {
     font-size: 2em;
 
     padding: 20px 0;
   }
-  
+
   .post-item-description{
       width: 45rem;
   }
 
 
-  
+
   .post-item-right-contianer{
- 
+
      width: 50%;
-     
+
   }
 
   .post-item-price-container{
