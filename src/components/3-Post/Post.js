@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Post.css';
+import { withRouter, Link } from 'react-router-dom';
+import Email from './EmailForm/Email';
 
 
 class Post extends Component{
@@ -10,7 +12,9 @@ class Post extends Component{
 
     this.state = {
        post: [],
+       modal: false
     }
+   this.closeEmailLoginModal =  this.closeEmailLoginModal.bind(this);
   }
 
   componentWillMount(){
@@ -25,19 +29,23 @@ class Post extends Component{
    axios.get('/api/updateCounter/'+post_id).then(res => {
 
      console.log(res);
-   })
+      })
     })
+  }
 
+  emailLoginModal = () => {
+    this.setState({ modal : true });
+  }
 
-
-
+  closeEmailLoginModal = () => {
+    this.setState({ modal: false });
   }
 
   render(){
     return(
       <div>
         <h1>POST</h1>
-        {this.state.post.map(function(item,index){
+        {this.state.post.map((item,index) => {
 
           return (
 
@@ -48,7 +56,8 @@ class Post extends Component{
                 <h2>{item.title}</h2>
               </div>
               <div className="post-item-price-container">
-                <h2  className="post-item-price" >$ {item.price}</h2>
+                <h2 className="post-item-price" >$ {item.price}</h2>
+
               </div>
             </div>
 
@@ -75,10 +84,11 @@ class Post extends Component{
                   <h2  className="post-item-email" >{item.email}</h2>
                 </div>
               </div>
+              <button onClick={ (event) => this.emailLoginModal(event)}>Contact the Owner</button>
+
             </div>
 
-
-
+ {this.state.modal && <Email close={ this.closeEmailLoginModal } />}
 
 
 
@@ -90,4 +100,4 @@ class Post extends Component{
     )
   }
 }
-export default  Post
+export default withRouter(Post);
