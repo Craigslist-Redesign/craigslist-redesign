@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Post.css';
+import { withRouter, Link } from 'react-router-dom';
+import Email from './EmailForm/Email';
 
 class Post extends Component{
   constructor(props){
@@ -8,9 +10,13 @@ class Post extends Component{
     console.log(props)
 
     this.state = {
-      post: '',
+
+       post: [],
+       modal: false,
       timestamp: ''
+
     }
+   this.closeEmailLoginModal =  this.closeEmailLoginModal.bind(this);
   }
 
   componentWillMount(){
@@ -24,6 +30,7 @@ class Post extends Component{
       // timestamp
       let previous = new Date(res.data[0].time_stamp)
       let current = new Date()
+
 
       function timeDifference(current, previous) {
 
@@ -47,6 +54,7 @@ class Post extends Component{
              return Math.round(elapsed/msPerHour ) + ' hours ago';
         }
 
+
         else if (elapsed < msPerMonth) {
              return Math.round(elapsed/msPerDay) + ' days ago';
         }
@@ -55,10 +63,13 @@ class Post extends Component{
              return Math.round(elapsed/msPerMonth) + ' months ago';
         }
 
+
+
         else {
              return Math.round(elapsed/msPerYear ) + ' years ago';
         }
       }
+
 
       let timestamp = timeDifference(current, previous);
 
@@ -73,6 +84,9 @@ class Post extends Component{
         <div className="content-container">
 
 
+
+
+ 
 
           <div className="post-item-top-container">
             <div className="post-item-title-container">
@@ -99,6 +113,8 @@ class Post extends Component{
               </div>
 
 
+ {this.state.modal && <Email close={ this.closeEmailLoginModal } />}
+
             </div>
 
             <div className="post-item-right-contianer">
@@ -114,4 +130,4 @@ class Post extends Component{
     )
   }
 }
-export default  Post
+export default withRouter(Post);
