@@ -1,4 +1,9 @@
-/*React Spinner*/
-.padding {
-  padding: 0 20px;
+/* App-Parent CSS*/
+
+.content-container {
+  position: relative;
+  width: 80%;
+  max-width: 1400px;
+  height: auto;
+  margin: 0 auto;
 }
