@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Post.css';
@@ -78,6 +79,15 @@ class Post extends Component{
     })
   }
 
+  emailLoginModal = () => {
+  this.setState({ modal : true });
+}
+
+closeEmailLoginModal = () => {
+  this.setState({ modal: false });
+}
+
+
   render(){
     return(
       <div className="post-container">
@@ -86,7 +96,7 @@ class Post extends Component{
 
 
 
- 
+
 
           <div className="post-item-top-container">
             <div className="post-item-title-container">
@@ -96,6 +106,7 @@ class Post extends Component{
               <h2  className="post-item-price" >$ {this.state.post.price}</h2>
             </div>
           </div>
+
 
           <div className="post-item-duo-container">
 
@@ -113,6 +124,7 @@ class Post extends Component{
               </div>
 
 
+
  {this.state.modal && <Email close={ this.closeEmailLoginModal } />}
 
             </div>
@@ -120,6 +132,7 @@ class Post extends Component{
             <div className="post-item-right-contianer">
 
               <div className="">
+              <button onClick={ (event) => this.emailLoginModal(event)}>Contact the Owner</button>
                 <h2  className="post-item-email" >{this.state.post.email}</h2>
               </div>
             </div>
