@@ -4,6 +4,8 @@ import axios from 'axios';
 import './Post.css';
 import { withRouter, Link } from 'react-router-dom';
 import Email from './EmailForm/Email';
+import Fav from '../2-Listings/Fav/Fav'
+import firebase from '../../firebase.js'
 
 class Post extends Component{
   constructor(props){
@@ -21,6 +23,15 @@ class Post extends Component{
   }
 
   componentWillMount(){
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+
+        this.setState({ user: user.email })
+        this.setState({uid: user.uid})
+
+      }
+    })
     const post_id = this.props.match.params.post_id;
     axios.get('/api/getPost/'+ post_id).then(res=> {
       console.log(res.data[0]);
@@ -83,12 +94,24 @@ class Post extends Component{
   this.setState({ modal : true });
 }
 
-closeEmailLoginModal = () => {
+  closeEmailLoginModal = () => {
   this.setState({ modal: false });
-}
+  }
 
+  handleFavPost(favs){
+    console.log(favs)
+    const uid = this.state.uid
+    
+  
+  console.log('uid ' ,uid)
+
+    axios.post('/api/postFav',[uid,favs.post_id])
+  }
+
+  
 
   render(){
+    const item = this.state.post
     return(
       <div className="post-container">
         <div className="content-container">
@@ -133,6 +156,9 @@ closeEmailLoginModal = () => {
 
               <div className="">
               <button onClick={ (event) => this.emailLoginModal(event)}>Contact the Owner</button>
+                <div>
+              <Fav item={item} onFav={this.handleFavPost.bind(this)}/>
+              </div>
                 <h2  className="post-item-email" >{this.state.post.email}</h2>
               </div>
             </div>

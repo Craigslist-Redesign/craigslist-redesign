@@ -1,3 +1,8 @@
+const { address, sendgridAPI } = require('../../config');
+const sgMail = require("@sendgrid/mail");
+sgMail.setApiKey(sendgridAPI);
+
+
 module.exports = {
 
   createUser: (req, res) => {
@@ -72,13 +77,26 @@ module.exports = {
     .then(data => res.json(data))
     .catch(err => res.json(err))
   },
-  
+
   getFavorites: (req, res) => {
     console.log(req.params)
     req.app.get('db')
     .getFavorites(req.params.uid)
     .then(data => res.json(data))
     .catch(err => res.json(err))
-  }
+  },
+
+  sendMail: (req,res,next) => {
+    console.log(req.body)
+    const msg = {
+    to: req.body.creatorEmail,
+    from: req.body.yourEmail,
+    subject: req.body.subject,
+    text: req.body.message,
+    html: `<strong>${req.body.message}</strong>`,
+  };
+  sgMail.send(msg);
+}
+
 
 }
