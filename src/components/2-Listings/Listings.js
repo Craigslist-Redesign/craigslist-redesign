@@ -39,6 +39,7 @@ class Listings extends Component {
   }
 
   handleFavPost(favs){
+    console.log(favs)
     let uid = this.state.uid
     if(!this.state.user) {
       this.setState({ modal: true })
