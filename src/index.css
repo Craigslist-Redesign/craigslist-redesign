@@ -1,3 +1,23 @@
+@font-face {
+    font-family: circular-black;
+    src: url('./assets/circular-black.woff2');
+}
+
+@font-face {
+    font-family: circular-bold;
+    src: url('./assets/circular-bold.woff2');
+}
+
+@font-face {
+    font-family: circular-book;
+    src: url('./assets/circular-book.woff2');
+}
+
+@font-face {
+    font-family: circular-light;
+    src: url('./assets/circular-light.woff2');
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,6 +29,56 @@ html, body {
 }
 
 body {
-  font-family: sans-serif;
+  font-family: circular-book;
+  background: #F5F6FA;
+  /*background: linear-gradient(#FEFEFE,#E9ECF3);*/
   text-align: center;
+  font-size: 16px;
+  color: #648496;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: circular-bold;
+  letter-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #b8c3d2;
+  cursor: pointer;
+}
+
+button {
+  border: 0;
+}
+
+.btn {
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  -ms-touch-action: manipulation;
+  touch-action: manipulation;
+  border: 0;
+  border-radius: 5px;
+  padding: 12px 13px 13px;
+  transition: all .2s ease;
+  letter-spacing: .25px;
+  min-width: 130px;
+  white-space: normal;
+  text-transform: uppercase;
+  line-height: 1.6;
+  vertical-align: middle;
+  background: linear-gradient(to right, #49ACDA,#64A2F8)
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn:active, .btn:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
 }

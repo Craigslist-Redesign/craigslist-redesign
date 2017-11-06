@@ -12,30 +12,32 @@ class MostViewed extends Component {
     }
   }
 
-componentWillMount(){
-  axios.get('/api/mostViewed').then(res => {
-   console.log(res)
+  componentWillMount(){
+    axios.get('/api/mostViewed').then(res => {
+     console.log(res)
 
-   this.setState({topThree: res.data})
-  })
-}
+     this.setState({topThree: res.data})
+    })
+  }
 
-render(){
+  render(){
+    const mostViewedItems = this.state.topThree.map(function(item,index){
+     return (
+        <Link to={`/post/${item.post_id}`} key={index} className="most-viewed-item">
+          <div className="most-viewed-content">
+            <p>{item.title}</p>
+            {item.price !== 0 && <p className="most-viewed-price">${item.price}</p>}
+          </div>
+          <div className="most-viewed-image-container">
+            <img src={item.image_url} alt='' />
+          </div>
+        </Link>
+      )
+    })
+
     return(
-      <div className="top-three-box">
-      {this.state.topThree.map(function(item,index){
-       return (
-        <div className="top-three-container" key={index}>
-          <Link to={`/post/${item.post_id}`} >
-
-           <img className="top-three-image" src={item.image_url} alt='' />
-            <div>
-              <h2>{item.title}</h2>
-            </div>
-          </Link>
-        </div>
-        )
-      })}
+      <div className="most-viewed-container">
+        { mostViewedItems }
       </div>
     )
   }

@@ -61,16 +61,18 @@ class Navbar extends Component {
 
   render() {
     return(
-      <div className="navBar">
-        <Link to="/"><h3>Russlist</h3></Link>
-        <div>
-          <button onClick={ this.handleAccountCondition }>My Account</button>
-          <button onClick={ this.handleFormCondition }>Post an Ad</button>
+      <div className="content-container">
+        <div className="navbar-container">
+          <h3 className="navbar-logo"><Link to="/">Craiglist</Link></h3>
+          <div className="navbar-btn-container">
+            <a className="navbar-account" onClick={ this.handleAccountCondition }>My Account</a>
+            <button className="btn" onClick={ this.handleFormCondition }>Post an Ad</button>
+          </div>
+          {/* <div>
+            <button onClick={ (event) => this.handleSignout(event) }>Sign out</button>
+          </div> */}
+          { this.state.modal && <LoginModal closeModal={ this.closeModal } /> }
         </div>
-        <div>
-          <button onClick={ (event) => this.handleSignout(event) }>Sign out</button>
-        </div>
-        { this.state.modal && <LoginModal closeModal={ this.closeModal } /> }
       </div>
     )
   }
