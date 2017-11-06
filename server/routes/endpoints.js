@@ -11,4 +11,5 @@ module.exports = app => {
   app.get('/api/updateCounter/:post_id', ctrl.updateCounter);
   app.get('/api/mostViewed', ctrl.mostViewed);
   app.get('/api/getFavorites/:uid', ctrl.getFavorites);
+  app.post('/api/sendMail', ctrl.sendMail)
 }
