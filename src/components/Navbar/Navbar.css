@@ -1,6 +1,36 @@
-.navBar {
+.navbar-container {
   width: 100%;
-  background: whitesmoke;
-  padding: 1em 0;
-  margin-bottom: 2em;
+  padding: 2em 0;
+  margin-bottom: 2.5em;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo a {
+  font-family: circular-bold;
+  letter-spacing: .25px;
+  color: #b8c3d2;
+  transition: all .2s;
+  text-transform: uppercase
+}
+
+.navbar-logo a:hover {
+  color: #648496;
+}
+
+.navbar-account {
+  font-family: circular-bold;
+  -webkit-font-smoothing: antialiased;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 13px 38px;
+  margin-top: 2px;
+  color: #A8B7BD;
+  transition: all .2s;
+}
+
+.navbar-account:hover {
+  color: #648496;
 }

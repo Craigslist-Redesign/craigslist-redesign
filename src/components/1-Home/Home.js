@@ -9,8 +9,7 @@ import MostViewed from './Cards/MostViewed';
 
 export default function Home(){
   return(
-    <div>
-      <h1>HOME</h1>
+    <div className="content-container">
       <MostViewed />
       <CalendarCard />
       <CardForSale />

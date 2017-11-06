@@ -11,32 +11,30 @@ class Listings extends Component {
     super(props);
 
     this.state = {
-      modal:false,
       listArray: [],
+
       uid: '',
       user:'',
+      dateSort: true
     }
-    this.closeModal =  this.closeModal.bind(this);
+    this.handleDateSort = this.handleDateSort.bind(this)
   }
   componentWillMount(){
     const catObject = this.props.match.params;
 
     axios.post('/api/getListings/', catObject).then(res => {
-
-    this.setState({listArray: res.data})
+    this.setState({ listArray: res.data })
+    this.setState({ reverseListArray: res.data.reverse() })
     })
+
     firebase.auth().onAuthStateChanged(user => {
-          if (user) {
-
-            this.setState({ user: user.email })
-            this.setState({uid: user.uid})
-
-          }
-        })
+      if (user) {
+        this.setState({ user: user.email })
+        this.setState({uid: user.uid})
+      }
+    })
   }
-  closeModal(){
-    this.setState({modal: false});
-  }
+
 
   handleFavPost(favs){
     let uid = this.state.uid
@@ -46,37 +44,90 @@ class Listings extends Component {
     else {
       axios.post('/api/postFav',[uid,favs.post_id])
     }
+  }
 
+  handleDateSort(e) {
+    if(e === 'Oldest') {
+      console.log(e);
+      this.setState({ dateSort: false })
+
+    }
+    else {
+      console.log(e);
+      this.setState({ dateSort: true })
+
+    }
   }
 
 
   render(){
-    console.log(this)
+    console.log(this.state.listArray);
+
+    // console.log(this)
     let that = this
+    let listItems;
+    let reverseListItems;
+
+
+
+
+      listItems = this.state.listArray.map(function(item,index){
+        return (
+          <div className="list-item-container" key={index}>
+          <Link to={`/post/${item.post_id}`}>
+            <img className="list-item-image" src={item.image_url} alt='' />
+            <div className="list-item-title-container">
+              <h2>
+                {item.title}
+              </h2>
+
+              </div>
+            </Link>
+             <Fav item={item} onFav={that.handleFavPost.bind(that)}/>
+          </div>
+        )
+      })
+
+
+      //
+      // reverseListItems = this.state.reverseListArray.map(function(item,index){
+      //   return (
+      //     <div className="list-item-container" key={index}>
+      //     <Link to={`/post/${item.post_id}`}>
+      //       <img className="list-item-image" src={item.image_url} alt='' />
+      //       <div className="list-item-title-container">
+      //         <h2>
+      //           {item.title}
+      //         </h2>
+      //
+      //         </div>
+      //       </Link>
+      //        <Fav item={item} onFav={that.handleFavPost.bind(that)}/>
+      //     </div>
+      //   )
+      // })
+
+
+
 
     return(
       <div className="listings-container">
-        <h1>Listings</h1>
-        { this.state.modal && <LoginModal closeModal={ this.closeModal } /> }
-        <div className="list-item-parent-container">
-        {this.state.listArray.map(function(item,index){
-
-          return (
-            <div className="list-item-container" key={index}>
-            <Link to={`/post/${item.post_id}`}>
-
-              <img className="list-item-image" src={item.image_url} alt='' />
-              <div className="list-item-title-container">
-                <h2>
-                  {item.title}
-                </h2>
-
-                </div>
-              </Link>
-               <Fav item={item} onFav={that.handleFavPost.bind(that)}/>
+        <div className="content-container">
+          <div className="searchbar-container">
+            <input placeholder="Search" />
+          </div>
+          <div className="filter-container">
+            <div className="newest-oldest-filter">
+              <select onChange={(event) => this.handleDateSort(event.target.value)}>
+                <option value="Newest">Newest First</option>
+                <option value="Oldest">Oldest First</option>
+              </select>
             </div>
-          )
-        })}
+          </div>
+
+          <div className="list-item-parent-container">
+            { listItems }
+          </div>
         </div>
       </div>
     )

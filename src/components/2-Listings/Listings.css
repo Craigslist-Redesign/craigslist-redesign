@@ -1,7 +1,34 @@
 .listings-container {
   position: relative;
-  width: 80%;
-  margin: 40px auto;
+  width: 100%;
+}
+
+.searchbar-container {
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid #cad6e8;
+  margin-bottom: 6em;
+}
+
+
+.searchbar-container input {
+  font-size: 18px;
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.filter-container {
+  width: 100%;
+  text-align: left;
+  border-bottom: 1px solid #cad6e8;
+  margin-bottom: 5em;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.newest-oldest-filter {
+  justify-self: flex-end;
 }
 
 .list-item-parent-container {
@@ -10,7 +37,6 @@
   justify-content: center;
   width: 100%;
   flex-wrap: wrap;
-  margin-top: 40px;
 }
 
 .list-item-container{
