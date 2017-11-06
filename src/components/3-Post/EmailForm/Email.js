@@ -16,6 +16,12 @@ class Email extends Component {
     }
   }
 
+  handleEmail(event){
+  const emailObj = {creatorEmail: this.state.creatorEmail,yourEmail: this.state.yourEmail,subject: this.state.subject,message: this.state.message }
+    axios.post('/api/sendMail',emailObj )
+  }
+
+
 render() {
   return(
     <div className="login-modal-background">
@@ -41,7 +47,7 @@ render() {
           <br/>
           <textarea type="text" onChange={ (event) => this.setState({ message: event.target.value })}/>
         </form>
-        <input type="submit" value="Send" onClick={ (event) => this.handleLogin(event) }/>
+        <input type="submit" value="Send" onClick={ (event) => this.handleEmail(event) }/>
       </div>
 
     </div>
