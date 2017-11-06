@@ -58,9 +58,10 @@ class MyAccount extends Component {
     }
 
     render() {
-        
+        console.log(this.state.successEmail)
         return (
             <div>
+                <h2>{this.state.successEmail}</h2>
                 <h1>My Account </h1>
                 <MyAccountListings posts={this.state.posts} onDelete={this.handleDeletePost.bind(this)}/>
 
