@@ -101,14 +101,14 @@ class Post extends Component{
   handleFavPost(favs){
     console.log(favs)
     const uid = this.state.uid
-    
-  
+
+
   console.log('uid ' ,uid)
 
     axios.post('/api/postFav',[uid,favs.post_id])
   }
 
-  
+
 
   render(){
     const item = this.state.post
@@ -148,7 +148,7 @@ class Post extends Component{
 
 
 
- {this.state.modal && <Email close={ this.closeEmailLoginModal } />}
+ {this.state.modal && <Email userInfo={this.state.post} close={ this.closeEmailLoginModal } />}
 
             </div>
 

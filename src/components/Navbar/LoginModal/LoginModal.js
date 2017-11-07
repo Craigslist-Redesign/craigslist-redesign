@@ -13,7 +13,8 @@ class LoginModal extends Component {
       createEmail: '',
       createPassword: '',
       successEmail: '',
-      userUid: ''
+      userUid: '',
+      form: false
     }
   }
 
@@ -78,11 +79,19 @@ class LoginModal extends Component {
     }
   }
 
+ showCreateAccount(){
+   this.setState({form: true})
+ }
+
+ showLogin(){
+   this.setState({form: false})
+ }
+
+
   render() {
-    return(
-      <div className="login-modal-background">
-        <div className="close-login-modal"
-        onClick={ this.props.closeModal }>X</div>
+    let form;
+      if(!this.state.form){
+        form =
         <div className="login-modal-container">
           <h1>Login</h1>
           <form>
@@ -94,20 +103,36 @@ class LoginModal extends Component {
             <br/>
             <input type="password" onChange={ (event) => this.setState({ loginPassword: event.target.value })}/>
           </form>
-          <input type="submit" value="Login" onClick={ (event) => this.handleLogin(event) }/>
-
-          <h1>Create Account</h1>
-          <form>
-            <label>Email</label>
-            <br/>
-            <input type="email" onChange={ (event) => this.setState({ createEmail: event.target.value })}/>
-            <br/>
-            <label>Password</label>
-            <br/>
-            <input type="password" onChange={ (event) => this.setState({ createPassword: event.target.value })}/>
-          </form>
-          <input type="submit" onClick={ (event) => this.handleSubmit(event) } />
-        </div>
+          <input className="btn"  type="submit" value="Login" onClick={ (event) => this.handleLogin(event) }/>
+          <br/>
+          <p>Don't have an account?</p>
+          <a onClick={ (event) => this.showCreateAccount(event) }>Sign up</a>
+         </div>
+        }
+        else {
+          form =
+          <div className="create-modal-container">
+           <h1>Create Account</h1>
+           <form>
+             <label>Email</label>
+             <br/>
+             <input type="email" onChange={ (event) => this.setState({ createEmail: event.target.value })}/>
+             <br/>
+             <label>Password</label>
+             <br/>
+             <input type="password" onChange={ (event) => this.setState({ createPassword: event.target.value })}/>
+           </form>
+           <input className="btn" type="submit" value="Sign up" onClick={ (event) => this.handleSubmit(event) } />
+           <br/>
+           <p>Already have an account?</p>
+           <a onClick={ (event) => this.showLogin(event) }>Login</a>
+         </div>
+       }
+    return(
+      <div className="login-modal-background">
+        <div className="close-login-modal"
+        onClick={ this.props.closeModal }>X</div>
+          {form}
       </div>
     )
   }
