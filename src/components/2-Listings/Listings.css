@@ -24,11 +24,44 @@
   border-bottom: 1px solid #cad6e8;
   margin-bottom: 5em;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .newest-oldest-filter {
   justify-self: flex-end;
+  /*border: 1px solid #ccc;*/
+  width: 120px;
+  border-radius: 3px;
+  overflow: hidden;
+  /*background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;*/
+}
+
+select {
+  padding: 5px 8px;
+  width: 130%;
+  font-size: 13px;
+  font-family: circular-black;
+  text-transform: uppercase;
+  -webkit-font-smoothing: antialiased;
+  color: #A8B7BD;
+  letter-spacing: -0.1px;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  transition: all .2s;
+}
+
+select:hover {
+  color: #648496;
+}
+
+select:focus {
+  outline: none;
 }
 
 .list-item-parent-container {

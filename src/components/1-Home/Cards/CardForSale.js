@@ -18,7 +18,7 @@ class CardForSale extends Component {
 
       <div className="card-container">
       <Link to="/listings/For Sale/all">
-        <h2 className="card-header">FOR SALE</h2>
+        <h2 className="card-header">For Sale</h2>
       </Link>
          <ul>
 
