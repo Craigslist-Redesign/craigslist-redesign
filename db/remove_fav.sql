@@ -1,0 +1,1 @@
+DELETE FROM favorites WHERE uid = $1 AND post_id = $2
