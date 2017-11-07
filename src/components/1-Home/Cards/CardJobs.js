@@ -25,7 +25,7 @@ class CardJobs extends Component {
            <Link to="/listings/Jobs/Accounting & Finance">Accounting & Finance</Link>
            <Link to="/listings/Jobs/Education">Education</Link>
            <Link to="/listings/Jobs/Manufacturing">Manufacturing</Link>
-           <Link to="/listings/Jobs/Retiail Wholesale">Retiail Wholesale</Link>
+           <Link to="/listings/Jobs/Retail Wholesale">Retail Wholesale</Link>
            <Link to="/listings/Jobs/Technical">Technical</Link>
            <Link to="/listings/Jobs/Part-time">Part-time</Link>
            <Link to="/listings/Jobs/Admin & Office">Admin & Office</Link>

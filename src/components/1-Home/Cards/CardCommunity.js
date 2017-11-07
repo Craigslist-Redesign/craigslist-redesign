@@ -33,7 +33,7 @@ class CardCommunity extends Component {
            <Link to="/listings/Community/Childcare">Childcare</Link>
            <Link to="/listings/Community/General">General</Link>
            <Link to="/listings/Community/Lost & Found">Lost & Found</Link>
-           <Link to="/listings/Community/Volnteers">Volnteers</Link>
+           <Link to="/listings/Community/Volunteers">Volunteers</Link>
 
 
          </ul>

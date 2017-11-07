@@ -86,6 +86,21 @@ module.exports = {
     .catch(err => res.json(err))
   },
 
+  getCategoryTags: (req, res) => {
+    console.log(req.body)
+    req.app.get('db')
+    .get_catgory_tags(req.body)
+    .then(data => res.json(data))
+    .catch(err => res.json(err))
+  },
+
+  getCategories: (req, res) => {
+    req.app.get('db')
+    .get_categories()
+    .then(data => res.json(data))
+    .catch(err => res.json(err))
+  },
+
   sendMail: (req,res,next) => {
     console.log(req.body)
     const msg = {
@@ -96,7 +111,5 @@ module.exports = {
     html: `<strong>${req.body.message}</strong>`,
   };
   sgMail.send(msg);
-}
-
-
+  }
 }
