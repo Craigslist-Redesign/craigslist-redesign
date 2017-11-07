@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Account.css'
+import './MyAccount.css'
 
 class MyAccountPost extends Component {
     // const post = props.post
@@ -21,8 +21,11 @@ class MyAccountPost extends Component {
         
     return <li>
         
-        <div className="centerCenter">
-            <div className="account-post"> {this.props.post.title}  <a href="#" onClick={this.deletePost.bind(this, this.props.post)}> x </a></div>
+        <div className="list-item-container">
+        <img className="list-item-image" src={this.props.post.image_url}/> 
+            <div className="list-item-title-container"> {this.props.post.title}</div>
+            <a href="#" onClick={this.deletePost.bind(this, this.props.post)}> x </a>
+            
         </div>
 
     </li>
