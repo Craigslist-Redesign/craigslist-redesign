@@ -68,7 +68,7 @@ class Navbar extends Component {
             <a className="navbar-account" onClick={ this.handleAccountCondition }>My Account</a>
             <button className="btn" onClick={ this.handleFormCondition }>Post an Ad</button>
           </div>
-          {/* <div>
+           {/* <div>
             <button onClick={ (event) => this.handleSignout(event) }>Sign out</button>
           </div> */}
           { this.state.modal && <LoginModal closeModal={ this.closeModal } /> }

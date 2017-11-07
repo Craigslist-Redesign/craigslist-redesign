@@ -8,12 +8,14 @@ class Email extends Component {
     super(props)
     console.log(props)
 
+
     this.state = {
-      creatorEmail: '',
+      creatorEmail: this.props.userInfo.email,
       yourEmail: '',
-      subject: '',
+      subject: this.props.userInfo.title,
       message: ''
     }
+    console.log(this.state)
   }
 
   handleEmail(event){
@@ -23,9 +25,9 @@ class Email extends Component {
 
 
 render() {
+  // console.log(this.props.userInfo)
   return(
     <div className="login-modal-background">
-
       <div className="close-login-modal"
       onClick={ this.props.close }>X</div>
       <div className="login-modal-container">
@@ -33,21 +35,28 @@ render() {
         <form>
           <label>Creators Email</label>
           <br/>
-          <input type="email" onChange={ (event) => this.setState({ creatorEmail: event.target.value })}/>
+          <div>
+          <h3>{this.props.userInfo.email}</h3>
+          </div>
+
+          <label>Subject</label>
           <br/>
+          <div>
+          <h3>{this.props.userInfo.title}</h3>
+          </div>
+
           <label>Your Email</label>
           <br/>
           <input type="email" onChange={ (event) => this.setState({ yourEmail: event.target.value })}/>
           <br/>
-          <label>Subject</label>
-          <br/>
-          <input type="text" onChange={ (event) => this.setState({ subject: event.target.value })}/>
-          <br/>
+
           <label>Message</label>
           <br/>
           <textarea type="text" onChange={ (event) => this.setState({ message: event.target.value })}/>
         </form>
-        <input type="submit" value="Send" onClick={ (event) => this.handleEmail(event) }/>
+
+        <input className="btn" type="submit" value="Send" onClick={ (event) => this.handleEmail(event) }/>
+
       </div>
 
     </div>
