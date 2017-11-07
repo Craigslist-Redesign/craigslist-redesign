@@ -44,13 +44,16 @@ h1,h2,h3,h4,h5,h6 {
 
 a {
   text-decoration: none;
-  color: #b8c3d2;
+  color: #aab4c2;
   cursor: pointer;
 }
 
 button {
   border: 0;
 }
+
+/*==============================================================================
+Global button styles =========================================================*/
 
 .btn {
   color: #fff;
@@ -81,4 +84,34 @@ button {
   outline: none;
   box-shadow: none;
   border: none;
+}
+
+.content-container {
+  position: relative;
+  width: 78%;
+  max-width: 1300px;
+  height: auto;
+  margin: 0 auto;
+}
+
+/*==============================================================================
+Global input styles ==========================================================*/
+
+.input {
+  width: 100%;
+  color: #648496;
+  caret-color: #648496;
+  background: none;
+  outline: none;
+  border: none;
+  font-family: circular-bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+}
+/*
+.input-container.error
+  border-bottom: 1px solid $red*/
+
+.input::-webkit-input-placeholder {
+  color: #aab4c2;
 }

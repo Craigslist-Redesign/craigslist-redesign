@@ -6,22 +6,29 @@
 .searchbar-container {
   width: 100%;
   text-align: left;
-  border-bottom: 1px solid #cad6e8;
-  margin-bottom: 6em;
+  border-bottom: 2px solid #d9e1ed;
+  margin-bottom: 5em;
 }
 
 
-.searchbar-container input {
-  font-size: 18px;
-  background: none;
-  outline: none;
-  border: none;
+.searchbar-container .input {
+  font-size: 20px;
+  width: 94%;
+  padding: 12px 20px;
+}
+
+.searchbar-icon {
+  height: 27px;
+  width: 27px;
+  margin-left: 11px;
+  transform: translateY(7px);
+  opacity: .8;
 }
 
 .filter-container {
   width: 100%;
   text-align: left;
-  border-bottom: 1px solid #cad6e8;
+  border-bottom: 2px solid #d9e1ed;
   margin-bottom: 5em;
   display: flex;
   justify-content: flex-start;
@@ -33,7 +40,7 @@
   width: 120px;
   border-radius: 3px;
   overflow: hidden;
-  /*background: #fafafa url("img/icon-select.png") no-repeat 90% 50%;*/
+  /*background: #fafafa url("../../assets/icons/drop-down-arrow.svg") no-repeat 90% 50%;*/
 }
 
 select {
@@ -43,7 +50,7 @@ select {
   font-family: circular-black;
   text-transform: uppercase;
   -webkit-font-smoothing: antialiased;
-  color: #A8B7BD;
+  color: #aab4c2;
   letter-spacing: -0.1px;
   border: none;
   box-shadow: none;
