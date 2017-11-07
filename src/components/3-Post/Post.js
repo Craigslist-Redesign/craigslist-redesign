@@ -6,6 +6,7 @@ import { withRouter, Link } from 'react-router-dom';
 import Email from './EmailForm/Email';
 import Fav from '../2-Listings/Fav/Fav'
 import firebase from '../../firebase.js'
+import Map from './Map/Map';
 
 class Post extends Component{
   constructor(props){
@@ -20,6 +21,7 @@ class Post extends Component{
 
     }
    this.closeEmailLoginModal =  this.closeEmailLoginModal.bind(this);
+   
   }
 
   componentWillMount(){
@@ -108,10 +110,12 @@ class Post extends Component{
     axios.post('/api/postFav',[uid,favs.post_id])
   }
 
+  
 
 
   render(){
     const item = this.state.post
+    
     return(
       <div className="post-container">
         <div className="content-container">
@@ -154,17 +158,24 @@ class Post extends Component{
 
             <div className="post-item-right-contianer">
 
-              <div className="">
+              <div className="textCenter">
               <button onClick={ (event) => this.emailLoginModal(event)}>Contact the Owner</button>
                 <div>
               <Fav item={item} onFav={this.handleFavPost.bind(this)}/>
               </div>
                 <h2  className="post-item-email" >{this.state.post.email}</h2>
               </div>
+              
+              <div className="mapDiv">
+              <Map userInfo={this.state.post} />
+             </div>
+              
             </div>
+            
           </div>
-
+          
         </div>
+        
       </div>
     )
   }
