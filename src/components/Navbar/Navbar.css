@@ -11,7 +11,7 @@
 .navbar-logo a {
   font-family: circular-bold;
   letter-spacing: .25px;
-  color: #b8c3d2;
+  color: #aab4c2;
   transition: all .2s;
   text-transform: uppercase
 }
@@ -27,7 +27,7 @@
   text-transform: uppercase;
   padding: 13px 38px;
   margin-top: 2px;
-  color: #A8B7BD;
+  color: #aab4c2;
   transition: all .2s;
 }
 

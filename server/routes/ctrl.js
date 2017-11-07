@@ -26,7 +26,7 @@ module.exports = {
     console.log(req.body);
     req.app
     .get('db')
-    .get_listings([req.body.category, req.body.tag])
+    .get_listings([req.body.category, req.body.tag, req.body.value])
     .then(data => res.json(data))
     .catch(err => res.json(err))
   },
@@ -39,7 +39,6 @@ module.exports = {
   },
 
   getPost: (req,res) => {
-    console.log(req.params)
     req.app.get('db')
     .get_post(req.params.post_id)
     .then(data => res.json(data))
@@ -47,7 +46,6 @@ module.exports = {
   },
 
   deletePost: (req,res) => {
-    console.log(req.body)
     req.app.get('db')
     .delete_post([req.body.post_id, req.body.uid])
     .then(data => res.json(data))
@@ -55,7 +53,6 @@ module.exports = {
   },
 
   postFav: (req,res) => {
-    console.log(req.body)
     req.app.get('db')
     .post_fav([req.body[0], req.body[1]])
     .then(data => res.json(data))
@@ -63,7 +60,6 @@ module.exports = {
   },
 
   updateCounter: (req, res) => {
-    console.log(req.params)
     req.app.get('db')
     .update_viewcounter(req.params.post_id)
     .then(data => res.json(data))
@@ -71,7 +67,6 @@ module.exports = {
   },
 
   mostViewed: (req,res) => {
-    console.log(req.body);
     req.app.get('db')
     .get_mostviewed()
     .then(data => res.json(data))
@@ -79,7 +74,6 @@ module.exports = {
   },
 
   getFavorites: (req, res) => {
-    console.log(req.params)
     req.app.get('db')
     .getFavorites(req.params.uid)
     .then(data => res.json(data))
@@ -87,7 +81,6 @@ module.exports = {
   },
 
   getCategoryTags: (req, res) => {
-    console.log(req.body)
     req.app.get('db')
     .get_catgory_tags(req.body)
     .then(data => res.json(data))
@@ -97,6 +90,14 @@ module.exports = {
   getCategories: (req, res) => {
     req.app.get('db')
     .get_categories()
+    .then(data => res.json(data))
+    .catch(err => res.json(err))
+  },
+
+  searchListings: (req, res) => {
+    console.log(req.body);
+    req.app.get('db')
+    .search_listings(req.body.category, req.body.tag, req.body.value)
     .then(data => res.json(data))
     .catch(err => res.json(err))
   },

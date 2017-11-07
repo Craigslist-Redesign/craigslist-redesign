@@ -13,6 +13,8 @@ class Listings extends Component {
     this.state = {
       listArray: [],
       category: '',
+      tag: '',
+      value: '',
       uid: '',
       user:'',
       categoriesArray: [],
@@ -21,7 +23,10 @@ class Listings extends Component {
     this.handleDateSort = this.handleDateSort.bind(this)
   }
   componentWillMount(){
+    this.setState({ category: this.props.match.category, tag: this.props.match.params.tag})
+
     const catObject = this.props.match.params;
+    catObject.value = this.state.value
     this.setState({ category: catObject.category })
 
     axios.post('/api/getListings/', catObject).then(res => {
@@ -31,6 +36,7 @@ class Listings extends Component {
     axios.get('/api/getCategories').then(res => {
       this.setState({ categoriesArray: res.data })
     })
+
 
     const category = this.props.match.params.category;
     axios.post('/api/getCategoryTags', [category]).then(res => {
@@ -45,64 +51,6 @@ class Listings extends Component {
     })
   }
 
-
-  handleFavPost(favs){
-    console.log(favs)
-    let uid = this.state.uid
-    if(!this.state.user) {
-      this.setState({ modal: true })
-    }
-    else {
-      axios.post('/api/postFav',[uid,favs.post_id])
-    }
-  }
-
-  handleCategoryChange(category) {
-    console.log(category);
-    const catObject = {
-      category: category,
-      tag: 'all'
-    }
-    console.log(catObject);
-    this.setState({ category: category })
-
-    this.props.history.push(`/listings/${category}/all`);
-
-    axios.post('/api/getListings/', catObject).then(res => {
-      this.setState({ listArray: res.data })
-      axios.post('/api/getCategoryTags', [category]).then(res => {
-        console.log(res);
-        this.setState({ tagsArray: res.data })
-        console.log(this.state);
-      })
-    })
-  }
-
-  handleTagSort(tag) {
-    const category = this.state.category
-    const catObject = {
-      category: category,
-      tag: tag
-    }
-
-    this.props.history.push(`/listings/${category}/${tag}`);
-    axios.post('/api/getListings/', catObject).then(res => {
-      this.setState({ listArray: res.data })
-    })
-  }
-
-  handleDateSort(e) {
-    const reverseArr = this.state.listArray.reverse().slice();
-
-    if(e === 'Oldest') {
-      this.setState({
-        listArray: reverseArr
-      })
-    }
-    else {
-      this.setState({})
-    }
-  }
 
   renderCategoryItem(item, index) {
     const category = this.props.match.params.category;
@@ -142,13 +90,86 @@ class Listings extends Component {
     )
   }
 
+  handleSearchInput(value) {
+    this.setState({ value: value })
+    const listingsObject = {
+      category: this.state.category,
+      tag: this.state.tag,
+      value: value
+    }
+    console.log(listingsObject);
+    axios.post('/api/searchListings', listingsObject).then(res => {
+      this.setState({ listArray: res.data })
+    })
+  }
+
+  handleFavPost(favs){
+    let uid = this.state.uid
+    if(!this.state.user) {
+      this.setState({ modal: true })
+    }
+    else {
+      axios.post('/api/postFav',[uid,favs.post_id])
+    }
+  }
+
+  handleCategoryChange(category) {
+    const catObject = {
+      category: category,
+      tag: 'all'
+    }
+    this.setState({ category: category, tag: 'all' })
+
+    this.props.history.push(`/listings/${category}/all`);
+
+    catObject.value = this.state.value
+    axios.post('/api/getListings/', catObject).then(res => {
+      this.setState({ listArray: res.data })
+      console.log(this.state);
+      axios.post('/api/getCategoryTags', [category]).then(res => {
+        this.setState({ tagsArray: res.data })
+      })
+    })
+  }
+
+  handleTagSort(tag) {
+    const category = this.state.category
+    const catObject = {
+      category: category,
+      tag: tag
+    }
+
+    this.props.history.push(`/listings/${category}/${tag}`);
+
+    this.setState({ tag: tag })
+    catObject.value = this.state.value
+    axios.post('/api/getListings/', catObject).then(res => {
+      this.setState({ listArray: res.data })
+      console.log(this.state);
+    })
+  }
+
+  handleDateSort(e) {
+    const reverseArr = this.state.listArray.reverse().slice();
+
+    if(e === 'Oldest') {
+      this.setState({
+        listArray: reverseArr
+      })
+    }
+    else {
+      this.setState({})
+    }
+  }
+
 
   render(){
     return(
       <div className="listings-container">
         <div className="content-container">
           <div className="searchbar-container">
-            <input placeholder="Search" />
+            <svg class="searchbar-icon" viewBox="0 0 27 28" xmlns="http://www.w3.org/2000/svg"><title>Search</title><path d="M18.387 16.623C19.995 15.076 21 12.907 21 10.5 21 5.806 17.195 2 12.5 2 7.806 2 4 5.806 4 10.5S7.806 19 12.5 19c1.927 0 3.7-.65 5.125-1.73l4.4 5.153.76-.65-4.398-5.15zM12.5 18C8.364 18 5 14.636 5 10.5S8.364 3 12.5 3 20 6.364 20 10.5 16.636 18 12.5 18z" fill="currentColor" fill-rule="evenodd"></path></svg>
+            <input className="input" placeholder="Search" onChange={ (event) => { this.handleSearchInput(event.target.value) }}/>
           </div>
           <div className="filter-container">
             <div className="category-filter">
@@ -171,6 +192,7 @@ class Listings extends Component {
           </div>
           <div className="list-item-parent-container">
             { this.state.listArray.map( (x, i) => this.renderListItem(x, i)) }
+            { this.state.listArray.length === 0 && <h3>Nothing found.</h3> }
           </div>
         </div>
       </div>

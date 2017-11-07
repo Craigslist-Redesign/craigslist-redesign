@@ -12,6 +12,7 @@ module.exports = app => {
   app.get('/api/mostViewed', ctrl.mostViewed);
   app.get('/api/getFavorites/:uid', ctrl.getFavorites);
   app.post('/api/sendMail', ctrl.sendMail);
-  app.post('/api/getCategoryTags', ctrl.getCategoryTags)
-  app.get('/api/getCategories', ctrl.getCategories)
+  app.post('/api/getCategoryTags', ctrl.getCategoryTags);
+  app.get('/api/getCategories', ctrl.getCategories);
+  app.post('/api/searchListings', ctrl.searchListings);
 }
