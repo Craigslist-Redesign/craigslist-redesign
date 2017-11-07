@@ -3,6 +3,7 @@
   width: 100%;
   height: auto;
   padding: 40px 0;
+  
  }
 
  .post-item-top-container{
@@ -46,9 +47,13 @@
 
 
   .post-item-right-contianer{
-
+    
      width: 50%;
 
+  }
+
+  .textCenter{
+    text-align: center;
   }
 
   .post-item-price-container{
