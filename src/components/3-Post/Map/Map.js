@@ -49,7 +49,8 @@ componentDidUpdate(prevProps) {
       container: this.mapContainer,
       style: 'mapbox://styles/mapbox/light-v9',
       center: [lon, lat],
-      zoom
+      zoom,
+      interactive: false
     });
     
     map.on('move', () => {
