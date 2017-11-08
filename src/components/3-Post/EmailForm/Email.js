@@ -27,35 +27,40 @@ class Email extends Component {
 render() {
   // console.log(this.props.userInfo)
   return(
-    <div className="login-modal-background">
-      <div className="close-login-modal"
+    <div className="email-modal-background">
+      <div className="close-email-modal"
       onClick={ this.props.close }>X</div>
-      <div className="login-modal-container">
-        <h1>Send Message</h1>
-        <form>
-          <label>Creators Email</label>
+      <div className="email-modal-container">
+        <h1 className="email-modal-sendmsg">Send Message</h1>
+        <form className="email-modal-form-container">
+        <div className="email-modal-top-container">
+          <label className="email-modal-creators-email-header">Creators Email</label>
           <br/>
-          <div>
+          <div className="email-modal-creators-email">
           <h3>{this.props.userInfo.email}</h3>
           </div>
+          <hr/>
 
-          <label>Subject</label>
+          <label className="email-modal-subject">Subject</label>
           <br/>
-          <div>
+          <div className="email-modal-title-tag">
           <h3>{this.props.userInfo.title}</h3>
           </div>
+          <hr/>
 
-          <label>Your Email</label>
-          <br/>
-          <input type="email" onChange={ (event) => this.setState({ yourEmail: event.target.value })}/>
-          <br/>
 
-          <label>Message</label>
-          <br/>
-          <textarea type="text" onChange={ (event) => this.setState({ message: event.target.value })}/>
+          <label className="email-modal-your-email-header">Enter your email</label>
+
+          <input autofocus className="input" type="email" onChange={ (event) => this.setState({ yourEmail: event.target.value })}/>
+          <hr/>
+</div>
+
+          <label className="email-modal-message-header">Message</label>
+          <textarea className="email-modal-message-input" type="text" onChange={ (event) => this.setState({ message: event.target.value })}/>
+            <input id="email-send-btn" className="btn" type="submit" value="Send" onClick={ (event) => this.handleEmail(event) }/>
         </form>
 
-        <input className="btn" type="submit" value="Send" onClick={ (event) => this.handleEmail(event) }/>
+
 
       </div>
 
