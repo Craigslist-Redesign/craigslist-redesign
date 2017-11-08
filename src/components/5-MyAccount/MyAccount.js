@@ -3,8 +3,7 @@ import firebase from '../../firebase.js';
 import axios from 'axios';
 import MyAccountListings from './MyAccountListings/MyAccountListings.js'
 import Favorites from './Favorites/Favorites'
-
-
+import { withRouter, Link } from 'react-router-dom';
 
 
 
@@ -12,15 +11,17 @@ class MyAccount extends Component {
     constructor(props) {
         super(props)
 
-        this.state = { 
+        this.state = {
             posts: [],
             listFav: true,
             fav: false,
-            list: true
-            
-           
-        }
+            list: true,
+            user: '',
+            favorites: []
         
+
+        }
+
         this.changeView = this.changeView.bind(this);
 
     }
@@ -46,6 +47,14 @@ class MyAccount extends Component {
 
             })
 
+            axios.get('/api/getFavorites/' + uid).then((response) => {
+                console.log(response)
+                let favorites = response.data
+
+                this.setState({ favorites })
+
+            })
+
         })
 
     }
@@ -53,24 +62,70 @@ class MyAccount extends Component {
     handleDeletePost(postInfo){
         // let post_id = postInfo.post_id
         // let uid = postInfo.uid
-        
-        
+
+
         axios.post('/api/deletePost', postInfo).then((response) => {
-            
+
             let posts = response.data
-            
+
             this.setState({ posts })
         })
         // this.setState({posts})
     }
-    
+
     changeView(){
       console.log('show on click')
       console.log(this)
       this.setState({
-          listFav: !this.state.listFav
+          listFav: true
       })
     }
+
+    changeViews(){
+      console.log('show on click')
+      console.log(this)
+      this.setState({
+          listFav: false
+      })
+    }
+
+
+
+    unFavorite(favs){
+            let uid = favs.uid
+
+        axios.post('/api/removeFav', favs).then((response) => {
+                // console.log(response)
+                // let favorites = response.data
+
+                // this.setState({ favorites })
+
+            axios.get('/api/getFavorites/' + uid).then((response) => {
+                // let favorites = response.data
+                console.log(response.data);
+                
+                let favorites = response.data
+    
+                this.setState({ favorites })
+
+                // this.setState({listArray: res.data})
+    
+             })
+        })
+    }
+
+
+
+    // handleSignout(event) {
+    //   const user = this.state.user
+    //   firebase.auth().signOut().then(() => {
+    //
+    //     this.setState({ user: '', uid: ''})
+    //     console.log(user, 'Signed Out');
+    //     this.props.history.push('/');
+    //     console.log(this.props)
+    //   })
+    // }
 
     render() {
         console.log(this.state.successEmail)
@@ -78,19 +133,27 @@ class MyAccount extends Component {
             <div>
                 <h2>{this.state.successEmail}</h2>
                 <h1>My Account </h1>
-                
-                <button onClick={ this.changeView }>listFav</button>
-                {/* <div>
-                 { this.state.list && <MyAccountListings posts={this.state.posts} onDelete={this.handleDeletePost.bind(this)}/> }
+
+               {/* <div>
+                 <button onClick={ (event) => this.handleSignout(event) }>Sign out</button>
+               </div> */}
+
+                <div className="filter-container">
+                  <div className="category-filter" onClick={(event) => this.changeView(event)}>
+                  My posts
                 </div>
+                  <div>|</div>
+                <div onClick={(event) => this.changeViews(event)}>
+                  Favorites
+                </div>
+                </div>
+
+
                 <div>
-                { this.state.fav &&  <Favorites uid={this.state.uid}/>}
-                </div> */}
-                <div>
-                {this.state.listFav ? 
+                {this.state.listFav ?
                     <MyAccountListings posts={this.state.posts} onDelete={this.handleDeletePost.bind(this)}/>
                 :
-                    <Favorites uid={this.state.uid}/>
+                    <Favorites favorites={this.state.favorites}  onRemoveFav={this.unFavorite.bind(this)}/>
                 }
                 </div>
             </div>
@@ -101,5 +164,4 @@ class MyAccount extends Component {
 }
 
 
-export default MyAccount;
-
+export default withRouter(MyAccount);
