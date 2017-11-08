@@ -1,30 +1,36 @@
 import React, { Component } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 
 class FavoritePost extends Component {
-    contrustor(props){
+    contrustor(props) {
 
-    
+
     }
 
-    removeFav(favInfo){
+    removeFav(favInfo) {
         this.props.onRemoveFav(favInfo)
     }
 
+    
+    render() {
+        const backgroundStyle = {
+            backgroundImage: `url(${ this.props.fav.image_url })`
+          }
+        return (
 
-    render(){
-        return <li>
-
-                <div className="list-item-parent-container">
-                 <div className="list-item-container">
-            <img className="list-item-image" src={this.props.fav.image_url}/> 
-            <div className="list-item-title-container"> <h2>{this.props.fav.title} </h2></div>
-            <a href="#" onClick={this.removeFav.bind(this, this.props.fav)}> removeFav </a>
+            // <Link to={`/post/${this.props.fav.post_id}`}>
+            <div className="list-item-container">
+                {/* <img className="list-item-image" src={this.props.fav.image_url} /> */}
+                <div className="list-item-image-container" style={ backgroundStyle }/>
+                <div className="list-item-title-container"> <h2>{this.props.fav.title} </h2></div>
+                
+                <a href="#" onClick={this.removeFav.bind(this, this.props.fav)}> x </a>
             </div>
-        </div>
+            /* </Link> */
 
-    </li>
-        
+        )
+
     }
 }
 
-export default FavoritePost
+export default withRouter(FavoritePost)
