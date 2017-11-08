@@ -16,7 +16,9 @@ class MyAccount extends Component {
             listFav: true,
             fav: false,
             list: true,
-            user: ''
+            user: '',
+            favorites: []
+        
 
         }
 
@@ -42,6 +44,14 @@ class MyAccount extends Component {
                 let posts = response.data
 
                 this.setState({ posts })
+
+            })
+
+            axios.get('/api/getFavorites/' + uid).then((response) => {
+                console.log(response)
+                let favorites = response.data
+
+                this.setState({ favorites })
 
             })
 
@@ -78,6 +88,32 @@ class MyAccount extends Component {
           listFav: false
       })
     }
+
+
+
+    unFavorite(favs){
+            let uid = favs.uid
+
+        axios.post('/api/removeFav', favs).then((response) => {
+                // console.log(response)
+                // let favorites = response.data
+
+                // this.setState({ favorites })
+
+            axios.get('/api/getFavorites/' + uid).then((response) => {
+                // let favorites = response.data
+                console.log(response.data);
+                
+                let favorites = response.data
+    
+                this.setState({ favorites })
+
+                // this.setState({listArray: res.data})
+    
+             })
+        })
+    }
+
 
 
     // handleSignout(event) {
@@ -117,7 +153,7 @@ class MyAccount extends Component {
                 {this.state.listFav ?
                     <MyAccountListings posts={this.state.posts} onDelete={this.handleDeletePost.bind(this)}/>
                 :
-                    <Favorites uid={this.state.uid}/>
+                    <Favorites favorites={this.state.favorites}  onRemoveFav={this.unFavorite.bind(this)}/>
                 }
                 </div>
             </div>
