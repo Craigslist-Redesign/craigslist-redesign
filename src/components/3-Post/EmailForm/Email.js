@@ -21,6 +21,7 @@ class Email extends Component {
   handleEmail(event){
   const emailObj = {creatorEmail: this.state.creatorEmail,yourEmail: this.state.yourEmail,subject: this.state.subject,message: this.state.message }
     axios.post('/api/sendMail',emailObj )
+    this.props.close;
   }
 
 
@@ -51,7 +52,7 @@ render() {
 
           <label className="email-modal-your-email-header">Enter your email</label>
 
-          <input autofocus className="input" type="email" onChange={ (event) => this.setState({ yourEmail: event.target.value })}/>
+          <input autoFocus className="input" type="email" onChange={ (event) => this.setState({ yourEmail: event.target.value })}/>
           <hr/>
 </div>
 

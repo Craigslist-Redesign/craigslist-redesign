@@ -32,6 +32,8 @@ class LoginModal extends Component {
             console.log(user);
             this.setState({ successEmail: user.email })
             console.log(this.state);
+            this.props.closeModal();
+            console.log(this.props)
           }
 
         })
@@ -67,6 +69,7 @@ class LoginModal extends Component {
 
           const uid = this.state.userUid
           axios.post('/user/createUser', [email, uid])
+          this.props.closeModal();
         })
       })
     }
