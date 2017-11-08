@@ -20,6 +20,7 @@ class CardCommunity extends Component {
       <Link to="/listings/Community/all">
         <h2 className="card-header">Community</h2>
       </Link>
+      <hr/>
          <ul>
 
            <Link to="/listings/Community/Activities">Activities</Link>

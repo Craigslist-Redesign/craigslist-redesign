@@ -38,6 +38,7 @@
   justify-content: space-between;
   flex-wrap: wrap;
   list-style: none;
+  text-align: center;
 }
 
 .tag-list-container li {

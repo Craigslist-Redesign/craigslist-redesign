@@ -11,6 +11,7 @@ class FavoritePost extends Component {
         this.props.onRemoveFav(favInfo)
     }
 
+
     
     render() {
         const backgroundStyle = {
@@ -25,12 +26,15 @@ class FavoritePost extends Component {
                 <div className="list-item-title-container"> <h2>{this.props.fav.title} </h2></div>
                 
                 <a href="#" onClick={this.removeFav.bind(this, this.props.fav)}> x </a>
+
             </div>
             /* </Link> */
 
         )
 
+
     }
 }
 
 export default withRouter(FavoritePost)
+

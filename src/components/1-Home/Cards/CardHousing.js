@@ -20,6 +20,7 @@ class CardHousing extends Component {
       <Link to="/listings/Housing/all">
         <h2 className="card-header">Housing</h2>
       </Link>
+      <hr/>
          <ul>
 
            <Link to="/listings/Housing/Apts & Housing">Apts & Housing</Link>

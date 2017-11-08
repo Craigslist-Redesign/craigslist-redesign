@@ -17,7 +17,8 @@
   width: 78%;
   max-width: 1300px;
   text-align: left;
-  border-bottom: 2px solid #d9e1ed;
+  border-bottom: 2px solid #d2dae8;
+  /*border-bottom: 1px solid #bfcadb;*/
   margin-bottom: 4.5em;
   transition: all .3s;
 }
@@ -47,7 +48,7 @@
   width: 78%;
   max-width: 1300px;
   padding-bottom: 18px;
-  border-bottom: 2px solid #d9e1ed;
+  border-bottom: 2px solid #d2dae8;
   margin-bottom: 5.5em;
   display: flex;
 }
@@ -75,13 +76,13 @@
 
 #category-filter {
   width: 146px;
-  border-right: 2px solid #d9e1ed;
+  border-right: 2px solid #d2dae8;
   padding-right: 6px;
 }
 
 #tag-filter {
   width: 224px;
-  border-right: 2px solid #d9e1ed;
+  border-right: 2px solid #d2dae8;
 }
 
 #newest-oldest-filter {
@@ -94,9 +95,8 @@
 
 #price-filter {
   margin-right: 20px;
-  border-right: 2px solid #d9e1ed;
+  border-right: 2px solid #cad4e4;
   width: 158px;
-  border-radius: 3px;
   overflow: hidden;
 }
 
@@ -146,23 +146,82 @@ select:focus {
   margin-bottom: 10%;
   background: #fff;
   box-shadow: 0 10px 34px 10px rgba(0,0,0,.1);
+  overflow: hidden;
 }
 
 .list-item-image-container {
   position: relative;
   display: block;
   width: 100%;
-  padding-top: 72%;
+  padding-top: 68%;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   color: #fff;
+  transition: .3s;
+  z-index: 99;
 }
 
-.list-item-image-container p {
-  margin-left: 8%;
-  transform: translateY(-12px);
-  text-shadow: 0 0 5px rgba(11,11,11, 1)
+.list-item-image-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: all .3s;
+  background: rgba(11,11,11,0)
+}
+
+/*.list-item-container:hover .list-item-image-container {
+  transform: scale(1.05);
+}*/
+
+.list-item-container:hover .list-item-image-container::after {
+  background: rgba(11,11,11,.4)
+}
+
+.list-item-price {
+  position: absolute;
+  left: 24px;
+  bottom: 20px;
+  /*text-shadow: 0 0 10px rgba(0,0,0, 1);*/
+  z-index: 99;
+}
+
+.list-item-favorite {
+  /*position: absolute;
+  right: 24px;
+  bottom: 21px;
+  font-size: 20px;
+  width: 60px;
+  height: 60px;
+  cursor: text;
+  z-index: 1000;*/
+}
+
+.fa-heart-o {
+  /*position: absolute;*/
+  right: 0;
+  bottom: 0;
+  color: blue;
+  opacity: 1;
+}
+
+.fa-heart-o.selected {
+  opacity: 0;
+}
+
+.fa-heart {
+  /*position: absolute;*/
+  right: 0;
+  bottom: 0;
+  color: blue;
+  opacity: 0;
+}
+
+.fa-heart.selected {
+  opacity: 1;
 }
 
 .list-item-image{
@@ -174,7 +233,8 @@ select:focus {
 .list-item-title-container {
   position: relative;
   width: 100%;
-  padding: 8%;
+  padding: 8% 24px;
+  z-index: 100;
 }
 
 .list-item-title-container h3 {
