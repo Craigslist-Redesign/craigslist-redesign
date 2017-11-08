@@ -20,14 +20,14 @@ class MyAccountPost extends Component {
 
         
     return <li>
-        
+        <div className="list-item-parent-container">
         <div className="list-item-container">
         <img className="list-item-image" src={this.props.post.image_url}/> 
             <div className="list-item-title-container"> {this.props.post.title}</div>
             <a href="#" onClick={this.deletePost.bind(this, this.props.post)}> x </a>
             
         </div>
-
+        </div>
     </li>
     }
 }
