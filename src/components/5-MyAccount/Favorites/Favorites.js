@@ -27,6 +27,25 @@ class Favorites extends Component{
 
     }
 
+    // renderListItem(item, index) {
+    //     const backgroundStyle = {
+    //       backgroundImage: `url(${ item.image_url })`
+    //     }
+    //     return (
+    //       <div className="list-item-container" key={index}>
+    //         <Link to={`/post/${item.post_id}`}>
+    //         <div className="list-item-image-container" style={ backgroundStyle }>
+    //           { item.price != 0 && <p>${ item.price }</p> }
+    //         </div>
+    //         <div className="list-item-title-container">
+    //           <h3>{ item.title }</h3>
+    //         </div>
+    //       </Link>
+    //       {/* <Fav item={item} onFav={this.handleFavPost.bind(this)}/> */}
+    //     </div>
+    //     )
+    //   }
+
     removeFav(favInfo){
         this.props.onRemoveFav(favInfo)
     }
@@ -41,10 +60,13 @@ class Favorites extends Component{
         })
 
         return (
-                
-                <ul>
+            
+            <div id="center" className="content-container">
+                <div className="list-item-parent-container">
                    {myFav}
-               </ul>    
+                </div>
+            </div> 
+            
                 
             )
     }

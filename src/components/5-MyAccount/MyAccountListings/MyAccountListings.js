@@ -9,6 +9,7 @@ class MyAccountListings extends Component {
 
 
     }
+
     
     deletePost(postInfo){
         this.props.onDelete(postInfo)
@@ -25,9 +26,11 @@ class MyAccountListings extends Component {
             
         })
         return (
-            <ul>
-                {myPosts}
-            </ul>
+            <div id="center" className="content-container">
+                <div className="list-item-parent-container">
+                     {myPosts}
+                 </div>
+            </div>
 
         )
     }
