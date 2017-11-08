@@ -16,11 +16,11 @@ class MyAccountListings extends Component {
 
 
     render() {
-        const myPosts = this.props.posts.map((post) => {
+        const myPosts = this.props.posts.map((post, index) => {
             
             return <MyAccountPost 
             onDelete={this.deletePost.bind(this)}
-            key={post.post_id} 
+            key={index} 
             post={post} />
             
         })
