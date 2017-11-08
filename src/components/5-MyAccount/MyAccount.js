@@ -130,7 +130,7 @@ class MyAccount extends Component {
     render() {
         console.log(this.state.successEmail)
         return (
-            <div>
+            <div >
                 <h2>{this.state.successEmail}</h2>
                 <h1>My Account </h1>
 

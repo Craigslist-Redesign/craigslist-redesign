@@ -9,6 +9,7 @@ class MyAccountListings extends Component {
 
 
     }
+
     
     deletePost(postInfo){
         this.props.onDelete(postInfo)
@@ -16,18 +17,20 @@ class MyAccountListings extends Component {
 
 
     render() {
-        const myPosts = this.props.posts.map((post) => {
+        const myPosts = this.props.posts.map((post, index) => {
             
             return <MyAccountPost 
             onDelete={this.deletePost.bind(this)}
-            key={post.post_id} 
+            key={index} 
             post={post} />
             
         })
         return (
-            <ul>
-                {myPosts}
-            </ul>
+            <div id="center" className="content-container">
+                <div className="list-item-parent-container">
+                     {myPosts}
+                 </div>
+            </div>
 
         )
     }
