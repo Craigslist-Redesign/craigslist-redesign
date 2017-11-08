@@ -6,6 +6,7 @@ import CardHousing from './Cards/CardHousing';
 import CardCommunity from './Cards/CardCommunity';
 import CalendarCard from './Cards/CalendarCard';
 import MostViewed from './Cards/MostViewed';
+import './Home.css';
 
 export default function Home(){
   return(
