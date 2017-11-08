@@ -102,6 +102,13 @@ module.exports = {
     .catch(err => res.json(err))
   },
 
+  removeFav: (req,res) => {
+    req.app.get('db')
+    .remove_fav([req.body.uid, req.body.post_id])
+    .then(data => res.json(data))
+    .catch(err => res.json(err))
+  },
+
   sendMail: (req,res,next) => {
     console.log(req.body)
     const msg = {

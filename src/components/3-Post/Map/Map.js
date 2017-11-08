@@ -27,14 +27,14 @@ componentDidUpdate(prevProps) {
     
     // this.setState({zip: this.props.userInfo.zipcode})
     
-    console.log(prevProps)
+   
     let zip = prevProps.userInfo.zipcode
-    console.log(zip)
+   
     
 
   var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + zip +"&key=AIzaSyDT-5CDLUilrcXFV8gdB1QfLUYK3GFz2vE";
   axios.get(url).then( res => {
-    console.log(res)
+    
 
     
 
@@ -86,7 +86,7 @@ componentDidUpdate(prevProps) {
 
 render() {
   const { lng, lat, zoom } = this.state;
-  console.log(this.props.userInfo)
+ 
   
   return (
     

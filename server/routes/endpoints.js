@@ -15,4 +15,5 @@ module.exports = app => {
   app.post('/api/getCategoryTags', ctrl.getCategoryTags);
   app.get('/api/getCategories', ctrl.getCategories);
   app.post('/api/searchListings', ctrl.searchListings);
+  app.post('/api/removeFav', ctrl.removeFav);
 }
