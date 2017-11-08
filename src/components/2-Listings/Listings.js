@@ -24,16 +24,27 @@ class Listings extends Component {
     this.handleScroll = this.handleScroll.bind(this)
   }
   componentWillMount(){
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        console.log(user);
+        this.setState({ user: user.email })
+        this.setState({uid: user.uid})
+        // Take this out after implementing REDUX ******************************
+        const catObject = this.props.match.params;
+        catObject.value = this.state.value
+        catObject.uid = this.state.uid
+        // this.setState({ category: catObject.category })
+        axios.post('/api/getListings/', catObject).then(res => {
+          this.setState({ listArray: res.data })
+          console.log(res.data);
+        })
+        // Take this out after implementing REDUX ******************************
+      }
+    })
+
     this.setState({ category: this.props.match.category, tag: this.props.match.params.tag})
 
-    const catObject = this.props.match.params;
-    catObject.value = this.state.value
-    this.setState({ category: catObject.category })
 
-    axios.post('/api/getListings/', catObject).then(res => {
-      this.setState({ listArray: res.data })
-      console.log(res.data);
-    })
 
     axios.get('/api/getCategories').then(res => {
       this.setState({ categoriesArray: res.data })
@@ -45,18 +56,24 @@ class Listings extends Component {
       this.setState({ tagsArray: res.data })
     })
 
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ user: user.email })
-        this.setState({uid: user.uid})
-      }
-    })
-
     window.addEventListener('scroll', this.handleScroll);
+  }
+
+
+
+
+  componentDidMount() {
+    // document.getElementsByClassName('list-item-favorite').addEventListener('click', this.handleFavSelect);
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
+    // document.getElementsByClassName('list-item-favorite').removeEventListener('click', this.handleFavSelect);
+  }
+
+  handleFavSelect() {
+    document.getElementsByClassName('fa-heart-o').classList.add('selected')
+    document.getElementsByClassName('fa-heart').classList.add('selected')
   }
 
   handleScroll() {
@@ -102,13 +119,13 @@ class Listings extends Component {
         <Link to={`/post/${item.post_id}`}>
         <div className="list-item-image-container" style={ backgroundStyle }>
           { item.price != 0 && <p className="list-item-price">${ item.price }</p> }
-          <Fav item={item} onFav={this.handleFavPost.bind(this)}/>
+
         </div>
         <div className="list-item-title-container">
           <h3>{ item.title }</h3>
         </div>
       </Link>
-
+      <Fav item={item.post_id} onFav={this.handleFavPost.bind(this)}/>
     </div>
     )
   }
@@ -126,13 +143,13 @@ class Listings extends Component {
     })
   }
 
-  handleFavPost(favs){
+  handleFavPost(id){
     let uid = this.state.uid
     if(!this.state.user) {
       this.setState({ modal: true })
     }
     else {
-      axios.post('/api/postFav',[uid,favs.post_id])
+      axios.post('/api/postFav',[uid,id])
     }
   }
 

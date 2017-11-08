@@ -7,7 +7,9 @@ class Fav extends Component{
   constructor(props){
     super(props);
 
-    this.state = {}
+    this.state = {
+      favorite: false
+    }
   }
 
   componentWillMount() {
@@ -17,28 +19,18 @@ class Fav extends Component{
 
         }
       })
-      // let fav = document.getElementById('list-item-favorite');
-
-      // document.getElementById('list-item-favorite').addEventListener('click', this.handleFavSelect);
   }
 
-  componentWillUnmount() {
-    document.removeEventListener('click', this.handleFavSelect);
-  }
 
-  handleFavSelect() {
-    document.getElementById('heart-o').classList.add('selected')
-  }
-
-  favPost(favs){
-      this.props.onFav(favs)
-  }
+  // favPost(favs){
+  //     this.props.onFav(favs)
+  // }
 
   render(){
     return(
-      <div id="list-item-favorite" onClick={this.favPost.bind(this, this.props.item)}>
-          <i id="heart-o" className="fa fa-heart-o" aria-hidden="true"></i>
-          <i id="heart" className="fa fa-heart" aria-hidden="true"></i>
+      <div className="list-item-favorite" onClick={() => { this.props.onFav(this.props.item); this.setState({favorite: !this.state.favorite}) }}>
+          <i id="heart-o" className={ this.state.favorite ? "fa fa-heart-o selected" : "fa fa-heart-o"} aria-hidden="true"></i>
+          <i id="heart" className={ this.state.favorite ? "fa fa-heart selected" : "fa fa-heart"} aria-hidden="true"></i>
       </div>
     )
   }

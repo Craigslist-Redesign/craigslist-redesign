@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import './Cards.css';
+import './MostViewed.css';
 
 class MostViewed extends Component {
   constructor(props){
@@ -21,15 +21,19 @@ class MostViewed extends Component {
   }
 
   render(){
+
     const mostViewedItems = this.state.topThree.map(function(item,index){
+      const backgroundStyle = {
+        backgroundImage: `url(${ item.image_url })`
+      }
      return (
         <Link to={`/post/${item.post_id}`} key={index} className="most-viewed-item">
           <div className="most-viewed-content">
             <p>{item.title}</p>
             {item.price !== 0 && <p className="most-viewed-price">${item.price}</p>}
           </div>
-          <div className="most-viewed-image-container">
-            <img src={item.image_url} alt='' />
+          <div className="most-viewed-image-container" style={ backgroundStyle }>
+            {/* <img src={item.image_url} alt='' /> */}
           </div>
         </Link>
       )

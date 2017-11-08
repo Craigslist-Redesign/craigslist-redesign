@@ -20,6 +20,7 @@ class CardJobs extends Component {
       <Link to="/listings/Jobs/all">
         <h2 className="card-header">Jobs</h2>
       </Link>
+      <hr/>
          <ul>
 
            <Link to="/listings/Jobs/Accounting & Finance">Accounting & Finance</Link>

@@ -13,34 +13,30 @@ class CardForSale extends Component {
 
 
 
- render() {
-  return(
-
+  render() {
+    return(
       <div className="card-container">
-      <Link to="/listings/For Sale/all">
-        <h2 className="card-header">For Sale</h2>
-      </Link>
-         <ul>
-
-           <Link to="/listings/For Sale/Outdoors">Outdoors</Link>
-           <Link to="/listings/For Sale/Books">Books</Link>
-           <Link to="/listings/For Sale/Household">Household</Link>
-           <Link to="/listings/For Sale/Atv & Motorcycles">Atv & Motorcycles</Link>
-           <Link to="/listings/For Sale/Cars & Trucks">Cars & Trucks</Link>
-           <Link to="/listings/For Sale/Business">Business</Link>
-           <Link to="/listings/For Sale/Music">Music</Link>
-           <Link to="/listings/For Sale/Tech">Tech</Link>
-           <Link to="/listings/For Sale/Toys & Games">Toys & Games</Link>
-           <Link to="/listings/For Sale/Garden & Tools">Garden & Tools</Link>
-           <Link to="/listings/For Sale/Tickets">Tickets</Link>
-           <Link to="/listings/For Sale/Garage Sale">Garage Sale</Link>
-
-
-         </ul>
+        <Link to="/listings/For Sale/all">
+          <h2 className="card-header">For Sale</h2>
+        </Link>
+        <hr/>
+        <ul>
+           <Link to="/listings/For Sale/Outdoors"><li>Outdoors</li></Link>
+           <Link to="/listings/For Sale/Books"><li>Books</li></Link>
+           <Link to="/listings/For Sale/Household"><li>Household</li></Link>
+           <Link to="/listings/For Sale/Atv & Motorcycles"><li>Atv & Motorcycles</li></Link>
+           <Link to="/listings/For Sale/Cars & Trucks"><li>Cars & Trucks</li></Link>
+           <Link to="/listings/For Sale/Business"><li>Business</li></Link>
+           <Link to="/listings/For Sale/Music"><li>Music</li></Link>
+           <Link to="/listings/For Sale/Tech"><li>Tech</li></Link>
+           <Link to="/listings/For Sale/Toys & Games"><li>Toys & Games</li></Link>
+           <Link to="/listings/For Sale/Garden & Tools"><li>Garden & Tools</li></Link>
+           <Link to="/listings/For Sale/Tickets"><li>Tickets</li></Link>
+           <Link to="/listings/For Sale/Garage Sale"><li>Garage Sale</li></Link>
+        </ul>
       </div>
-
-   )
- }
+    )
+  }
 }
 
 export default CardForSale;

@@ -20,6 +20,7 @@ class CardServices extends Component {
       <Link to="/listings/Services/all">
         <h2 className="card-header">Services</h2>
       </Link>
+      <hr/>
          <ul>
 
            <Link to="/listings/Services/Automotive">Automotive</Link>
