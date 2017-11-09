@@ -7,7 +7,7 @@ class MyAccountPost extends Component {
     constructor(props){
         super(props)
 
-        
+
     }
 
 
@@ -21,19 +21,25 @@ class MyAccountPost extends Component {
         const backgroundStyle = {
             backgroundImage: `url(${ this.props.post.image_url })`
           }
-        
+
     return (
-        
-        // <Link to={`/post/${this.props.post.post_id}`}>
-            <div className="list-item-container">
-                {/* <img className="list-item-image" src={this.props.fav.image_url} /> */}
-                <div className="list-item-image-container" style={ backgroundStyle }/>
-                <div className="list-item-title-container"> <h2>{this.props.post.title} </h2></div>
-                
-                <a href="#" onClick={this.deletePost.bind(this, this.props.post)}> x </a>
-            </div>
-        //   </Link>  
-        
+
+      <div className="list-item-container">
+        <Link to={`/post/${this.props.post.post_id}`}>
+          <div className="list-item-parent-image">
+            <div className="list-item-image-container" style={ backgroundStyle }></div>
+          </div>
+        </Link>
+        <div className="list-item-title-container">
+          <Link to={`/post/${this.props.post.post_id}`}>
+            <h3>{this.props.post.title}</h3>
+          </Link>
+          <div className="list-item-delete" onClick={this.deletePost.bind(this, this.props.post)}>
+            x
+          </div>
+        </div>
+      </div>
+
     )
     }
 }

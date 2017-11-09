@@ -18,7 +18,8 @@ class Listings extends Component {
       uid: '',
       user:'',
       categoriesArray: [],
-      tagsArray: []
+      tagsArray: [],
+      list: false
     }
     this.handleDateSort = this.handleDateSort.bind(this)
     this.handleScroll = this.handleScroll.bind(this)
@@ -33,9 +34,9 @@ class Listings extends Component {
         const catObject = this.props.match.params;
         catObject.value = this.state.value
         catObject.uid = this.state.uid
-        // this.setState({ category: catObject.category })
+        this.setState({ category: catObject.category })
         axios.post('/api/getListings/', catObject).then(res => {
-          this.setState({ listArray: res.data })
+          this.setState({ listArray: res.data, list: true })
           console.log(res.data);
         })
         // Take this out after implementing REDUX ******************************
@@ -59,26 +60,12 @@ class Listings extends Component {
     window.addEventListener('scroll', this.handleScroll);
   }
 
-
-
-
-  componentDidMount() {
-    // document.getElementsByClassName('list-item-favorite').addEventListener('click', this.handleFavSelect);
-  }
-
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
-    // document.getElementsByClassName('list-item-favorite').removeEventListener('click', this.handleFavSelect);
-  }
-
-  handleFavSelect() {
-    document.getElementsByClassName('fa-heart-o').classList.add('selected')
-    document.getElementsByClassName('fa-heart').classList.add('selected')
   }
 
   handleScroll() {
     if(window.scrollY > 120) {
-      console.log("scrolling");
       // document.getElementById('searchbar-container').classList.add('sticky-icky')
       document.getElementById('searchbar-container').style.marginBottom = '1em';
     } else if(window.scrollY < 120) {
@@ -117,16 +104,16 @@ class Listings extends Component {
     return (
       <div className="list-item-container" key={index}>
         <Link to={`/post/${item.post_id}`}>
-        <div className="list-item-image-container" style={ backgroundStyle }>
+        <div className="list-item-parent-image">
+          <div className="list-item-image-container" style={ backgroundStyle }></div>
           { item.price != 0 && <p className="list-item-price">${ item.price }</p> }
-
         </div>
+        </Link>
         <div className="list-item-title-container">
-          <h3>{ item.title }</h3>
+          <Link to={`/post/${item.post_id}`}><h3>{ item.title }</h3></Link>
+          <Fav item={item} onFav={this.handleFavPost.bind(this)}/>
         </div>
-      </Link>
-      <Fav item={item.post_id} onFav={this.handleFavPost.bind(this)}/>
-    </div>
+      </div>
     )
   }
 
@@ -143,13 +130,22 @@ class Listings extends Component {
     })
   }
 
-  handleFavPost(id){
+  handleFavPost(id, fav){
+    console.log(id + " " + fav);
     let uid = this.state.uid
+    const favObject = {
+      uid: this.state.uid,
+      post_id: id
+    }
+
     if(!this.state.user) {
       this.setState({ modal: true })
     }
+    else if(fav == false) {
+      axios.post('/api/postFav', favObject)
+    }
     else {
-      axios.post('/api/postFav',[uid,id])
+      axios.post('/api/removeFav', favObject)
     }
   }
 
@@ -206,17 +202,21 @@ class Listings extends Component {
 
   render(){
     let priceFilter;
-
     if(this.state.category === 'For Sale') {
       priceFilter =
+        <div id="price-filter" className="input-container">
+          <select onChange={ (event) => this.handlePriceSort(event.target.value) }>
+            <option value="Lowest">Lowest Price</option>
+            <option value="Newest">Highest Price</option>
+          </select>
+          <img className="down-arrow" src={ require("../../assets/icons/drop-down-arrow.svg") } alt=""/>
+        </div>
+    }
 
-      <div id="price-filter" className="input-container">
-        <select onChange={ (event) => this.handlePriceSort(event.target.value) }>
-          <option value="Lowest">Lowest Price</option>
-          <option value="Newest">Highest Price</option>
-        </select>
-        <img className="down-arrow" src={ require("../../assets/icons/drop-down-arrow.svg") } alt=""/>
-      </div>
+    let notFound;
+    if(this.state.listArray.length === 0 && this.state.list) {
+      notFound =
+      <h3>Nothing found.</h3>
     }
 
   return(
@@ -254,7 +254,7 @@ class Listings extends Component {
         </div>
       </div>
       <div id="center" className="content-container">
-        { this.state.listArray.length === 0 && <h3>Nothing found.</h3> }
+        { notFound }
         <div className="list-item-parent-container">
           { this.state.listArray.map( (x, i) => this.renderListItem(x, i)) }
         </div>

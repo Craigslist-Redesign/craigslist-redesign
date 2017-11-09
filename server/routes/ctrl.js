@@ -26,7 +26,7 @@ module.exports = {
     console.log(req.body);
     req.app
     .get('db')
-    .get_listings([req.body.category, req.body.tag, req.body.value])
+    .get_listings([req.body.category, req.body.tag, req.body.value, req.body.uid])
     .then(data => res.json(data))
     .catch(err => res.json(err))
   },
@@ -54,7 +54,7 @@ module.exports = {
 
   postFav: (req,res) => {
     req.app.get('db')
-    .post_fav([req.body[0], req.body[1]])
+    .post_fav([req.body.uid, req.body.post_id])
     .then(data => res.json(data))
     .catch(err => res.json(err))
   },
