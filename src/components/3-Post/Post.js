@@ -98,14 +98,17 @@ class Post extends Component{
           this.setState({ timestamp: timestamp})
         })
         // Take this out after implementing REDUX **********************************
+
       }
     })
+
+
 
   }
 
   emailLoginModal = () => {
   this.setState({ modal : true });
-}
+  }
 
   closeEmailLoginModal = () => {
   this.setState({ modal: false });
@@ -123,9 +126,11 @@ class Post extends Component{
       this.setState({ modal: true })
     }
     else if(fav == false) {
+      console.log('false');
       axios.post('/api/postFav', favObject)
     }
     else {
+      console.log('true');
       axios.post('/api/removeFav', favObject)
     }
   }
@@ -185,7 +190,7 @@ class Post extends Component{
               <div className="textCenter">
               <button onClick={ (event) => this.emailLoginModal(event)}>Contact the Owner</button>
                 <div>
-              <Fav item={this.handleState()} onFav={this.handleFavPost.bind(this)}/>
+              <Fav item={item} onFav={this.handleFavPost.bind(this)}/>
               </div>
                 <h2  className="post-item-email" >{this.state.post.email}</h2>
               </div>
