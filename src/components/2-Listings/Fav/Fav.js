@@ -13,15 +13,9 @@ class Fav extends Component{
   }
 
   componentWillMount() {
-     firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-          this.setState({ user: user.email })
-        }
-      })
-
-
+     console.log('Child component will mount');
+      console.log(this.props);
       if(this.props.item.favorited === 'true') {
-        console.log(this.props.item.post_id + ' is favorited');
         this.setState({ favorite: true })
         console.log(this.state.favorite);
       }

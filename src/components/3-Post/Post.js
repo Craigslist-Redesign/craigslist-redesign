@@ -26,25 +26,23 @@ class Post extends Component{
 
   componentWillMount(){
 
-
+    console.log('Post - Parent component will mount');
 
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
 
         this.setState({ user: user.email })
         this.setState({uid: user.uid})
-
         // Take this out after implementing REDUX **********************************
         const post_id = this.props.match.params.post_id;
-        console.log(post_id);
         const postObject = {
           post_id: post_id,
           uid: this.state.uid
         }
 
         axios.post('/api/getPost', postObject).then(res=> {
-          console.log(res.data[0]);
-          this.setState({post: res.data[0]})
+
+          this.setState({post: res.data})
           console.log(this.state);
           axios.get('/api/updateCounter/'+post_id)
 
@@ -94,16 +92,12 @@ class Post extends Component{
 
           let timestamp = timeDifference(current, previous);
 
-          console.log(timestamp);
           this.setState({ timestamp: timestamp})
         })
         // Take this out after implementing REDUX **********************************
 
       }
     })
-
-
-
   }
 
   emailLoginModal = () => {
@@ -135,25 +129,59 @@ class Post extends Component{
     }
   }
 
-  handleState() {
-    console.log(this.state);
-    return this.state;
-
+  renderPostItem(item, index) {
+    return (
+      <div className="content-container">
+        <div className="post-item-top-container">
+          <div className="post-item-title-container">
+            <h2>{item.title}</h2>
+          </div>
+          <div className="post-item-price-container">
+            <h2  className="post-item-price" >$ {item.price}</h2>
+          </div>
+        </div>
+        <div className="post-item-duo-container">
+          <div className="post-item-left-container">
+            <div className="post-img-container">
+              <img className="post-item-image" src={item.image_url} alt='' />
+            </div>
+            <div>
+              <h2>{item.tag}</h2>
+            </div>
+            <div className="post-item-description">
+              <p>– {this.state.timestamp}</p>
+              <p>{item.description}</p>
+            </div>
+            {this.state.modal && <Email userInfo={item} close={ this.closeEmailLoginModal } />}
+          </div>
+          <div className="post-item-right-contianer">
+            <div className="textCenter">
+            <button onClick={ (event) => this.emailLoginModal(event)}>Contact the Owner</button>
+              <Fav item={item} key={index} onFav={this.handleFavPost.bind(this)}/>
+              <h2  className="post-item-email" >{item.email}</h2>
+            </div>
+            <div className="mapDiv">
+            <Map userInfo={item} />
+           </div>
+          </div>
+        </div>
+      </div>
+    )
   }
 
 
+
+
   render(){
+    console.log('Post - Parent Render');
     const item = this.state.post
+
+
 
     return(
       <div className="post-container">
-        <div className="content-container">
-
-
-
-
-
-
+        { this.state.post.map( (x, i) => this.renderPostItem(x, i)) }
+        {/* <div className="content-container">
           <div className="post-item-top-container">
             <div className="post-item-title-container">
               <h2>{this.state.post.title}</h2>
@@ -162,12 +190,8 @@ class Post extends Component{
               <h2  className="post-item-price" >$ {this.state.post.price}</h2>
             </div>
           </div>
-
-
           <div className="post-item-duo-container">
-
             <div className="post-item-left-container">
-
               <div className="post-img-container">
                 <img className="post-item-image" src={this.state.post.image_url} alt='' />
               </div>
@@ -178,34 +202,25 @@ class Post extends Component{
                 <p>– {this.state.timestamp}</p>
                 <p>{this.state.post.description}</p>
               </div>
-
-
-
- {this.state.modal && <Email userInfo={this.state.post} close={ this.closeEmailLoginModal } />}
-
+              {this.state.modal && <Email userInfo={this.state.post} close={ this.closeEmailLoginModal } />}
             </div>
-
             <div className="post-item-right-contianer">
-
               <div className="textCenter">
               <button onClick={ (event) => this.emailLoginModal(event)}>Contact the Owner</button>
-                <div>
-              <Fav item={item} onFav={this.handleFavPost.bind(this)}/>
-              </div>
+                <Fav item={this.state} onFav={this.handleFavPost.bind(this)}/>
                 <h2  className="post-item-email" >{this.state.post.email}</h2>
               </div>
-
               <div className="mapDiv">
               <Map userInfo={this.state.post} />
              </div>
-
             </div>
-
           </div>
-
-        </div>
+        </div> */}
 
       </div>
+
+
+
     )
   }
 }
