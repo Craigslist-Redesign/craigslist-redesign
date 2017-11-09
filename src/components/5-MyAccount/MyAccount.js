@@ -5,6 +5,7 @@ import MyAccountListings from './MyAccountListings/MyAccountListings.js'
 import Favorites from './Favorites/Favorites'
 import { withRouter, Link } from 'react-router-dom';
 
+import LoginModal from '../Navbar/LoginModal/LoginModal';
 
 
 class MyAccount extends Component {
@@ -16,14 +17,15 @@ class MyAccount extends Component {
             listFav: true,
             fav: false,
             list: true,
-            user: '',
-            favorites: []
+            favorites: [],
+            modal: false
 
 
         }
 
         this.changeView = this.changeView.bind(this);
         this.unFavorite = this.unFavorite.bind(this);
+
     }
 
 
@@ -32,10 +34,11 @@ class MyAccount extends Component {
 
 
         firebase.auth().onAuthStateChanged(user => {
+
             if (user) {
 
                 this.setState({ successEmail: user.email })
-            }
+
 
             const uid = user.uid
             this.setState({uid})
@@ -55,7 +58,12 @@ class MyAccount extends Component {
 
             })
 
+
+        }
+
+
         })
+
 
     }
 
@@ -132,16 +140,14 @@ class MyAccount extends Component {
 
 
 
-    // handleSignout(event) {
-    //   const user = this.state.user
-    //   firebase.auth().signOut().then(() => {
-    //
-    //     this.setState({ user: '', uid: ''})
-    //     console.log(user, 'Signed Out');
-    //     this.props.history.push('/');
-    //     console.log(this.props)
-    //   })
-    // }
+    handleSignout(event) {
+      const user = this.state.successEmail
+      firebase.auth().signOut().then(() => {
+        console.log(user, 'Signed Out');
+        this.props.history.push('/');
+        console.log(this.props)
+      })
+    }
 
     render() {
         console.log(this.state.successEmail)
@@ -150,9 +156,10 @@ class MyAccount extends Component {
                 <h2>{this.state.successEmail}</h2>
                 <h1>My Account </h1>
 
-               {/* <div>
+               <div>
                  <button onClick={ (event) => this.handleSignout(event) }>Sign out</button>
-               </div> */}
+
+               </div>
 
                 <div className="filter-container">
                   <div className="category-filter" onClick={(event) => this.changeView(event)}>

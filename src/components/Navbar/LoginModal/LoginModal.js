@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import firebase from '../../../firebase.js';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 import './LoginModal.css'
 
 class LoginModal extends Component {
@@ -18,6 +19,10 @@ class LoginModal extends Component {
     }
   }
 
+  componentWillMount(){
+  console.log(this.props);
+  }
+
   handleLogin(event) {
     const email = this.state.loginEmail;
     const password = this.state.loginPassword;
@@ -33,7 +38,14 @@ class LoginModal extends Component {
             this.setState({ successEmail: user.email })
             console.log(this.state);
             this.props.closeModal();
-            console.log(this.props)
+
+            console.log(this.props.state.redirect);
+            if(this.props.state.redirect == 'account'){
+              console.log('redirect to account');
+              this.props.history.push('/myaccount');
+            } else {
+              this.props.history.push('/form');
+            }
           }
 
         })
@@ -65,10 +77,9 @@ class LoginModal extends Component {
       .then(response => {
         firebase.auth().onAuthStateChanged(user => {
 
-          this.setState({ userUid: user.uid })
-
           const uid = this.state.userUid
           axios.post('/user/createUser', [email, uid])
+
           this.props.closeModal();
         })
       })
@@ -153,4 +164,4 @@ class LoginModal extends Component {
   }
 }
 
-export default LoginModal
+export default withRouter(LoginModal);
