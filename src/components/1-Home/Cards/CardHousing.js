@@ -23,14 +23,14 @@ class CardHousing extends Component {
       <hr/>
          <ul>
 
-           <Link to="/listings/Housing/Apts & Housing">Apts & Housing</Link>
-           <Link to="/listings/Housing/Real Estate For Sale">Real Estate For Sale</Link>
-           <Link to="/listings/Housing/Sublets & Temporary">Sublets & Temporary</Link>
-           <Link to="/listings/Housing/Housing Wanted">Housing Wanted</Link>
-           <Link to="/listings/Housing/Rooms & Shared">Rooms & Shared</Link>
-           <Link to="/listings/Housing/Office & Commerical">Office & Commerical</Link>
-           <Link to="/listings/Housing/Rooms Wanted">Rooms Wanted</Link>
-           <Link to="/listings/Housing/Vacation Rentals">Vacation Rentals</Link>
+           <Link to="/listings/Housing/Apts & Housing" className="tag">Apts & Housing</Link>
+           <Link to="/listings/Housing/Real Estate For Sale" className="tag">Real Estate For Sale</Link>
+           <Link to="/listings/Housing/Sublets & Temporary" className="tag">Sublets & Temporary</Link>
+           <Link to="/listings/Housing/Housing Wanted" className="tag">Housing Wanted</Link>
+           <Link to="/listings/Housing/Rooms & Shared" className="tag">Rooms & Shared</Link>
+           <Link to="/listings/Housing/Office & Commerical" className="tag">Office & Commerical</Link>
+           <Link to="/listings/Housing/Rooms Wanted" className="tag">Rooms Wanted</Link>
+           <Link to="/listings/Housing/Vacation Rentals" className="tag">Vacation Rentals</Link>
 
 
          </ul>
