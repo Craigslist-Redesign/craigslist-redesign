@@ -20,8 +20,6 @@ class Fav extends Component{
       })
 
 
-      // console.log(this.props);
-
       if(this.props.item.favorited === 'true') {
         console.log(this.props.item.post_id + ' is favorited');
         this.setState({ favorite: true })
