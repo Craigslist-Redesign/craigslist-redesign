@@ -1,0 +1,13 @@
+.list-item-delete {
+  right: 24px;
+  bottom: 21px;
+  font-size: 20px;
+  width: 68px;
+  height: 60px;
+  cursor: pointer;
+  display: flex;
+  padding-right: 24px;
+  justify-content: flex-end;
+  align-items: center;
+  transform: translateY(-3px);
+}
