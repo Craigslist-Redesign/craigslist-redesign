@@ -33,7 +33,7 @@ class Favorites extends Component{
     }
 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         const myFav = this.props.favorites.map((fav, index) => {
             return <FavoritePost
             onRemoveFav={this.removeFav.bind(this)}
