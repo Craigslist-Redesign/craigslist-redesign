@@ -11,9 +11,8 @@ constructor(props) {
   super(props);
  
   this.state = {
-    // lng: 0,
-    // lat: 0,
-    zoom: 11,
+   
+    zoom: 12,
     post: [],
     zip: this.props.userInfo.zipcode
   };
@@ -22,12 +21,9 @@ constructor(props) {
 
 
 componentDidUpdate(prevProps) {
-  const { lng, lat, zoom } = this.state;    
+  const { zoom } = this.state;    
     
     
-    // this.setState({zip: this.props.userInfo.zipcode})
-    
-   
     let zip = prevProps.userInfo.zipcode
    
     
@@ -50,42 +46,38 @@ componentDidUpdate(prevProps) {
       style: 'mapbox://styles/mapbox/light-v9',
       center: [lon, lat],
       zoom,
-      interactive: false
+      interactive: false,
+      scrollZoom: false
     });
     
-    map.on('move', () => {
-      const { lng, lat } = map.getCenter();
+    
+    
+
+    map.on('load', function() {
+
+      var el = document.createElement('div');
+      el.id = 'marker';
   
-      this.setState({
-        lng: lng.toFixed(4),
-        lat: lat.toFixed(4),
-        zoom: map.getZoom().toFixed(2)
-      });
-    });
+      new mapboxgl.Marker(el)
+      .setLngLat([lon, lat])
+      .addTo(map)
+
+      })
+    
+
+
 
 
     
-
-    var el = document.createElement('div');
-    el.id = 'marker';
-
-    new mapboxgl.Marker(el)
-    .setLngLat(zipMarker)
-    .addTo(map)
-
-    map.scrollZoom.disable();
    
   })
-  
-    
-  
   
 
  
 }
 
 render() {
-  const { lng, lat, zoom } = this.state;
+  
  
   
   return (
