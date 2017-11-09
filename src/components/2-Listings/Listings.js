@@ -25,9 +25,9 @@ class Listings extends Component {
     this.handleScroll = this.handleScroll.bind(this)
   }
   componentWillMount(){
+    console.log('Listings - Parent will mount');
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log(user);
         this.setState({ user: user.email })
         this.setState({uid: user.uid})
         // Take this out after implementing REDUX ******************************
@@ -38,6 +38,7 @@ class Listings extends Component {
         axios.post('/api/getListings/', catObject).then(res => {
           this.setState({ listArray: res.data, list: true })
           console.log(res.data);
+          console.log(this.state);
         })
         // Take this out after implementing REDUX ******************************
       }
@@ -201,6 +202,7 @@ class Listings extends Component {
   handlePriceSort(e) {}
 
   render(){
+    console.log('Listings - Parent render');
     let priceFilter;
     if(this.state.category === 'For Sale') {
       priceFilter =
