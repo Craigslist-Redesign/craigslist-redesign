@@ -39,8 +39,9 @@ module.exports = {
   },
 
   getPost: (req,res) => {
+    console.log(req.body);
     req.app.get('db')
-    .get_post(req.params.post_id)
+    .get_post(req.body.post_id, req.body.uid)
     .then(data => res.json(data))
     .catch(err => res.json(err))
   },

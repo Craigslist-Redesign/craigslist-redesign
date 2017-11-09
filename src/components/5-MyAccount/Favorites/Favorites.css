@@ -1,0 +1,15 @@
+#list-item, #list-image, #list-title {
+  transition: all .2s;
+}
+/*
+#list-image {
+  transition: all .5s;
+}
+
+#item-title {
+  transition: all .5s;
+}*/
+
+.fa-heart.animate {
+  transition: all 1.2s;
+}

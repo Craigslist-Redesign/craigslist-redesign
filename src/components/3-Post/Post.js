@@ -17,14 +17,16 @@ class Post extends Component{
 
        post: [],
        modal: false,
-      timestamp: ''
+       timestamp: ''
 
     }
    this.closeEmailLoginModal =  this.closeEmailLoginModal.bind(this);
-   
+
   }
 
   componentWillMount(){
+
+
 
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -32,64 +34,73 @@ class Post extends Component{
         this.setState({ user: user.email })
         this.setState({uid: user.uid})
 
+        // Take this out after implementing REDUX **********************************
+        const post_id = this.props.match.params.post_id;
+        console.log(post_id);
+        const postObject = {
+          post_id: post_id,
+          uid: this.state.uid
+        }
+
+        axios.post('/api/getPost', postObject).then(res=> {
+          console.log(res.data[0]);
+          this.setState({post: res.data[0]})
+          console.log(this.state);
+          axios.get('/api/updateCounter/'+post_id)
+
+          // timestamp
+          let previous = new Date(res.data[0].time_stamp)
+          let current = new Date()
+
+
+          function timeDifference(current, previous) {
+
+            var msPerMinute = 60 * 1000;
+            var msPerHour = msPerMinute * 60;
+            var msPerDay = msPerHour * 24;
+            var msPerMonth = msPerDay * 30;
+            var msPerYear = msPerDay * 365;
+
+            var elapsed = current - previous;
+
+            if (elapsed < msPerMinute) {
+                 return Math.round(elapsed/1000) + ' seconds ago';
+            }
+
+            else if (elapsed < msPerHour) {
+                 return Math.round(elapsed/msPerMinute) + ' minutes ago';
+            }
+
+            else if (elapsed < msPerDay ) {
+                 return Math.round(elapsed/msPerHour ) + ' hours ago';
+            }
+
+
+            else if (elapsed < msPerMonth) {
+                 return Math.round(elapsed/msPerDay) + ' days ago';
+            }
+
+            else if (elapsed < msPerYear) {
+                 return Math.round(elapsed/msPerMonth) + ' months ago';
+            }
+
+
+
+            else {
+                 return Math.round(elapsed/msPerYear ) + ' years ago';
+            }
+          }
+
+
+          let timestamp = timeDifference(current, previous);
+
+          console.log(timestamp);
+          this.setState({ timestamp: timestamp})
+        })
+        // Take this out after implementing REDUX **********************************
       }
     })
-    const post_id = this.props.match.params.post_id;
-    axios.get('/api/getPost/'+ post_id).then(res=> {
-      console.log(res.data[0]);
-      this.setState({post: res.data[0]})
 
-      axios.get('/api/updateCounter/'+post_id)
-
-      // timestamp
-      let previous = new Date(res.data[0].time_stamp)
-      let current = new Date()
-
-
-      function timeDifference(current, previous) {
-
-        var msPerMinute = 60 * 1000;
-        var msPerHour = msPerMinute * 60;
-        var msPerDay = msPerHour * 24;
-        var msPerMonth = msPerDay * 30;
-        var msPerYear = msPerDay * 365;
-
-        var elapsed = current - previous;
-
-        if (elapsed < msPerMinute) {
-             return Math.round(elapsed/1000) + ' seconds ago';
-        }
-
-        else if (elapsed < msPerHour) {
-             return Math.round(elapsed/msPerMinute) + ' minutes ago';
-        }
-
-        else if (elapsed < msPerDay ) {
-             return Math.round(elapsed/msPerHour ) + ' hours ago';
-        }
-
-
-        else if (elapsed < msPerMonth) {
-             return Math.round(elapsed/msPerDay) + ' days ago';
-        }
-
-        else if (elapsed < msPerYear) {
-             return Math.round(elapsed/msPerMonth) + ' months ago';
-        }
-
-
-
-        else {
-             return Math.round(elapsed/msPerYear ) + ' years ago';
-        }
-      }
-
-
-      let timestamp = timeDifference(current, previous);
-
-      console.log(timestamp);
-      this.setState({ timestamp: timestamp})
-    })
   }
 
   emailLoginModal = () => {
@@ -100,22 +111,35 @@ class Post extends Component{
   this.setState({ modal: false });
   }
 
-  handleFavPost(favs){
-    console.log(favs)
-    const uid = this.state.uid
+  handleFavPost(id, fav){
+    console.log(id + " " + fav);
+    let uid = this.state.uid
+    const favObject = {
+      uid: this.state.uid,
+      post_id: id
+    }
 
-
-  console.log('uid ' ,uid)
-
-    axios.post('/api/postFav',[uid,favs.post_id])
+    if(!this.state.user) {
+      this.setState({ modal: true })
+    }
+    else if(fav == false) {
+      axios.post('/api/postFav', favObject)
+    }
+    else {
+      axios.post('/api/removeFav', favObject)
+    }
   }
 
-  
+  handleState() {
+    console.log(this.state);
+    return this.state;
+
+  }
 
 
   render(){
     const item = this.state.post
-    
+
     return(
       <div className="post-container">
         <div className="content-container">
@@ -143,7 +167,7 @@ class Post extends Component{
                 <img className="post-item-image" src={this.state.post.image_url} alt='' />
               </div>
               <div>
-                <h2 >#{this.state.post.tag}</h2>
+                <h2>{this.state.post.tag}</h2>
               </div>
               <div className="post-item-description">
                 <p>– {this.state.timestamp}</p>
@@ -161,21 +185,21 @@ class Post extends Component{
               <div className="textCenter">
               <button onClick={ (event) => this.emailLoginModal(event)}>Contact the Owner</button>
                 <div>
-              <Fav item={item} onFav={this.handleFavPost.bind(this)}/>
+              <Fav item={this.handleState()} onFav={this.handleFavPost.bind(this)}/>
               </div>
                 <h2  className="post-item-email" >{this.state.post.email}</h2>
               </div>
-              
+
               <div className="mapDiv">
               <Map userInfo={this.state.post} />
              </div>
-              
+
             </div>
-            
+
           </div>
-          
+
         </div>
-        
+
       </div>
     )
   }
