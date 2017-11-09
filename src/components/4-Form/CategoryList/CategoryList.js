@@ -4,8 +4,8 @@ class CategoryList extends Component {
 
   render() {
     return (
-      <div className="category-list-container">
-        <ul>
+      <div className="content-container">
+        <ul className="category-list">
           <li onClick={ this.props.handleCategoryState }>For Sale</li>
           <li onClick={ this.props.handleCategoryState }>Jobs</li>
           <li onClick={ this.props.handleCategoryState }>Services</li>

@@ -13,7 +13,7 @@
   margin: 0 auto
 }
 
-.category-list-container ul {
+.category-list {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -22,7 +22,7 @@
   list-style: none;
 }
 
-.category-list-container li {
+.category-list li {
   cursor: pointer
 }
 
