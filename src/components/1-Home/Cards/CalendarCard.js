@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Calendar from 'react-calendar';
+import './CalanderReact.css';
+import Clock from './Clock';
 
 class CalendarCard extends Component {
   state = {
@@ -10,7 +12,8 @@ class CalendarCard extends Component {
 
   render() {
     return (
-      <div>
+      <div className="time-container">
+        <Clock />
         <Calendar
           onChange={this.onChange}
         />
