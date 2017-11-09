@@ -9,5 +9,15 @@
   padding-right: 24px;
   justify-content: flex-end;
   align-items: center;
-  transform: translateY(-3px);
+  /*transform: translateY(-3px);*/
+}
+
+.list-item-delete-icon {
+  height: 20px;
+  width: auto;
+  transition: all .3s;
+}
+
+.list-item-delete:hover .list-item-delete-icon {
+  transform: scale(1.15);
 }

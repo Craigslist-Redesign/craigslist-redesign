@@ -18,12 +18,12 @@ class MyAccount extends Component {
             list: true,
             user: '',
             favorites: []
-        
+
 
         }
 
         this.changeView = this.changeView.bind(this);
-
+        this.unFavorite = this.unFavorite.bind(this);
     }
 
 
@@ -59,6 +59,10 @@ class MyAccount extends Component {
 
     }
 
+    // componentDidMount(){
+    //   document.getElementById('list-item-delete').addEventListener('click', this.unFavorite)
+    // }
+
     handleDeletePost(postInfo){
         // let post_id = postInfo.post_id
         // let uid = postInfo.uid
@@ -93,25 +97,37 @@ class MyAccount extends Component {
 
     unFavorite(favs){
             let uid = favs.uid
+            let that = this;
+            console.log(favs.post_id);
 
-        axios.post('/api/removeFav', favs).then((response) => {
-                // console.log(response)
-                // let favorites = response.data
+            document.getElementById(`heart-${ favs.post_id }`).style.transform = 'translateY(-30px) scale(4)';
+            document.getElementById(`heart-${ favs.post_id }`).style.opacity = '0';
 
-                // this.setState({ favorites })
+            setTimeout(function(){
+              axios.post('/api/removeFav', favs).then((response) => {
+                      // console.log(response)
+                      // let favorites = response.data
 
-            axios.get('/api/getFavorites/' + uid).then((response) => {
-                // let favorites = response.data
-                console.log(response.data);
-                
-                let favorites = response.data
-    
-                this.setState({ favorites })
+                      // this.setState({ favorites })
 
-                // this.setState({listArray: res.data})
-    
-             })
-        })
+                  axios.get('/api/getFavorites/' + uid).then((response) => {
+
+                      let favorites = response.data
+
+                      that.setState({ favorites })
+
+                   })
+              })
+
+              document.getElementById(`heart-${ favs.post_id }`).style.transform = 'translateY(0) scale(1)';
+              document.getElementById(`heart-${ favs.post_id }`).style.opacity = '1';
+
+            }, 550)
+
+    }
+
+    callBack() {
+
     }
 
 

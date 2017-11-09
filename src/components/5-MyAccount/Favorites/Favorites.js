@@ -7,7 +7,7 @@ class Favorites extends Component{
     constructor(props){
         super(props);
 
-        
+
     }
 
     componentWillMount(){
@@ -20,31 +20,13 @@ class Favorites extends Component{
             const uid = user.uid
             this.setState({uid})
 
-           
+
 
         })
 
 
     }
 
-    // renderListItem(item, index) {
-    //     const backgroundStyle = {
-    //       backgroundImage: `url(${ item.image_url })`
-    //     }
-    //     return (
-    //       <div className="list-item-container" key={index}>
-    //         <Link to={`/post/${item.post_id}`}>
-    //         <div className="list-item-image-container" style={ backgroundStyle }>
-    //           { item.price != 0 && <p>${ item.price }</p> }
-    //         </div>
-    //         <div className="list-item-title-container">
-    //           <h3>{ item.title }</h3>
-    //         </div>
-    //       </Link>
-    //       {/* <Fav item={item} onFav={this.handleFavPost.bind(this)}/> */}
-    //     </div>
-    //     )
-    //   }
 
     removeFav(favInfo){
         this.props.onRemoveFav(favInfo)
@@ -55,19 +37,19 @@ class Favorites extends Component{
         const myFav = this.props.favorites.map((fav, index) => {
             return <FavoritePost
             onRemoveFav={this.removeFav.bind(this)}
-            key={index} 
+            key={index}
             fav={fav} />
         })
 
         return (
-            
+
             <div id="center" className="content-container">
                 <div className="list-item-parent-container">
                    {myFav}
                 </div>
-            </div> 
-            
-                
+            </div>
+
+
             )
     }
 

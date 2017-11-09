@@ -35,7 +35,7 @@ class MyAccountPost extends Component {
             <h3>{this.props.post.title}</h3>
           </Link>
           <div className="list-item-delete" onClick={this.deletePost.bind(this, this.props.post)}>
-            x
+            <img className="list-item-delete-icon" src={ require("../../../assets/icons/trashIcon.svg") } />
           </div>
         </div>
       </div>
