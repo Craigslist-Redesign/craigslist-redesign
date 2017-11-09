@@ -23,18 +23,18 @@ class CardServices extends Component {
       <hr/>
          <ul>
 
-           <Link to="/listings/Services/Automotive">Automotive</Link>
-           <Link to="/listings/Services/Computer">Computer</Link>
-           <Link to="/listings/Services/Labor & Move">Labor & Move</Link>
-           <Link to="/listings/Services/Real Estate">Real Estate</Link>
-           <Link to="/listings/Services/Beauty">Beauty</Link>
-           <Link to="/listings/Services/Event">Event</Link>
-           <Link to="/listings/Services/Lessons">Lessons</Link>
-           <Link to="/listings/Services/Skilled Trade">Skilled Trade</Link>
-           <Link to="/listings/Services/Cell & Mobile">Cell & Mobile</Link>
-           <Link to="/listings/Services/Household">Household</Link>
-           <Link to="/listings/Services/Pet">Pet</Link>
-           <Link to="/listings/Services/Writing & Editing">Writing & Editing</Link>
+           <Link to="/listings/Services/Automotive" className="tag">Automotive</Link>
+           <Link to="/listings/Services/Computer" className="tag">Computer</Link>
+           <Link to="/listings/Services/Labor & Move" className="tag">Labor & Move</Link>
+           <Link to="/listings/Services/Real Estate" className="tag">Real Estate</Link>
+           <Link to="/listings/Services/Beauty" className="tag">Beauty</Link>
+           <Link to="/listings/Services/Event" className="tag">Event</Link>
+           <Link to="/listings/Services/Lessons" className="tag">Lessons</Link>
+           <Link to="/listings/Services/Skilled Trade" className="tag">Skilled Trade</Link>
+           <Link to="/listings/Services/Cell & Mobile" className="tag">Cell & Mobile</Link>
+           <Link to="/listings/Services/Household" className="tag">Household</Link>
+           <Link to="/listings/Services/Pet" className="tag">Pet</Link>
+           <Link to="/listings/Services/Writing & Editing" className="tag">Writing & Editing</Link>
 
 
          </ul>

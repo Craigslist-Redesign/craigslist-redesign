@@ -23,18 +23,18 @@ class CardCommunity extends Component {
       <hr/>
          <ul>
 
-           <Link to="/listings/Community/Activities">Activities</Link>
-           <Link to="/listings/Community/Classes">Classes</Link>
-           <Link to="/listings/Community/Groups">Groups</Link>
-           <Link to="/listings/Community/Musicians">Musicians</Link>
-           <Link to="/listings/Community/Artists">Artists</Link>
-           <Link to="/listings/Community/Events">Events</Link>
-           <Link to="/listings/Community/Local News">Local News</Link>
-           <Link to="/listings/Community/Pets">Pets</Link>
-           <Link to="/listings/Community/Childcare">Childcare</Link>
-           <Link to="/listings/Community/General">General</Link>
-           <Link to="/listings/Community/Lost & Found">Lost & Found</Link>
-           <Link to="/listings/Community/Volunteers">Volunteers</Link>
+           <Link to="/listings/Community/Activities" className="tag">Activities</Link>
+           <Link to="/listings/Community/Classes" className="tag">Classes</Link>
+           <Link to="/listings/Community/Groups" className="tag">Groups</Link>
+           <Link to="/listings/Community/Musicians" className="tag">Musicians</Link>
+           <Link to="/listings/Community/Artists" className="tag">Artists</Link>
+           <Link to="/listings/Community/Events" className="tag">Events</Link>
+           <Link to="/listings/Community/Local News" className="tag">Local News</Link>
+           <Link to="/listings/Community/Pets" className="tag">Pets</Link>
+           <Link to="/listings/Community/Childcare" className="tag">Childcare</Link>
+           <Link to="/listings/Community/General" className="tag">General</Link>
+           <Link to="/listings/Community/Lost & Found" className="tag">Lost & Found</Link>
+           <Link to="/listings/Community/Volunteers" className="tag">Volunteers</Link>
 
 
          </ul>

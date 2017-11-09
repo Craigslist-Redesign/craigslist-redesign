@@ -21,18 +21,18 @@ class CardForSale extends Component {
         </Link>
         <hr/>
         <ul>
-           <Link to="/listings/For Sale/Outdoors"><li>Outdoors</li></Link>
-           <Link to="/listings/For Sale/Books"><li>Books</li></Link>
-           <Link to="/listings/For Sale/Household"><li>Household</li></Link>
-           <Link to="/listings/For Sale/Atv & Motorcycles"><li>Atv & Motorcycles</li></Link>
-           <Link to="/listings/For Sale/Cars & Trucks"><li>Cars & Trucks</li></Link>
-           <Link to="/listings/For Sale/Business"><li>Business</li></Link>
-           <Link to="/listings/For Sale/Music"><li>Music</li></Link>
-           <Link to="/listings/For Sale/Tech"><li>Tech</li></Link>
-           <Link to="/listings/For Sale/Toys & Games"><li>Toys & Games</li></Link>
-           <Link to="/listings/For Sale/Garden & Tools"><li>Garden & Tools</li></Link>
-           <Link to="/listings/For Sale/Tickets"><li>Tickets</li></Link>
-           <Link to="/listings/For Sale/Garage Sale"><li>Garage Sale</li></Link>
+           <Link to="/listings/For Sale/Outdoors" className="tag">Outdoors</Link>
+           <Link to="/listings/For Sale/Books" className="tag">Books</Link>
+           <Link to="/listings/For Sale/Household" className="tag">Household</Link>
+           <Link to="/listings/For Sale/Atv & Motorcycles" className="tag">Atv & Motorcycles</Link>
+           <Link to="/listings/For Sale/Cars & Trucks" className="tag">Cars & Trucks</Link>
+           <Link to="/listings/For Sale/Business" className="tag">Business</Link>
+           <Link to="/listings/For Sale/Music" className="tag">Music</Link>
+           <Link to="/listings/For Sale/Tech" className="tag">Tech</Link>
+           <Link to="/listings/For Sale/Toys & Games" className="tag">Toys & Games</Link>
+           <Link to="/listings/For Sale/Garden & Tools" className="tag">Garden & Tools</Link>
+           <Link to="/listings/For Sale/Tickets" className="tag">Tickets</Link>
+           <Link to="/listings/For Sale/Garage Sale" className="tag">Garage Sale</Link>
         </ul>
       </div>
     )
