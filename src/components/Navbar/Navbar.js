@@ -11,6 +11,7 @@ class Navbar extends Component {
 
     this.state = {
       modal: false,
+      redirect: '',
       user: ''
     }
     this.closeModal =  this.closeModal.bind(this);
@@ -25,21 +26,29 @@ class Navbar extends Component {
         this.setState({ user: user.email })
         console.log(this.state);
       }
+      else {
+        console.log('No user in Navbar');
+        this.setState({ modal: false, user: '' });
+        console.log(this.state);
+      }
+
     })
   }
 
   handleAccountCondition = () => {
     if(!this.state.user) {
-      this.setState({ modal: true })
+      console.log(this.state);
+      this.setState({ modal: true, redirect: 'account'})
     }
     else {
+      this.setState({ modal: false })
       this.props.history.push('/myaccount');
     }
   }
 
   handleFormCondition = () => {
     if(!this.state.user) {
-      this.setState({ modal: true })
+      this.setState({ modal: true, redirect: 'form' })
     }
     else {
       // withRouter history.push to new path ***********************************
@@ -71,7 +80,7 @@ class Navbar extends Component {
            {/* <div>
             <button onClick={ (event) => this.handleSignout(event) }>Sign out</button>
           </div> */}
-          { this.state.modal && <LoginModal closeModal={ this.closeModal } /> }
+          { this.state.modal && <LoginModal state={ this.state } closeModal={ this.closeModal } /> }
         </div>
       </div>
     )
