@@ -128,41 +128,38 @@ class Post extends Component{
   }
 
   renderPostItem(item, index) {
+    const backgroundStyle = {
+      backgroundImage: `url(${item.image_url})`
+    }
     return (
-      <div key="index" className="content-container">
-        <div className="post-item-top-container">
-          <div className="post-item-title-container">
-            <h2>{item.title}</h2>
-          </div>
-          <div className="post-item-price-container">
-            <h2  className="post-item-price" >$ {item.price}</h2>
+      <div key="index" className="post-item-container">
+        <div className="post-item-left-container">
+          <h3 className="post-item-header">{item.title}</h3>
+        </div>
+
+        <div className="post-item-left-container">
+          <div className="post-item-image-container" style={ backgroundStyle }></div>
+        </div>
+
+        <div className="post-item-left-container">
+          <div className="post-item-description-container">
+            <div className="postitem-description-header">
+              <h4 className="post-item-description-tag">{item.tag}</h4>
+              <p className="post-item-description-timestamp">– {this.state.timestamp}</p>
+            </div>
+            <p className="post-item-description">{item.description}</p>
           </div>
         </div>
-        <div className="post-item-duo-container">
-          <div className="post-item-left-container">
-            <div className="post-img-container">
-              <img className="post-item-image" src={item.image_url} alt='' />
-            </div>
-            <div>
-              <h2>{item.tag}</h2>
-            </div>
-            <div className="post-item-description">
-              <p>– {this.state.timestamp}</p>
-              <p>{item.description}</p>
-            </div>
-            {this.state.modal && <Email userInfo={item} close={ this.closeEmailLoginModal } />}
-          </div>
-          <div className="post-item-right-contianer">
-            <div className="textCenter">
-            <button onClick={ (event) => this.emailLoginModal(event)}>Contact the Owner</button>
-              <FavButton item={item} key={index} login={this.showLoginModal.bind(this)} onFav={this.handleFavPost.bind(this)}/>
-              <h2  className="post-item-email" >{item.email}</h2>
-            </div>
-            <div className="mapDiv">
-            <Map userInfo={item} />
-           </div>
-          </div>
+
+        <div className="post-item-right-container">
+          <p className="post-item-header">
+            { item.price != 0 && '$' + item.price }
+          </p>
+          <button id="email-btn" className="btn" onClick={ (event) => this.emailLoginModal(event)}>Contact the Owner</button>
+          <FavButton item={item} key={index} login={this.showLoginModal.bind(this)} onFav={this.handleFavPost.bind(this)}/>
+          <Map userInfo={item} />
         </div>
+
       </div>
     )
   }
@@ -181,8 +178,11 @@ class Post extends Component{
 
     return(
       <div className="post-container">
-        { this.state.post.map( (x, i) => this.renderPostItem(x, i)) }
-        { this.state.loginModal && <LoginModal post={ this.getPost.bind(this) } state={ this.state } closeModal={ this.closeLoginModal } /> }
+        <div className="content-container">
+          { this.state.post.map( (x, i) => this.renderPostItem(x, i)) }
+          { this.state.modal && <Email userInfo={item} close={ this.closeEmailLoginModal } />}
+          { this.state.loginModal && <LoginModal post={ this.getPost.bind(this) } state={ this.state } closeModal={ this.closeLoginModal } /> }
+        </div>
       </div>
 
 

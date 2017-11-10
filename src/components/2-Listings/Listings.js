@@ -157,11 +157,33 @@ class Listings extends Component {
     if(!this.state.user) {
       this.setState({ modal: true })
     }
-    if(fav == false) {
-      axios.post('/api/postFav', favObject)
+    console.log('FAV VALUE IN PARENT', fav);
+    if(fav == 'false') {
+      axios.post('/api/postFav', favObject).then(() => {
+
+        const catObject = this.props.match.params;
+        catObject.value = this.state.value
+        catObject.uid = this.props.userId
+
+        axios.post('/api/getListings/', catObject).then(res => {
+          this.setState({ listArray: res.data })
+          console.log(this.state.listArray);
+        })
+      })
     }
     else {
-      axios.post('/api/removeFav', favObject)
+      axios.post('/api/removeFav', favObject).then(() => {
+
+        const catObject = this.props.match.params;
+        catObject.value = this.state.value
+        catObject.uid = this.props.userId
+
+        axios.post('/api/getListings/', catObject).then(res => {
+          this.setState({ listArray: res.data })
+
+          console.log(this.state.listArray);
+        })
+      })
     }
   }
 
@@ -178,7 +200,6 @@ class Listings extends Component {
     catObject.value = this.state.value
     axios.post('/api/getListings/', catObject).then(res => {
       this.setState({ listArray: res.data })
-      console.log(this.state);
       axios.post('/api/getCategoryTags', [category]).then(res => {
         this.setState({ tagsArray: res.data })
       })

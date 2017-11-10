@@ -31,8 +31,6 @@ html, body {
 body {
   font-family: circular-book;
   background: #F5F6FA;
-  /*background: linear-gradient(#FEFEFE,#E9ECF3);*/
-  /* text-align: center; */
   font-size: 16px;
   color: #648496;
 }
@@ -74,7 +72,8 @@ Global button styles =========================================================*/
   text-transform: uppercase;
   line-height: 1.6;
   vertical-align: middle;
-  background: linear-gradient(to right, #49ACDA,#64A2F8)
+  background: linear-gradient(to right, #49ACDA,#64A2F8);
+  box-shadow: 0 8px 34px 4px rgba(0,0,0,.1);
 }
 
 .btn:hover {
@@ -93,7 +92,6 @@ Global button styles =========================================================*/
   max-width: 1300px;
   height: auto;
   margin: 0 auto;
-  /*padding-bottom: 5em;*/
 }
 
 /*==============================================================================
@@ -110,9 +108,6 @@ Global input styles ==========================================================*/
   -webkit-font-smoothing: antialiased;
   cursor: text;
 }
-/*
-.input-container.error
-  border-bottom: 1px solid $red*/
 
 .input::-webkit-input-placeholder {
   color: #aab4c2;
