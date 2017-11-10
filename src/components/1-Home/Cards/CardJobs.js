@@ -23,7 +23,7 @@ class CardJobs extends Component {
       <hr/>
          <ul>
 
-           <Link to="/listings/Jobs/Accounting & Finance" className="tag">Accounting & Finance</Link>
+           <Link to="/listings/Jobs/Accounting & Finance" className="tag">Accounting</Link>
            <Link to="/listings/Jobs/Education" className="tag">Education</Link>
            <Link to="/listings/Jobs/Manufacturing" className="tag">Manufacturing</Link>
            <Link to="/listings/Jobs/Retail Wholesale" className="tag">Retail Wholesale</Link>

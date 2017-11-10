@@ -8,6 +8,20 @@
   justify-content: space-between;
 }
 
+.logo{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.navbar-logo-png{
+  height: 25px;
+  margin-left: 20px;
+  margin-right: 25px;
+}
+
 .navbar-logo a {
   font-family: circular-bold;
   letter-spacing: .25px;

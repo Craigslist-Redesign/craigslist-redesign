@@ -4,6 +4,7 @@ import axios from 'axios';
 import MyAccountListings from './MyAccountListings/MyAccountListings.js'
 import Favorites from './Favorites/Favorites'
 import { withRouter, Link } from 'react-router-dom';
+import './Account.css'
 
 import LoginModal from '../Navbar/LoginModal/LoginModal';
 
@@ -153,22 +154,32 @@ class MyAccount extends Component {
         console.log(this.state.successEmail)
         return (
             <div >
-                <h2>{this.state.successEmail}</h2>
-                <h1>My Account </h1>
+                
+                {/* className="my-account-header" */}
 
-               <div>
-                 <button onClick={ (event) => this.handleSignout(event) }>Sign out</button>
+                <div >
+                    <div className="myaccount-filter-container">
+                        <h1 className="myAccountUser">Home of {this.state.successEmail}  </h1>
 
-               </div>
+                        <button className="btn signOut" onClick={ (event) => this.handleSignout(event) }>Sign out</button>
 
-                <div className="filter-container">
-                  <div className="category-filter" onClick={(event) => this.changeView(event)}>
-                  My posts
-                </div>
-                  <div>|</div>
-                <div onClick={(event) => this.changeViews(event)}>
-                  Favorites
-                </div>
+                    </div>
+                
+
+               
+
+                    <div className="filter-container">
+                    {/* <div className="category-filter" onClick={(event) => this.changeView(event)}>
+                    My posts
+                    </div> */}
+                        <a className="category-filter-myaccount" onClick={(event) => this.changeView(event)}>
+                        My posts
+                        </a>
+                        <div className="myaccount-seperator">|</div>
+                        <a className="category-filter-myaccount" onClick={(event) => this.changeViews(event)}>
+                        Favorites
+                        </a>
+                    </div>
                 </div>
 
 

@@ -2,7 +2,8 @@
   background: #fff;
   box-shadow: 0 10px 34px 10px rgba(0,0,0,.1);
   margin-bottom: 10%;
-  padding: 36px;
+  padding: 44px;
+  border-radius: 5px;
 }
 
 .card-container h2 {
@@ -15,7 +16,7 @@
   border: 0;
   height: 2px;
   background: #d4dce8;
-  margin: 26px 0;
+  margin: 35px 0;
 }
 
 .card-container ul{
@@ -24,6 +25,8 @@
   flex-wrap: wrap;
   font-size: 15px;
   list-style: none;
+  line-height: 3.0;
+  justify-content: space-between;
 }
 
 .card-container li {
@@ -35,5 +38,5 @@
 }
 
 .tag{
-  width: 167px;
+  width: 157px;
 }
