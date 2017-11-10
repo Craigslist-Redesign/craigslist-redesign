@@ -159,6 +159,7 @@ class Post extends Component{
           <FavButton item={item} key={index} login={this.showLoginModal.bind(this)} onFav={this.handleFavPost.bind(this)}/>
           <Map userInfo={item} />
         </div>
+        { this.state.modal && <Email userInfo={item} close={ this.closeEmailLoginModal } />}
 
       </div>
     )
@@ -180,7 +181,6 @@ class Post extends Component{
       <div className="post-container">
         <div className="content-container">
           { this.state.post.map( (x, i) => this.renderPostItem(x, i)) }
-          { this.state.modal && <Email userInfo={item} close={ this.closeEmailLoginModal } />}
           { this.state.loginModal && <LoginModal post={ this.getPost.bind(this) } state={ this.state } closeModal={ this.closeLoginModal } /> }
         </div>
       </div>
