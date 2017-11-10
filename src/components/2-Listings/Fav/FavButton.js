@@ -32,10 +32,15 @@ class FavButton extends Component{
   }
 
   render(){
+    let addFav;
+    if(this.state.favorite) {
+      addFav = "Unfavorite"
+    } else {
+      addFav = "Add to favorite"
+    }
     return(
-      <div className="list-item-favorite" onClick={ this.handleFav }>
-          <i id="heart-o" className={ this.state.favorite ? "fa fa-heart-o selected" : "fa fa-heart-o"} aria-hidden="true"></i>
-          <i id="heart" className={ this.state.favorite ? "fa fa-heart selected" : "fa fa-heart"} aria-hidden="true"></i>
+      <div onClick={ this.handleFav }>
+          <button id="fav-btn" className="btn" aria-hidden="true">{ addFav }</button>
       </div>
     )
   }

@@ -11,23 +11,23 @@ class Fav extends Component{
     }
   }
 
-  componentWillMount() {
-    console.log(this.props.item);
-      if(this.props.item.favorited === 'true') {
-        this.setState({ favorite: true })
-      }
+  componentDidMount() {
+      console.log('MOUNTING THAT COMPONENT');
   }
 
-  componentWillReceiveProps(nextProps){
-    console.log(this.props.item);
-    if(nextProps.item.favorited === 'true') {
-      this.setState({ favorite: true })
-    }
-  }
+  // componentWillReceiveProps(nextProps){
+  //   if(nextProps.item.favorited === 'true') {
+  //     this.setState({ favorite: true }, () => {
+  //       console.log(this.state.favorite);
+  //     })
+  //   }
+  // }
 
   handleFav = () => {
+    console.log(this.state.favorite);
     if(this.props.userId){
-      this.props.onFav(this.props.item.post_id, this.state.favorite); this.setState({favorite: !this.state.favorite})
+      this.props.onFav(this.props.item.post_id, this.props.item.favorited);
+      this.setState({ favorite: !this.state.favorite })
     } else {
       this.props.login();
     }
@@ -36,8 +36,8 @@ class Fav extends Component{
   render(){
     return(
       <div className="list-item-favorite" onClick={ this.handleFav }>
-          <i id="heart-o" className={ this.state.favorite ? "fa fa-heart-o selected" : "fa fa-heart-o"} aria-hidden="true"></i>
-          <i id="heart" className={ this.state.favorite ? "fa fa-heart selected" : "fa fa-heart"} aria-hidden="true"></i>
+          <i id="heart-o" className={ this.props.item.favorited == 'true' ? "fa fa-heart-o selected" : "fa fa-heart-o"} aria-hidden="true"></i>
+          <i id="heart" className={ this.props.item.favorited == 'true' ? "fa fa-heart selected" : "fa fa-heart"} aria-hidden="true"></i>
       </div>
     )
   }
