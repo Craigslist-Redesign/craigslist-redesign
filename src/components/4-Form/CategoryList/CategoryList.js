@@ -6,11 +6,11 @@ class CategoryList extends Component {
     return (
       <div className="content-container">
         <ul className="category-list">
-          <li onClick={ this.props.handleCategoryState }>For Sale</li>
-          <li onClick={ this.props.handleCategoryState }>Jobs</li>
-          <li onClick={ this.props.handleCategoryState }>Services</li>
-          <li onClick={ this.props.handleCategoryState }>Housing</li>
-          <li onClick={ this.props.handleCategoryState }>Community</li>
+          <li className="hover" onClick={ this.props.handleCategoryState }>For Sale</li>
+          <li className="hover" onClick={ this.props.handleCategoryState }>Jobs</li>
+          <li className="hover" onClick={ this.props.handleCategoryState }>Services</li>
+          <li className="hover" onClick={ this.props.handleCategoryState }>Housing</li>
+          <li className="hover" onClick={ this.props.handleCategoryState }>Community</li>
         </ul>
       </div>
     )

@@ -135,13 +135,13 @@ class Form extends Component {
   render() {
     let categoryHeader;
     if(this.state.category){
-      categoryHeader = <div><h4>Select a category</h4></div>
+      categoryHeader = <div className="center-cat select-category"><h4>Select a category</h4></div>
     }
 
     let form;
     if(this.state.category === 'For Sale'){
       form =
-      <div id="for-sale-form">
+      <div id="for-sale-form" >
         <ForSaleTagList handleTagState={ this.handleTagState } />
         { this.state.tag && <ForSaleForm state={this.state} handleSubmit={ this.handleSubmit }/> }
 
