@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-class Fav extends Component{
+class FavButton extends Component{
   constructor(props){
     super(props);
 
@@ -12,14 +12,12 @@ class Fav extends Component{
   }
 
   componentWillMount() {
-    console.log(this.props.item);
-      if(this.props.item.favorited === 'true') {
-        this.setState({ favorite: true })
-      }
+    if(this.props.item.favorited === 'true') {
+      this.setState({ favorite: true })
+    }
   }
 
   componentWillReceiveProps(nextProps){
-    console.log(this.props.item);
     if(nextProps.item.favorited === 'true') {
       this.setState({ favorite: true })
     }
@@ -43,4 +41,4 @@ class Fav extends Component{
   }
 }
 
-export default connect(state => state)(Fav)
+export default connect(state => state)(FavButton)

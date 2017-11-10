@@ -23,7 +23,6 @@ module.exports = {
   },
 
   getListings: (req,res) => {
-    console.log(req.body);
     req.app
     .get('db')
     .get_listings([req.body.category, req.body.tag, req.body.value, req.body.uid])
@@ -39,7 +38,6 @@ module.exports = {
   },
 
   getPost: (req,res) => {
-    console.log(req.body);
     req.app.get('db')
     .get_post(req.body.post_id, req.body.uid)
     .then(data => res.json(data))
@@ -96,7 +94,6 @@ module.exports = {
   },
 
   searchListings: (req, res) => {
-    console.log(req.body);
     req.app.get('db')
     .search_listings(req.body.category, req.body.tag, req.body.value)
     .then(data => res.json(data))
@@ -111,7 +108,6 @@ module.exports = {
   },
 
   sendMail: (req,res,next) => {
-    console.log(req.body)
     const msg = {
     to: req.body.creatorEmail,
     from: req.body.yourEmail,

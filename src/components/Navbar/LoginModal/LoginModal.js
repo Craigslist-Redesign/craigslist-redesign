@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import firebase from '../../../firebase.js';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
-import './LoginModal.css'
+import './LoginModal.css';
+import { login } from '../../../ducks/reducer';
+import { connect } from 'react-redux';
 
 class LoginModal extends Component {
   constructor(props) {
@@ -35,16 +37,24 @@ class LoginModal extends Component {
 
           if (user) {
             console.log(user);
+            // redux
+            this.props.login(user.uid)
+
             this.setState({ successEmail: user.email })
-            console.log(this.state);
             this.props.closeModal();
 
-            console.log(this.props.state.redirect);
             if(this.props.state.redirect == 'account'){
-              console.log('redirect to account');
               this.props.history.push('/myaccount');
-            } else {
+            }
+            else if(this.props.state.redirect == 'form') {
               this.props.history.push('/form');
+            }
+            else if(this.props.state.redirect == 'post') {
+              this.props.post()
+              this.props.closeModal();
+            }
+            else if(this.props.state.redirect == 'listings') {
+              this.props.listings(user.uid)
             }
           }
 
@@ -77,11 +87,35 @@ class LoginModal extends Component {
       .then(response => {
         firebase.auth().onAuthStateChanged(user => {
 
-          const uid = this.state.userUid
-          axios.post('/user/createUser', [email, uid])
+          if (user) {
+            console.log(user);
+            // redux
+            this.props.login(user.uid)
 
-          this.props.closeModal();
+            this.setState({ successEmail: user.email })
+            this.props.closeModal();
+
+            if(this.props.state.redirect == 'account'){
+              this.props.history.push('/myaccount');
+            }
+            else if(this.props.state.redirect == 'form') {
+              this.props.history.push('/form');
+            }
+            else if(this.props.state.redirect == 'post') {
+              this.props.post()
+              this.props.closeModal();
+            }
+            else if(this.props.state.redirect == 'listings') {
+              this.props.listings(user.uid)
+            }
+          }
+
         })
+      })
+      .catch(err => {
+        if(err.message === "The email address is already in use by another account.") {
+          alert('The email address is already in use by another account.')
+        }
       })
     }
 
@@ -164,4 +198,4 @@ class LoginModal extends Component {
   }
 }
 
-export default withRouter(LoginModal);
+export default withRouter(connect(state => state,{ login })(LoginModal));

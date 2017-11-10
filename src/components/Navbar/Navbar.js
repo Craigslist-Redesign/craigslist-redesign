@@ -22,14 +22,10 @@ class Navbar extends Component {
 
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        console.log(user);
         this.setState({ user: user.email })
-        console.log(this.state);
       }
       else {
-        console.log('No user in Navbar');
         this.setState({ modal: false, user: '' });
-        console.log(this.state);
       }
 
     })
@@ -72,14 +68,11 @@ class Navbar extends Component {
     return(
       <div className="content-container">
         <div className="navbar-container">
-          <h3 className="navbar-logo"><Link to="/">Craiglist</Link></h3>
+          <h3 className="navbar-logo"><Link to="/">Carlslist</Link></h3>
           <div className="navbar-btn-container">
             <a className="navbar-account" onClick={ this.handleAccountCondition }>My Account</a>
             <button className="btn" onClick={ this.handleFormCondition }>Post an Ad</button>
           </div>
-           {/* <div>
-            <button onClick={ (event) => this.handleSignout(event) }>Sign out</button>
-          </div> */}
           { this.state.modal && <LoginModal state={ this.state } closeModal={ this.closeModal } /> }
         </div>
       </div>
