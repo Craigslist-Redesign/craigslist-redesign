@@ -3,8 +3,9 @@ import firebase from '../../firebase.js'
 import axios from 'axios';
 import { withRouter, Link } from 'react-router-dom';
 import LoginModal from '../Navbar/LoginModal/LoginModal';
-import Fav from './Fav/Fav'
-import './Listings.css'
+import Fav from './Fav/Fav';
+import './Listings.css';
+import { connect } from 'react-redux';
 
 class Listings extends Component {
   constructor(props){
@@ -19,39 +20,31 @@ class Listings extends Component {
       user:'',
       categoriesArray: [],
       tagsArray: [],
-      list: false
+      list: false,
+      loginModal: false,
+      redirect: ''
     }
     this.handleDateSort = this.handleDateSort.bind(this)
     this.handleScroll = this.handleScroll.bind(this)
   }
-  componentWillMount(){
-    console.log('Listings - Parent will mount');
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({ user: user.email })
-        this.setState({uid: user.uid})
-        // Take this out after implementing REDUX ******************************
-        const catObject = this.props.match.params;
-        catObject.value = this.state.value
-        catObject.uid = this.state.uid
-        this.setState({ category: catObject.category })
-        axios.post('/api/getListings/', catObject).then(res => {
-          this.setState({ listArray: res.data, list: true })
-          console.log(res.data);
-          console.log(this.state);
-        })
-        // Take this out after implementing REDUX ******************************
-      }
-    })
-
-    this.setState({ category: this.props.match.category, tag: this.props.match.params.tag})
+  componentDidMount(){
+    console.log(this.props.userId);
+    // if(this.props.userId){
+      this.getListings(this.props.userId);
+    // }
 
 
+    // firebase.auth().onAuthStateChanged(user => {
+    //   if (user) {
+    //     this.setState({ user: user.email })
+    //     this.setState({ uid: user.uid })
+    //   }
+    // })
 
+    this.setState({ tag: this.props.match.params.tag})
     axios.get('/api/getCategories').then(res => {
       this.setState({ categoriesArray: res.data })
     })
-
 
     const category = this.props.match.params.category;
     axios.post('/api/getCategoryTags', [category]).then(res => {
@@ -60,6 +53,22 @@ class Listings extends Component {
 
     window.addEventListener('scroll', this.handleScroll);
   }
+
+  getListings(id){
+    const catObject = this.props.match.params;
+    catObject.value = this.state.value
+    catObject.uid = id
+
+    this.setState({ category: catObject.category })
+    axios.post('/api/getListings/', catObject).then(res => {
+      this.setState({ listArray: res.data, list: true, redirect: 'listings' })
+      console.log(this.state.listArray);
+    })
+  }
+
+  // componentWillReceiveProps(nextProps){
+  //   this.getListings(nextProps.userId);
+  // }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
@@ -74,7 +83,6 @@ class Listings extends Component {
       document.getElementById('searchbar-container').style.marginBottom = '4.5em';
     }
   }
-
 
   renderCategoryItem(item, index) {
     const category = this.props.match.params.category;
@@ -94,13 +102,13 @@ class Listings extends Component {
       selected = true;
     }
     return (
-      <option value={ item.tag } selected={selected} key={ index }>{ item.tag }</option>
+      <option value={item.tag} selected={selected} key={index}>{ item.tag }</option>
     )
   }
 
   renderListItem(item, index) {
     const backgroundStyle = {
-      backgroundImage: `url(${ item.image_url })`
+      backgroundImage: `url(${item.image_url})`
     }
     return (
       <div className="list-item-container" key={index}>
@@ -112,37 +120,44 @@ class Listings extends Component {
         </Link>
         <div className="list-item-title-container">
           <Link to={`/post/${item.post_id}`}><h3>{ item.title }</h3></Link>
-          <Fav item={item} onFav={this.handleFavPost.bind(this)}/>
+          <Fav item={item} login={this.showLoginModal.bind(this)} onFav={this.handleFavPost.bind(this)}/>
         </div>
       </div>
     )
   }
 
+  showLoginModal = () => {
+    this.setState({ loginModal: true })
+  }
+
+  closeLoginModal = () => {
+    this.setState({ loginModal: false });
+  }
+
   handleSearchInput(value) {
     this.setState({ value: value })
     const listingsObject = {
-      category: this.state.category,
+      category: this.props.match.params.category,
       tag: this.state.tag,
-      value: value
+      value: value,
+      uid: this.props.userId
     }
-    console.log(listingsObject);
+
     axios.post('/api/searchListings', listingsObject).then(res => {
-      this.setState({ listArray: res.data })
+      this.setState({ listArray: res.data.reverse() })
+      console.log(this.state.listArray);
     })
   }
 
   handleFavPost(id, fav){
-    console.log(id + " " + fav);
-    let uid = this.state.uid
     const favObject = {
-      uid: this.state.uid,
+      uid: this.props.userId,
       post_id: id
     }
-
     if(!this.state.user) {
       this.setState({ modal: true })
     }
-    else if(fav == false) {
+    if(fav == false) {
       axios.post('/api/postFav', favObject)
     }
     else {
@@ -153,7 +168,8 @@ class Listings extends Component {
   handleCategoryChange(category) {
     const catObject = {
       category: category,
-      tag: 'all'
+      tag: 'all',
+      uid: this.props.userId
     }
     this.setState({ category: category, tag: 'all' })
 
@@ -173,7 +189,8 @@ class Listings extends Component {
     const category = this.state.category
     const catObject = {
       category: category,
-      tag: tag
+      tag: tag,
+      uid: this.props.userId
     }
 
     this.props.history.push(`/listings/${category}/${tag}`);
@@ -202,7 +219,7 @@ class Listings extends Component {
   handlePriceSort(e) {}
 
   render(){
-    console.log('Listings - Parent render');
+    console.log(this.state);
     let priceFilter;
     if(this.state.category === 'For Sale') {
       priceFilter =
@@ -261,9 +278,10 @@ class Listings extends Component {
           { this.state.listArray.map( (x, i) => this.renderListItem(x, i)) }
         </div>
       </div>
+      { this.state.loginModal && <LoginModal state={ this.state } listings={ this.getListings.bind(this) } closeModal={ this.closeLoginModal } /> }
     </div>
     )
   }
 }
 
-export default withRouter(Listings);
+export default withRouter(connect(state => state)(Listings));
