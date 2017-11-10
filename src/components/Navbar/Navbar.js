@@ -3,6 +3,7 @@ import './Navbar.css';
 import firebase from '../../firebase.js';
 import { withRouter, Link } from 'react-router-dom';
 import LoginModal from './LoginModal/LoginModal';
+import logo from './peaceNav.png'
 // import RouterButton from './RouterButton/RouterButton';
 
 class Navbar extends Component {
@@ -68,7 +69,10 @@ class Navbar extends Component {
     return(
       <div className="content-container">
         <div className="navbar-container">
-          <h3 className="navbar-logo"><Link to="/">Carlslist</Link></h3>
+          <div className="logo">
+            <Link to="/"><img className="navbar-logo-png" src={logo} alt={"logo"}/></Link>
+            <h3 className="navbar-logo"><Link to="/">Carlslist</Link></h3>
+          </div>
           <div className="navbar-btn-container">
             <a className="navbar-account" onClick={ this.handleAccountCondition }>My Account</a>
             <button className="btn" onClick={ this.handleFormCondition }>Post an Ad</button>
