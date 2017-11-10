@@ -3,7 +3,7 @@
   width: 100%;
   height: auto;
   padding: 40px 0;
-  
+
  }
 
  .post-item-top-container{
@@ -42,12 +42,13 @@
 
   .post-item-description{
       width: 45rem;
+      margin-top: 20px;
   }
 
 
 
   .post-item-right-contianer{
-    
+
      width: 50%;
      text-align: none;
 

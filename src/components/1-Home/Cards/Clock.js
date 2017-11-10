@@ -25,10 +25,24 @@ class Clock extends Component {
   }
 
   render() {
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
     return (
-      <div className="real-time-clock">
-        <h2>{this.state.date.toLocaleTimeString()}</h2>
+  <div className="real-time-clock">
+    <div className="date-container-for-clock">
+      <div className="dayOfTheMonth">
+        <p>{this.state.date.getDate()}</p>
       </div>
+      <div className="theMonthTime">
+        <h2>{monthNames[this.state.date.getMonth()]}</h2>
+        <hr/>
+     </div>
+   </div>
+     <div className="clock-time">
+        <p>{this.state.date.toLocaleTimeString()}</p>
+    </div>
+  </div>
     );
   }
 }
