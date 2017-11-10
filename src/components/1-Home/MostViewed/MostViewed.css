@@ -8,6 +8,7 @@
 }
 
 .most-viewed-item{
+  border-radius: 5px;
   display: grid;
   grid-template-columns: 65% 35%;
   color: #648496;
@@ -27,10 +28,12 @@
   color: #aab4c2;
 }
 
+
 .most-viewed-image-container {
   height: 100%;
   width: 100%;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  border-radius: 0 5px 5px 0;
 }
