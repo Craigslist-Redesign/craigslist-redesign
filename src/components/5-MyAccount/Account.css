@@ -2,3 +2,52 @@
     border: 1px solid black
 }
 
+.myAccountUser {
+    /* margin: 0 auto; */
+    width: 78%;
+    max-width: 1300px;
+    /* padding-bottom: 18px; */
+    /* border-bottom: 2px solid #d2dae8; */
+    /* margin-bottom: 5.5em; */
+    /* display: flex; */
+}
+
+.category-filter-myaccount {
+    font-family: circular-black;
+    -webkit-font-smoothing: antialiased;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 2px 10px;
+    /* margin-top: 2px; */
+    margin-bottom: -4px;
+    color: #aab4c2;
+    transition: all .2s;
+}
+
+.category-filter-myaccount:hover {
+    color: #648496;
+}
+
+/* .signOut {
+    margin: 0 auto;
+}   */
+
+
+.myaccount-filter-container {
+    margin: 0 auto;
+    width: 78%;
+    max-width: 1300px;
+    padding-bottom: 2px;
+    /* border-bottom: 2px solid #d2dae8; */
+    margin-bottom: .5em;
+    display: flex;
+    justify-content: space-between;
+
+  }
+
+  .myaccount-seperator {
+    color: #aab4c2;
+  }
+
+
+
