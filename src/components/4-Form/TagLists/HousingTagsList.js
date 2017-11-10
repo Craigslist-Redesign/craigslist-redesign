@@ -6,14 +6,14 @@ class HousingTagsList extends Component {
     return (
       <div className="tag-list-container">
         <ul>
-          <li onClick={ this.props.handleTagState }>Apts & Housing</li>
-          <li onClick={ this.props.handleTagState }>Housing Wanted</li>
-          <li onClick={ this.props.handleTagState }>Office & Commerical</li>
-          <li onClick={ this.props.handleTagState }>Real Estate For Sale</li>
-          <li onClick={ this.props.handleTagState }>Rooms & Shared</li>
-          <li onClick={ this.props.handleTagState }>Rooms Wanted</li>
-          <li onClick={ this.props.handleTagState }>Sublets & Temporary</li>
-          <li onClick={ this.props.handleTagState }>Vacation Rentals</li>
+          <li className="hover" onClick={ this.props.handleTagState }>Apts & Housing</li>
+          <li className="hover" onClick={ this.props.handleTagState }>Housing Wanted</li>
+          <li className="hover" onClick={ this.props.handleTagState }>Office & Commerical</li>
+          <li className="hover" onClick={ this.props.handleTagState }>Real Estate For Sale</li>
+          <li className="hover" onClick={ this.props.handleTagState }>Rooms & Shared</li>
+          <li className="hover" onClick={ this.props.handleTagState }>Rooms Wanted</li>
+          <li className="hover" onClick={ this.props.handleTagState }>Sublets & Temporary</li>
+          <li className="hover" onClick={ this.props.handleTagState }>Vacation Rentals</li>
         </ul>
       </div>
     )
