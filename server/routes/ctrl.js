@@ -23,6 +23,7 @@ module.exports = {
   },
 
   getListings: (req,res) => {
+    console.log(req.body);
     req.app
     .get('db')
     .get_listings([req.body.category, req.body.tag, req.body.value, req.body.uid])
@@ -89,13 +90,6 @@ module.exports = {
   getCategories: (req, res) => {
     req.app.get('db')
     .get_categories()
-    .then(data => res.json(data))
-    .catch(err => res.json(err))
-  },
-
-  searchListings: (req, res) => {
-    req.app.get('db')
-    .search_listings(req.body.category, req.body.tag, req.body.value)
     .then(data => res.json(data))
     .catch(err => res.json(err))
   },

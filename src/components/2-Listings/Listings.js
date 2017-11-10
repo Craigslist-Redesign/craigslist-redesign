@@ -143,8 +143,8 @@ class Listings extends Component {
       uid: this.props.userId
     }
 
-    axios.post('/api/searchListings', listingsObject).then(res => {
-      this.setState({ listArray: res.data.reverse() })
+    axios.post('/api/getListings/', listingsObject).then(res => {
+      this.setState({ listArray: res.data })
       console.log(this.state.listArray);
     })
   }
