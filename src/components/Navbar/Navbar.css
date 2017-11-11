@@ -18,8 +18,8 @@
 
 .navbar-logo-png{
   height: 25px;
-  margin-left: 20px;
-  margin-right: 25px;
+  
+  /* margin-right: 25px; */
 }
 
 .navbar-logo a {
@@ -47,4 +47,25 @@
 
 .navbar-account:hover {
   color: #648496;
+}
+
+.top{
+  z-index: 1;
+  position: relative;
+  right: 25px;
+}
+
+.space{
+  display: inline-block;
+  width: 20px
+}
+
+.top {
+
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+.top:hover {
+  opacity: 100;
 }
