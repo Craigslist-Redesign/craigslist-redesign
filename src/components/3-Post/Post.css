@@ -46,12 +46,14 @@
   transition: .3s;
   margin-bottom: 2.5em;
   box-shadow: 0 10px 34px 10px rgba(0,0,0,.1);
+  border-radius: 5px;
 }
 
 .post-item-description-container {
   padding: 36px 44px 44px;
   background: #fff;
   box-shadow: 0 10px 34px 10px rgba(0,0,0,.1);
+  border-radius: 5px;
 }
 
 .postitem-description-header {
@@ -96,5 +98,6 @@
 @media only screen and (min-width: 1600px) {
   .Map {
     height: 380px !important;
+    
   }
 }
