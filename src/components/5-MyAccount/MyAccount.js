@@ -154,19 +154,19 @@ class MyAccount extends Component {
         console.log(this.state.successEmail)
         return (
             <div >
-                
+
                 {/* className="my-account-header" */}
 
                 <div >
                     <div className="myaccount-filter-container">
-                        <h1 className="myAccountUser">Home of {this.state.successEmail}  </h1>
+                        <h1 className="myAccountUser">Home to {this.state.successEmail}  </h1>
 
                         <button className="btn signOut" onClick={ (event) => this.handleSignout(event) }>Sign out</button>
 
                     </div>
-                
 
-               
+
+
 
                     <div className="filter-container">
                     {/* <div className="category-filter" onClick={(event) => this.changeView(event)}>
