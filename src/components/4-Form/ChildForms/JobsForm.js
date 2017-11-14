@@ -10,7 +10,7 @@ class JobsForm extends Component {
   render() {
     return (
       <div>
-        <form>
+        <form className="">
           <div className="main-parent-forsale-container">
             <div className="title-form-container">
               <input className="input" type="text" required placeholder="Title" onChange={(event) => { this.props.state.title = event.target.value }} />
