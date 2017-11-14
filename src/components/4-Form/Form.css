@@ -4,6 +4,10 @@
   position: relative;
   width: 100%;
   margin: 40px auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 1300px
 }
 
 .select-category{
@@ -13,7 +17,7 @@
 /* CATEGORY LIST COMPONENT */
 .category-list-container {
   position: relative;
-  width: 80%;
+  /* width: 80%; */
   margin: 0 auto
 }
 
@@ -58,11 +62,13 @@
 
 .main-parent-forsale-container{
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   flex-direction: column;
   align-items: center;
   margin-top: 55px;
+  max-width: 1300px;
 }
+
 
 .center-center {
   display: flex;
@@ -139,9 +145,6 @@
   margin-top:5%;
 }
 
-.form-image-upload-btn{
-
-}
 
 .form-left-input{
   margin-right:25px;
@@ -153,5 +156,10 @@
 
 .hover:hover{
   color: black;
+}
+
+.justify{
+  display: flex;
+  align-items: center
 }
 
