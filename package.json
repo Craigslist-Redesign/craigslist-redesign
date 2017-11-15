@@ -2,7 +2,6 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  
   "dependencies": {
     "@sendgrid/mail": "^6.1.4",
     "axios": "^0.17.0",
@@ -29,6 +28,6 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "firebase": "^4.6.0"
+    "firebase": "^4.6.2"
   }
 }

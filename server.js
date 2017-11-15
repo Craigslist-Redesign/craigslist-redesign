@@ -27,7 +27,7 @@ massive(process.env.HEROKU_POSTGRESQL_URL).then(db => {
 // required middlewares
 app.use(json());
 app.use(cors());
-app.use('/', express.static(__dirname + '/app/public'));
+app.use('/', express.static(__dirname + '/public'));
 
 masterRoutes(app)
 
