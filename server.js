@@ -7,7 +7,7 @@ const massive = require('massive');
 const masterRoutes = require('./server/masterRoutes');
 // const port = 4000;
 const app = express();
-const { address, sendgridAPI } = require('./configs')
+// const { address, sendgridAPI } = require('./configs')
 // Database connection information
 // const connectionString = `${ address }`
 const axios = require('axios');
