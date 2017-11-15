@@ -19,7 +19,7 @@ massive(connectionString).then(db => {
 // required middlewares
 app.use(json());
 app.use(cors());
-// app.use('/', express.static(__dirname + '/public'));
+app.use('/', express.static(__dirname + '/public'));
 
 masterRoutes(app)
 
