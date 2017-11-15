@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:4000",
+  
   "dependencies": {
     "@sendgrid/mail": "^6.1.4",
     "axios": "^0.17.0",
