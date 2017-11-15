@@ -1,6 +1,7 @@
-const { address, sendgridAPI } = require('../../configs');
+// const { address, sendgridAPI } = require('../../configs');
+require('dotenv').config();
 const sgMail = require("@sendgrid/mail");
-sgMail.setApiKey(sendgridAPI);
+sgMail.setApiKey(process.env.sendgridAPI);
 
 
 module.exports = {
