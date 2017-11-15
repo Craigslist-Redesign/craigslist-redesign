@@ -3,9 +3,9 @@ const { json } = require('body-parser');
 const cors = require('cors');
 const massive = require('massive');
 const masterRoutes = require('./server/masterRoutes');
-const port = 4000;
+// const port = 4000;
 const app = express();
-const { address, sendgridAPI } = require('./config');
+const { address, sendgridAPI, port } = require('./config');
 // Database connection information
 const connectionString = `${ address }`
 const axios = require('axios');
