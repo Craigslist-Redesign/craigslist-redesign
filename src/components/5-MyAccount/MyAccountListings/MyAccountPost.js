@@ -3,7 +3,7 @@ import './MyAccount.css'
 import { withRouter, Link } from 'react-router-dom';
 
 class MyAccountPost extends Component {
-    // const post = props.post
+    
     constructor(props){
         super(props)
 
